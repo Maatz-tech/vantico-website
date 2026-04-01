@@ -1,0 +1,724 @@
+---
+import Badge from './Badge.astro';
+
+const logos = [
+  { src: '/images/logos/capim.png', alt: 'Capim', width: 88 },
+  { src: '/images/logos/colmeia.png', alt: 'Colmeia', width: 67 },
+  { src: '/images/logos/pontotel.png', alt: 'Pontotel', width: 71 },
+  { src: '/images/logos/souair.png', alt: 'SouAir', width: 118 },
+  { src: '/images/logos/trampo.png', alt: 'Trampo', width: 95 },
+  { src: '/images/logos/client-9.png', alt: 'Cliente', width: 67 },
+  { src: '/images/logos/client-10.png', alt: 'Cliente', width: 72 },
+  { src: '/images/logos/client-11.png', alt: 'Cliente', width: 88 },
+  { src: '/images/logos/client-12.png', alt: 'Cliente', width: 70 },
+  { src: '/images/logos/client-13.png', alt: 'Cliente', width: 88 },
+];
+---
+
+<section class="contact">
+  <!-- Pattern grid de fundo -->
+  <div class="contact__pattern" aria-hidden="true">
+    <img src="/images/hero-pattern.svg" alt="" />
+  </div>
+
+  <div class="contact__container">
+    <!-- Left column: text + logos -->
+    <div class="contact__info">
+      <div class="contact__info-text">
+        <Badge>Contato</Badge>
+        <div class="contact__info-content">
+          <h1 class="contact__title">Agende uma demonstração</h1>
+          <p class="contact__subtitle">
+            Veja na prática como a abordagem da Vantico pode auxiliar sua empresa a criar fortes defesas contra ameaças cibernéticas.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact__logos-block">
+        <p class="contact__logos-label">Confiança de quem já escolheu a Vantico</p>
+        <div class="contact__logos-wrapper">
+          <div class="contact__logos-track">
+            <div class="contact__logos-set">
+              {logos.map((logo) => (
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  height="24"
+                  width={logo.width}
+                  class="contact__logo-item"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+            <div class="contact__logos-set" aria-hidden="true">
+              {logos.map((logo) => (
+                <img
+                  src={logo.src}
+                  alt=""
+                  height="24"
+                  width={logo.width}
+                  class="contact__logo-item"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+          </div>
+          <div class="contact__logos-fade contact__logos-fade--left"></div>
+          <div class="contact__logos-fade contact__logos-fade--right"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column: form -->
+    <div class="contact__form-wrap">
+      <!-- Grid lines -->
+      <div class="contact__grid" aria-hidden="true">
+        <div class="contact__grid-line contact__grid-line--h contact__grid-line--h1"></div>
+        <div class="contact__grid-line contact__grid-line--h contact__grid-line--h2"></div>
+        <div class="contact__grid-line contact__grid-line--v contact__grid-line--v1"></div>
+        <div class="contact__grid-line contact__grid-line--v contact__grid-line--v2"></div>
+      </div>
+
+      <form id="contact-form" class="contact__form" novalidate>
+        <div class="contact__form-row">
+          <div class="contact__field">
+            <label for="contact-name" class="contact__label">
+              Nome <span class="contact__required">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              class="contact__input"
+              required
+            />
+            <span class="contact__error" data-error="name"></span>
+          </div>
+
+          <div class="contact__field">
+            <label for="contact-company" class="contact__label">
+              Empresa <span class="contact__required">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-company"
+              name="company"
+              placeholder="Digite o nome da sua empresa"
+              class="contact__input"
+              required
+            />
+            <span class="contact__error" data-error="company"></span>
+          </div>
+        </div>
+
+        <div class="contact__form-row">
+          <div class="contact__field">
+            <label for="contact-email" class="contact__label">
+              E-mail <span class="contact__required">*</span>
+            </label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              placeholder="Digite seu e-mail"
+              class="contact__input"
+              required
+            />
+            <span class="contact__error" data-error="email"></span>
+          </div>
+
+          <div class="contact__field">
+            <label for="contact-phone" class="contact__label">
+              Telefone <span class="contact__required">*</span>
+            </label>
+            <input
+              type="tel"
+              id="contact-phone"
+              name="phone"
+              placeholder="(99) 99999-9999"
+              class="contact__input"
+              required
+            />
+            <span class="contact__error" data-error="phone"></span>
+          </div>
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-source" class="contact__label">
+            Como nos conheceu? <span class="contact__required">*</span>
+          </label>
+          <div class="contact__select-wrapper">
+            <select
+              id="contact-source"
+              name="source"
+              class="contact__input contact__select"
+              required
+            >
+              <option value="" disabled selected>Selecione</option>
+              <option value="google">Google</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="indicacao">Indicação</option>
+              <option value="evento">Evento</option>
+              <option value="outro">Outro</option>
+            </select>
+            <svg class="contact__select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+          <span class="contact__error" data-error="source"></span>
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-message" class="contact__label">
+            Mensagem <span class="contact__required">*</span>
+          </label>
+          <textarea
+            id="contact-message"
+            name="message"
+            placeholder="Digite sua mensagem"
+            class="contact__input contact__textarea"
+            required
+          ></textarea>
+          <span class="contact__error" data-error="message"></span>
+        </div>
+
+        <button type="submit" class="contact__submit">Enviar</button>
+
+        <p class="contact__privacy">
+          Ao informar meus dados, estou ciente das diretrizes da <a href="/politica-de-privacidade" class="contact__privacy-link">Política de Privacidade.</a>
+        </p>
+      </form>
+
+      <div id="contact-success" class="contact__success" style="display: none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1C51C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        <p class="contact__success-text">Mensagem enviada com sucesso!</p>
+        <p class="contact__success-sub">Entraremos em contato em breve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const phoneInput = document.getElementById('contact-phone') as HTMLInputElement | null;
+  const successEl = document.getElementById('contact-success');
+
+  // Phone mask
+  phoneInput?.addEventListener('input', () => {
+    let v = phoneInput.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+
+    if (v.length > 6) {
+      phoneInput.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+    } else if (v.length > 2) {
+      phoneInput.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+    } else if (v.length > 0) {
+      phoneInput.value = `(${v}`;
+    }
+  });
+
+  // Validation helpers
+  function showError(field: string, message: string) {
+    const errorEl = document.querySelector(`[data-error="${field}"]`);
+    const inputEl = document.querySelector(`[name="${field}"]`) as HTMLElement | null;
+    if (errorEl) errorEl.textContent = message;
+    inputEl?.classList.add('contact__input--error');
+  }
+
+  function clearErrors() {
+    document.querySelectorAll('.contact__error').forEach((el) => {
+      el.textContent = '';
+    });
+    document.querySelectorAll('.contact__input--error').forEach((el) => {
+      el.classList.remove('contact__input--error');
+    });
+  }
+
+  function isValidEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function isValidPhone(phone: string): boolean {
+    const digits = phone.replace(/\D/g, '');
+    return digits.length >= 10 && digits.length <= 11;
+  }
+
+  // Form submit
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const data = new FormData(form);
+    let valid = true;
+
+    const name = (data.get('name') as string || '').trim();
+    const company = (data.get('company') as string || '').trim();
+    const email = (data.get('email') as string || '').trim();
+    const phone = (data.get('phone') as string || '').trim();
+    const source = (data.get('source') as string || '').trim();
+
+    if (!name) {
+      showError('name', 'Nome é obrigatório');
+      valid = false;
+    }
+    if (!company) {
+      showError('company', 'Empresa é obrigatória');
+      valid = false;
+    }
+    if (!email) {
+      showError('email', 'E-mail é obrigatório');
+      valid = false;
+    } else if (!isValidEmail(email)) {
+      showError('email', 'E-mail inválido');
+      valid = false;
+    }
+    if (!phone) {
+      showError('phone', 'Telefone é obrigatório');
+      valid = false;
+    } else if (!isValidPhone(phone)) {
+      showError('phone', 'Telefone inválido');
+      valid = false;
+    }
+    if (!source) {
+      showError('source', 'Selecione uma opção');
+      valid = false;
+    }
+
+    const message = (data.get('message') as string || '').trim();
+    if (!message) {
+      showError('message', 'Mensagem é obrigatória');
+      valid = false;
+    }
+
+    if (valid) {
+      form.style.display = 'none';
+      if (successEl) successEl.style.display = 'flex';
+    }
+  });
+
+  // Clear individual error on input
+  form?.addEventListener('input', (e) => {
+    const target = e.target as HTMLElement;
+    const name = target.getAttribute('name');
+    if (name) {
+      const errorEl = document.querySelector(`[data-error="${name}"]`);
+      if (errorEl) errorEl.textContent = '';
+      target.classList.remove('contact__input--error');
+    }
+  });
+</script>
+
+<style>
+  .contact {
+    position: relative;
+    background-color: var(--color-white);
+    overflow: hidden;
+    padding: 0 var(--container-padding) 48px;
+  }
+
+  /* Pattern de fundo */
+  .contact__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 364px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .contact__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact__container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  /* Info column */
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    padding-top: 48px;
+  }
+
+  .contact__info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .contact__info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+  }
+
+  .contact__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  /* Logos block */
+  .contact__logos-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .contact__logos-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #191F2F;
+    line-height: normal;
+  }
+
+  .contact__logos-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact__logos-track {
+    display: flex;
+    width: max-content;
+    animation: contact-scroll 30s linear infinite;
+  }
+
+  .contact__logos-wrapper:hover .contact__logos-track {
+    animation-play-state: paused;
+  }
+
+  .contact__logos-set {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 40px;
+    flex-shrink: 0;
+  }
+
+  .contact__logo-item {
+    height: 24px;
+    width: auto;
+    flex-shrink: 0;
+    opacity: 0.4;
+    filter: grayscale(1);
+  }
+
+  @keyframes contact-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .contact__logos-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .contact__logos-fade--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white), transparent);
+  }
+
+  .contact__logos-fade--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white), transparent);
+  }
+
+  /* Form wrap with grid lines */
+  .contact__form-wrap {
+    position: relative;
+    margin: 40px 0;
+  }
+
+  .contact__grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .contact__grid-line--h {
+    position: absolute;
+    left: -40px;
+    right: -40px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(25, 31, 47, 0.15) 20%,
+      rgba(25, 31, 47, 0.15) 80%,
+      transparent 100%
+    );
+  }
+
+  .contact__grid-line--h1 {
+    top: 0;
+  }
+
+  .contact__grid-line--h2 {
+    bottom: 0;
+  }
+
+  .contact__grid-line--v {
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(25, 31, 47, 0.15) 20%,
+      rgba(25, 31, 47, 0.15) 80%,
+      transparent 100%
+    );
+  }
+
+  .contact__grid-line--v1 {
+    left: 0;
+  }
+
+  .contact__grid-line--v2 {
+    right: 0;
+  }
+
+  /* Form */
+  .contact__form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: var(--color-white-2);
+    padding: 32px;
+  }
+
+  .contact__form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .contact__label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-dark-blue);
+    line-height: normal;
+  }
+
+  .contact__required {
+    color: #E95353;
+  }
+
+  .contact__input {
+    width: 100%;
+    height: 43px;
+    padding: 12px 16px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .contact__input::placeholder {
+    color: var(--color-text-dark);
+    opacity: 0.6;
+  }
+
+  .contact__input:focus {
+    border-color: var(--color-blue);
+  }
+
+  .contact__input--error {
+    border-color: #E95353;
+  }
+
+  .contact__error {
+    font-size: 12px;
+    color: #E95353;
+    min-height: 0;
+    line-height: normal;
+  }
+
+  /* Select */
+  .contact__select-wrapper {
+    position: relative;
+  }
+
+  .contact__select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 40px;
+  }
+
+  .contact__select option[value=""][disabled] {
+    color: var(--color-text-dark);
+    opacity: 0.6;
+  }
+
+  .contact__select option {
+    color: var(--color-text-dark);
+  }
+
+  .contact__select-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-text-dark);
+  }
+
+  /* Textarea */
+  .contact__textarea {
+    height: 100px;
+    resize: vertical;
+    align-items: flex-start;
+  }
+
+  /* Submit */
+  .contact__submit {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .contact__submit:hover {
+    opacity: 0.9;
+  }
+
+  /* Privacy */
+  .contact__privacy {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: normal;
+    text-align: center;
+  }
+
+  .contact__privacy-link {
+    color: var(--color-text-dark);
+    text-decoration: underline;
+  }
+
+  /* Success */
+  .contact__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background-color: var(--color-white-2);
+    padding: 64px 32px;
+    text-align: center;
+    min-height: 300px;
+  }
+
+  .contact__success-text {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+    line-height: normal;
+  }
+
+  .contact__success-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: normal;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .contact {
+      padding: 24px 120px 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .contact__pattern {
+      width: 1440px;
+      height: 623px;
+    }
+
+    .contact__container {
+      flex-direction: row;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .contact__info {
+      width: 500px;
+      flex-shrink: 0;
+      padding-top: 80px;
+    }
+
+    .contact__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .contact__logos-block {
+      gap: 24px;
+    }
+
+    .contact__form-row {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+</style>

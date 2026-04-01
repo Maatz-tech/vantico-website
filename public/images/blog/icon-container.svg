@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon container">
+<rect width="40" height="40" rx="20" fill="var(--fill-0, white)"/>
+<rect x="0.401351" y="0.401351" width="39.1973" height="39.1973" rx="19.5986" stroke="var(--stroke-0, #191F2F)" stroke-opacity="0.1" stroke-width="0.802703"/>
+<g id="lucide/check">
+<g id="Vector">
+<path d="M26.4582 15.8514L17.9582 24.3514L14.0946 20.4878" stroke="var(--stroke-0, #484F62)" stroke-width="1.54545" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.4582 15.8514L17.9582 24.3514L14.0946 20.4878" stroke="var(--stroke-1, black)" stroke-opacity="0.2" stroke-width="1.54545" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.4582 15.8514L17.9582 24.3514L14.0946 20.4878" stroke="var(--stroke-2, black)" stroke-opacity="0.2" stroke-width="1.54545" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</svg>

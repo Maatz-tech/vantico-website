@@ -1,0 +1,571 @@
+---
+import Button from './Button.astro';
+
+const tabs = [
+  {
+    id: 'web',
+    label: 'Web',
+    icon: 'globe',
+    title: 'Teste de Intrusão Web',
+    description: 'Avaliação de segurança focada em identificar vulnerabilidades em aplicações web, simulando ataques reais para detectar falhas como injeções, quebras de autenticação, exposições de dados e outros riscos que possam comprometer a confidencialidade, integridade e disponibilidade do sistema.',
+    image: '/images/solutions/solutions-web.png',
+  },
+  {
+    id: 'api',
+    label: 'API',
+    icon: 'cog',
+    title: 'Teste de Intrusão em API',
+    description: 'Teste de segurança voltado à identificação de vulnerabilidades em APIs, avaliando autenticação, controle de acesso, exposição de dados sensíveis e outros riscos que possam ser explorados por atacantes para comprometer a integridade e a confidencialidade dos serviços expostos.',
+    image: '/images/solutions/illustration-api.svg',
+  },
+  {
+    id: 'mobile',
+    label: 'Mobile',
+    icon: 'smartphone',
+    title: 'Teste de Intrusão Mobile',
+    description: 'Teste de segurança em aplicativos Android e iOS com o objetivo de identificar falhas que possam comprometer dados dos usuários, permitir ações não autorizadas ou expor a aplicação a riscos de exploração.',
+    image: '/images/solutions/illustration-mobile.svg',
+  },
+  {
+    id: 'infra',
+    label: 'Infraestrutura',
+    icon: 'server',
+    title: 'Teste de Intrusão de Infraestrutura',
+    description: 'Avaliação de segurança em ambientes de infraestrutura, visando identificar vulnerabilidades em servidores, redes e serviços expostos, com foco na prevenção de acessos não autorizados e na proteção do ambiente contra ameaças externas e internas.',
+    image: '/images/solutions/illustration-infra.svg',
+  },
+  {
+    id: 'cloud',
+    label: 'Nuvem',
+    icon: 'cloud',
+    title: 'Teste de Intrusão em Nuvem',
+    description: 'Avaliação de segurança em ambientes em nuvem, com foco na identificação de configurações inadequadas, exposições de dados e falhas que possam ser exploradas para comprometer recursos, serviços e informações hospedadas.',
+    image: '/images/solutions/illustration-cloud.svg',
+  },
+  {
+    id: 'phishing',
+    label: 'Spear Phishing',
+    icon: 'mail',
+    title: 'Simulação de Spear Phishing',
+    description: 'Simulação controlada de ataques de spear phishing com o objetivo de avaliar a suscetibilidade dos colaboradores a mensagens personalizadas e maliciosas, identificando gaps de conscientização e oportunidades de melhoria na postura de segurança.',
+    image: '/images/solutions/illustration-phishing.svg',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  cog: '<path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/>',
+  smartphone: '<rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>',
+  server: '<rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>',
+  cloud: '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
+  mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+};
+---
+
+<section class="solutions">
+  <div class="solutions__header">
+    <div class="solutions__badge">
+      <span class="solutions__badge-dot" aria-hidden="true"></span>
+      <span class="solutions__badge-text">Soluções</span>
+    </div>
+    <h2 class="solutions__title">Como protegemos cada camada do seu ambiente</h2>
+  </div>
+
+  <div class="solutions__tabs-container">
+    <!-- Grid lines ancoradas ao tabs container -->
+    <div class="solutions__grid" aria-hidden="true">
+      <div class="solutions__grid-line solutions__grid-line--h solutions__grid-line--h1"></div>
+      <div class="solutions__grid-line solutions__grid-line--h solutions__grid-line--h2"></div>
+      <div class="solutions__grid-line solutions__grid-line--h solutions__grid-line--h3"></div>
+      <div class="solutions__grid-line solutions__grid-line--v solutions__grid-line--v1"></div>
+      <div class="solutions__grid-line solutions__grid-line--v solutions__grid-line--v2"></div>
+    </div>
+    <div class="solutions__tabs-bar">
+      <div class="solutions__tabs" role="tablist">
+        {tabs.map((tab, i) => (
+          <button
+            class={`solutions__tab ${i === 0 ? 'solutions__tab--active' : ''}`}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${tab.id}`}
+            data-tab={tab.id}
+          >
+            <svg class="solutions__tab-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <Fragment set:html={iconPaths[tab.icon]} />
+            </svg>
+            <span class="solutions__tab-label">{tab.label}</span>
+          </button>
+        ))}
+        <div class="solutions__tab-indicator" aria-hidden="true"></div>
+      </div>
+      <button class="solutions__tabs-arrow solutions__tabs-arrow--left solutions__tabs-arrow--hidden" aria-label="Tabs anteriores">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+      <button class="solutions__tabs-arrow solutions__tabs-arrow--right" aria-label="Mais soluções">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+    </div>
+
+    {tabs.map((tab, i) => (
+      <div
+        class={`solutions__panel ${i === 0 ? 'solutions__panel--active' : ''}`}
+        role="tabpanel"
+        id={`panel-${tab.id}`}
+        data-panel={tab.id}
+      >
+        <div class="solutions__panel-text">
+          <div class="solutions__panel-content">
+            <h3 class="solutions__panel-title">{tab.title}</h3>
+            <p class="solutions__panel-desc">{tab.description}</p>
+          </div>
+          <a href="#" class="solutions__panel-link">
+            Saiba mais
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+        <div class="solutions__panel-image">
+          <img src={tab.image} alt={tab.title} loading="lazy" />
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <Button variant="primary" href="#contato">Fale com um especialista</Button>
+</section>
+
+<script>
+  function initSolutionsTabs() {
+    const tabsContainer = document.querySelector('.solutions__tabs');
+    const tabs = document.querySelectorAll('.solutions__tab');
+    const panels = document.querySelectorAll('.solutions__panel');
+    const indicator = document.querySelector('.solutions__tab-indicator');
+
+    if (!tabsContainer || !tabs.length || !panels.length || !indicator) return;
+
+    function updateIndicator(tab: Element) {
+      const el = tab as HTMLElement;
+      const indicatorWidth = 72;
+      const center = el.offsetLeft + el.offsetWidth / 2;
+      (indicator as HTMLElement).style.left = `${center - indicatorWidth / 2}px`;
+      (indicator as HTMLElement).style.width = `${indicatorWidth}px`;
+    }
+
+    let currentIndex = 0;
+
+    function getTabIndex(id: string): number {
+      return Array.from(tabs).findIndex((t) => t.getAttribute('data-tab') === id);
+    }
+
+    function switchTab(targetId: string) {
+      const targetIndex = getTabIndex(targetId);
+      const direction = targetIndex > currentIndex ? 'right' : 'left';
+      currentIndex = targetIndex;
+
+      tabs.forEach((tab) => {
+        const isActive = tab.getAttribute('data-tab') === targetId;
+        tab.classList.toggle('solutions__tab--active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) updateIndicator(tab);
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.getAttribute('data-panel') === targetId;
+        if (isActive) {
+          panel.classList.add('solutions__panel--active');
+          panel.setAttribute('data-direction', direction);
+        } else {
+          panel.classList.remove('solutions__panel--active');
+        }
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.getAttribute('data-tab');
+        if (id) switchTab(id);
+        (tab as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      });
+    });
+
+    // Arrow scroll buttons
+    const arrowLeft = document.querySelector('.solutions__tabs-arrow--left') as HTMLElement;
+    const arrowRight = document.querySelector('.solutions__tabs-arrow--right') as HTMLElement;
+    const tabsList = document.querySelector('.solutions__tabs') as HTMLElement;
+
+    function updateArrows() {
+      if (!tabsList) return;
+      const atStart = tabsList.scrollLeft <= 2;
+      const atEnd = tabsList.scrollLeft + tabsList.clientWidth >= tabsList.scrollWidth - 2;
+      arrowLeft?.classList.toggle('solutions__tabs-arrow--hidden', atStart);
+      arrowRight?.classList.toggle('solutions__tabs-arrow--hidden', atEnd);
+    }
+
+    if (tabsList) {
+      arrowRight?.addEventListener('click', () => tabsList.scrollBy({ left: 250, behavior: 'smooth' }));
+      arrowLeft?.addEventListener('click', () => tabsList.scrollBy({ left: -250, behavior: 'smooth' }));
+      tabsList.addEventListener('scroll', updateArrows);
+      updateArrows();
+    }
+
+    // Init indicator position
+    const activeTab = document.querySelector('.solutions__tab--active');
+    if (activeTab) updateIndicator(activeTab);
+
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+      const active = document.querySelector('.solutions__tab--active');
+      if (active) updateIndicator(active);
+    });
+  }
+
+  initSolutionsTabs();
+  document.addEventListener('astro:after-swap', initSolutionsTabs);
+</script>
+
+<style>
+  .solutions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px var(--container-padding);
+    background-color: var(--color-white-2);
+    overflow: hidden;
+  }
+
+  /* Grid lines (inside tabs-container, above content) */
+  .solutions__grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .solutions__grid-line--h {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(to right, transparent 0%, rgba(25, 31, 47, 0.1) 15%, rgba(25, 31, 47, 0.1) 85%, transparent 100%);
+  }
+
+  .solutions__grid-line--h1 { top: 0; }
+  .solutions__grid-line--h2 { top: 52px; }
+  .solutions__grid-line--h3 { bottom: 0; }
+
+  .solutions__grid-line--v {
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(25, 31, 47, 0.1) 15%, rgba(25, 31, 47, 0.1) 85%, transparent 100%);
+  }
+
+  .solutions__grid-line--v1 { left: 0; }
+  .solutions__grid-line--v2 { right: 0; }
+
+  /* Header */
+  .solutions__header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .solutions__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+  }
+
+  .solutions__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+  }
+
+  .solutions__badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+  }
+
+  .solutions__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* Tabs container */
+  .solutions__tabs-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+
+  .solutions__tabs {
+    position: relative;
+    display: flex;
+    background-color: var(--color-white);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .solutions__tabs::-webkit-scrollbar { display: none; }
+
+  .solutions__tab {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    width: 50%;
+    border: none;
+    border-right: 1px solid var(--color-border);
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .solutions__tab:last-of-type {
+    border-right: none;
+  }
+
+  /* Tabs bar wrapper */
+  .solutions__tabs-bar {
+    position: relative;
+  }
+
+  /* Arrow buttons — half outside the edges */
+  .solutions__tabs-arrow {
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 3;
+    transition: opacity 0.2s;
+  }
+
+  .solutions__tabs-arrow--right {
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  .solutions__tabs-arrow--left {
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .solutions__tabs-arrow--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .solutions__tab-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-text-dark);
+    transition: color 0.2s;
+  }
+
+  .solutions__tab-label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-text-dark);
+    transition: color 0.2s;
+  }
+
+  .solutions__tab:hover .solutions__tab-icon,
+  .solutions__tab:hover .solutions__tab-label {
+    color: var(--color-blue);
+  }
+
+  .solutions__tab--active .solutions__tab-icon,
+  .solutions__tab--active .solutions__tab-label {
+    color: var(--color-blue);
+  }
+
+  /* Tab indicator */
+  .solutions__tab-indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--color-blue);
+    transition: left 0.3s ease, width 0.3s ease;
+  }
+
+  /* Panels */
+  .solutions__panel {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--color-white);
+  }
+
+  .solutions__panel--active {
+    display: flex;
+    animation: slideFromRight 0.35s ease;
+  }
+
+  .solutions__panel--active[data-direction="left"] {
+    animation-name: slideFromLeft;
+  }
+
+  @keyframes slideFromRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideFromLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .solutions__panel-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .solutions__panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .solutions__panel-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .solutions__panel-desc {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--color-text-dark);
+  }
+
+  .solutions__panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-blue);
+    text-decoration: none;
+  }
+
+  .solutions__panel-link svg {
+    flex-shrink: 0;
+  }
+
+  .solutions__panel-image {
+    width: 100%;
+    aspect-ratio: 800 / 534;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--color-white-2);
+    border: 1px solid var(--color-border);
+  }
+
+  .solutions__panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* CTA button z-index */
+  .solutions :global(a[href="#contato"]) {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===========================
+     Desktop (768px+)
+     =========================== */
+
+  @media (min-width: 768px) {
+    .solutions {
+      gap: 64px;
+      padding: 80px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .solutions__header {
+      gap: 24px;
+    }
+
+    .solutions__title {
+      font-size: 40px;
+      line-height: 48px;
+      max-width: 700px;
+    }
+
+    .solutions__tabs-container {
+      max-width: 1000px;
+    }
+
+    .solutions__tab {
+      width: 250px;
+    }
+
+    .solutions__panel {
+      flex-direction: row;
+      gap: 80px;
+      padding: 48px;
+    }
+
+    .solutions__panel-text {
+      flex: 1;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .solutions__panel-title {
+      font-size: 20px;
+    }
+
+    .solutions__panel-image {
+      width: 400px;
+      height: 267px;
+      aspect-ratio: auto;
+      flex-shrink: 0;
+    }
+  }
+</style>

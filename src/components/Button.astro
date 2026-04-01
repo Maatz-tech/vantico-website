@@ -1,0 +1,41 @@
+---
+interface Props {
+  variant?: 'primary' | 'outline';
+  href?: string;
+  icon?: boolean;
+  class?: string;
+}
+
+const { variant = 'primary', href, icon = false, class: className } = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center gap-2 rounded-full h-[42px] px-6 py-3 font-medium text-base leading-normal whitespace-nowrap transition-colors';
+
+const variantClasses = {
+  primary: 'bg-[var(--color-blue)] text-white hover:bg-[#1845A8]',
+  outline: 'bg-white text-[var(--color-dark-blue)] border border-[var(--color-border)] hover:bg-gray-50',
+};
+
+const classes = [baseClasses, variantClasses[variant], className].filter(Boolean).join(' ');
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+    {icon && (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    )}
+  </a>
+) : (
+  <button class={classes}>
+    <slot />
+    {icon && (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    )}
+  </button>
+)}

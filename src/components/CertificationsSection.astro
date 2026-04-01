@@ -1,0 +1,342 @@
+---
+const column1 = [
+  { src: '/images/certifications/cert-pentest-plus.png', alt: 'PenTest+' },
+  { src: '/images/certifications/cert-emapt.png', alt: 'eMAPT' },
+  { src: '/images/certifications/cert-3.png', alt: 'OSEP' },
+  { src: '/images/certifications/cert-4.png', alt: 'CEH' },
+  { src: '/images/certifications/cert-5.png', alt: 'eWPTX' },
+];
+
+const column2 = [
+  { src: '/images/certifications/cert-adpenx.png', alt: 'ADPENX' },
+  { src: '/images/certifications/cert-lpt-master.png', alt: 'EC-Council LPT Master' },
+  { src: '/images/certifications/cert-8.png', alt: 'GPEN' },
+  { src: '/images/certifications/cert-9.png', alt: 'CRTP' },
+  { src: '/images/certifications/cert-10.png', alt: 'OSWE' },
+  { src: '/images/certifications/cert-11.png', alt: 'OSCE' },
+  { src: '/images/certifications/cert-cpent.png', alt: 'CPENT' },
+];
+
+const column3 = [
+  { src: '/images/certifications/cert-9.png', alt: 'CRTP' },
+  { src: '/images/certifications/cert-10.png', alt: 'OSWE' },
+  { src: '/images/certifications/cert-crta.png', alt: 'CRTA' },
+  { src: '/images/certifications/cert-dcpt.png', alt: 'DCPT' },
+  { src: '/images/certifications/cert-15.png', alt: 'OSCP' },
+  { src: '/images/certifications/cert-16.png', alt: 'PNPT' },
+];
+---
+
+<section class="certs">
+  <div class="certs__content">
+    <div class="certs__badge">
+      <span class="certs__badge-dot" aria-hidden="true"></span>
+      <span class="certs__badge-text">Certificações</span>
+    </div>
+
+    <div class="certs__text">
+      <h2 class="certs__title">Reconhecidos com as principais certificações em Pentests</h2>
+      <p class="certs__subtitle">
+        Equipe altamente qualificada, com certificações reconhecidas em pentest e segurança ofensiva, como OSCP, CEH, eMAPT, eWPTX, CRTP e Pentest+.
+      </p>
+    </div>
+  </div>
+
+  <div class="certs__grid-wrap">
+    <div class="certs__col certs__col--1">
+      <div class="certs__track certs__track--up">
+        <div class="certs__set">
+          {column1.map((cert) => (
+            <div class="certs__cell">
+              <img src={cert.src} alt={cert.alt} class="certs__logo" width="52" height="52" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div class="certs__set" aria-hidden="true">
+          {column1.map((cert) => (
+            <div class="certs__cell">
+              <img src={cert.src} alt="" class="certs__logo" width="52" height="52" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="certs__col certs__col--2">
+      <div class="certs__track certs__track--down">
+        <div class="certs__set">
+          {column2.map((cert) => (
+            <div class="certs__cell">
+              <img src={cert.src} alt={cert.alt} class="certs__logo" width="52" height="52" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div class="certs__set" aria-hidden="true">
+          {column2.map((cert) => (
+            <div class="certs__cell">
+              <img src={cert.src} alt="" class="certs__logo" width="52" height="52" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="certs__col certs__col--3">
+      <div class="certs__track certs__track--up">
+        <div class="certs__set">
+          {column3.map((cert) => (
+            <div class="certs__cell">
+              <img src={cert.src} alt={cert.alt} class="certs__logo" width="52" height="52" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div class="certs__set" aria-hidden="true">
+          {column3.map((cert) => (
+            <div class="certs__cell">
+              <img src={cert.src} alt="" class="certs__logo" width="52" height="52" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="certs__fade certs__fade--top" aria-hidden="true"></div>
+    <div class="certs__fade certs__fade--bottom" aria-hidden="true"></div>
+  </div>
+</section>
+
+<style>
+  /* ===========================
+     Mobile-first (default)
+     =========================== */
+
+  .certs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px var(--container-padding);
+    background-color: var(--color-white);
+  }
+
+  /* Badge */
+  .certs__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+  }
+
+  .certs__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+  }
+
+  .certs__badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+  }
+
+  /* Content */
+  .certs__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .certs__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .certs__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .certs__subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  /* Grid wrapper */
+  .certs__grid-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 384px;
+    height: 300px;
+    overflow: hidden;
+    background-color: var(--color-white);
+  }
+
+  /* Columns */
+  .certs__col {
+    position: absolute;
+    top: 0;
+    width: calc(100% / 3);
+    height: 100%;
+    border-left: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .certs__col--1 {
+    left: 0;
+  }
+
+  .certs__col--2 {
+    left: calc(100% / 3);
+  }
+
+  .certs__col--3 {
+    left: calc(200% / 3);
+    border-right: 1px solid var(--color-border);
+  }
+
+  /* Track (scrolling container) */
+  .certs__track {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .certs__track--up {
+    animation: scroll-up 40s linear infinite;
+  }
+
+  .certs__track--down {
+    animation: scroll-down 50s linear infinite;
+  }
+
+  .certs__grid-wrap:hover .certs__track {
+    animation-play-state: paused;
+  }
+
+  /* Set (group of items, duplicated for seamless loop) */
+  .certs__set {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Cell */
+  .certs__cell {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 18.75%;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Logo */
+  .certs__logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Fade gradients */
+  .certs__fade {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .certs__fade--top {
+    top: 0;
+    background: linear-gradient(to bottom, var(--color-white), transparent);
+  }
+
+  .certs__fade--bottom {
+    bottom: 0;
+    background: linear-gradient(to top, var(--color-white), transparent);
+  }
+
+  /* Animations */
+  @keyframes scroll-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes scroll-down {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  /* ===========================
+     Desktop (768px+)
+     =========================== */
+
+  @media (min-width: 768px) {
+    .certs {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 64px;
+      padding: 80px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .certs__content {
+      flex: 1;
+      align-items: flex-start;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .certs__text {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .certs__title {
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 48px;
+    }
+
+    .certs__subtitle {
+      font-size: 18px;
+      line-height: normal;
+    }
+
+    /* Grid */
+    .certs__grid-wrap {
+      width: 384px;
+      height: 400px;
+      flex-shrink: 0;
+    }
+  }
+
+
+</style>

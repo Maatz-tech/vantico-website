@@ -1,0 +1,413 @@
+---
+import Button from './Button.astro';
+
+const highlights = [
+  { value: '98%', numericValue: 98, prefix: '', suffix: '%', description: 'De comprometimento em ambientes críticos' },
+  { value: 'R$15B', numericValue: 15, prefix: 'R$', suffix: 'B', description: 'Valor de mercado protegido' },
+  { value: '5', numericValue: 5, prefix: '', suffix: '', description: 'Anos dedicado a segurança ofensiva' },
+  { value: '+ 150', numericValue: 150, prefix: '+ ', suffix: '', description: 'Clientes satisfeitos no Brasil e no mundo' },
+];
+---
+
+<section class="highlights">
+  <div class="highlights__header">
+    <h2 class="highlights__title">Segurança ofensiva com excelência técnica</h2>
+    <p class="highlights__subtitle">
+      Nossa equipe é formada por profissionais experientes e atualizados, permitindo que sua equipe tome decisões rápidas e estratégicas.
+    </p>
+  </div>
+
+  <div class="highlights__stats-wrap">
+    <!-- Grid lines decorativas ancoradas ao stats -->
+    <div class="highlights__grid" aria-hidden="true">
+      <div class="highlights__grid-line highlights__grid-line--h highlights__grid-line--h1"></div>
+      <div class="highlights__grid-line highlights__grid-line--h highlights__grid-line--h2"></div>
+      <div class="highlights__grid-line highlights__grid-line--v highlights__grid-line--v1"></div>
+      <div class="highlights__grid-line highlights__grid-line--v highlights__grid-line--v2"></div>
+    </div>
+
+    <div class="highlights__stats">
+      {highlights.map((item, i) => (
+        <div class:list={['highlights__stat', { 'highlights__stat--last': i === highlights.length - 1 }]}>
+          <div class="highlights__stat-bg" aria-hidden="true"></div>
+          <p class="highlights__stat-value" data-odometer={item.value}>{item.value}</p>
+          <p class="highlights__stat-desc">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <Button variant="primary" href="#agendar">Agende uma demo</Button>
+</section>
+
+<script>
+  function initOdometers() {
+    const elements = document.querySelectorAll('[data-odometer]');
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          buildOdometer(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    elements.forEach((el) => observer.observe(el));
+  }
+
+  function buildOdometer(el: HTMLElement) {
+    const text = el.dataset.odometer || '';
+    el.innerHTML = '';
+    el.classList.add('odometer');
+
+    [...text].forEach((char, i) => {
+      if (/\d/.test(char)) {
+        const digit = parseInt(char, 10);
+        const col = document.createElement('span');
+        col.className = 'odometer__col';
+
+        const strip = document.createElement('span');
+        strip.className = 'odometer__strip';
+        strip.style.animationDelay = `${i * 80}ms`;
+
+        const startFrom = Math.max(0, digit - 5);
+        for (let n = startFrom; n <= digit; n++) {
+          const num = document.createElement('span');
+          num.className = 'odometer__num';
+          num.textContent = String(n);
+          strip.appendChild(num);
+        }
+
+        strip.style.setProperty('--travel', String(Math.min(digit, 5)));
+        col.appendChild(strip);
+        el.appendChild(col);
+      } else {
+        const span = document.createElement('span');
+        span.className = 'odometer__char';
+        span.textContent = char;
+        el.appendChild(span);
+      }
+    });
+  }
+
+  initOdometers();
+  document.addEventListener('astro:after-swap', initOdometers);
+</script>
+
+<style>
+  .highlights {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    padding: 80px 0;
+    background-color: var(--color-white-2);
+    overflow: hidden;
+  }
+
+  /* Stats wrapper (anchor for grid lines) */
+  .highlights__stats-wrap {
+    position: relative;
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Grid lines */
+  .highlights__grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .highlights__grid-line--h {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(25, 31, 47, 0.1) 15%,
+      rgba(25, 31, 47, 0.1) 85%,
+      transparent 100%
+    );
+  }
+
+  .highlights__grid-line--h1 {
+    top: 0;
+  }
+
+  .highlights__grid-line--h2 {
+    bottom: 0;
+  }
+
+  .highlights__grid-line--v {
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(25, 31, 47, 0.1) 15%,
+      rgba(25, 31, 47, 0.1) 85%,
+      transparent 100%
+    );
+  }
+
+  .highlights__grid-line--v1 {
+    left: calc(50% - 501px);
+  }
+
+  .highlights__grid-line--v2 {
+    left: calc(50% + 500px);
+  }
+
+  /* Header */
+  .highlights__header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 900px;
+    text-align: center;
+    padding: 0 var(--container-padding);
+  }
+
+  .highlights__title {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: var(--color-dark-blue);
+  }
+
+  .highlights__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 100%;
+    color: var(--color-text-dark);
+  }
+
+  /* Stats */
+  .highlights__stats {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+  }
+
+  .highlights__stat {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    height: 161px;
+    border-right: 1px solid var(--color-border);
+    overflow: hidden;
+    cursor: default;
+    transition: background-color 0.3s ease;
+  }
+
+  .highlights__stat-bg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-blue-light);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .highlights__stat-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+  }
+
+  .highlights__stat:nth-child(1) .highlights__stat-bg::after {
+    background-image: url('/images/highlights/hover-1.png');
+  }
+
+  .highlights__stat:nth-child(2) .highlights__stat-bg::after {
+    background-image: url('/images/highlights/hover-2.png');
+  }
+
+  .highlights__stat:nth-child(3) .highlights__stat-bg::after {
+    background-image: url('/images/highlights/hover-3.png');
+  }
+
+  .highlights__stat:nth-child(4) .highlights__stat-bg::after {
+    background-image: url('/images/highlights/hover-4.png');
+  }
+
+  .highlights__stat:hover .highlights__stat-bg {
+    opacity: 1;
+  }
+
+  .highlights__stat--last {
+    border-right: none;
+  }
+
+  .highlights__stat-value {
+    position: relative;
+    z-index: 1;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--color-dark-blue);
+    transition: color 0.3s ease;
+  }
+
+  /* Odometer */
+  .highlights__stat-value:global(.odometer) {
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  :global(.odometer__col) {
+    display: inline-block;
+    height: 1em;
+    overflow: hidden;
+    line-height: 1;
+  }
+
+  :global(.odometer__strip) {
+    display: flex;
+    flex-direction: column;
+    animation: odometer-roll 1.8s linear forwards;
+    animation-delay: var(--delay, 0ms);
+    transform: translateY(0);
+  }
+
+  :global(.odometer__num) {
+    display: block;
+    height: 1em;
+    line-height: 1;
+    text-align: center;
+  }
+
+  :global(.odometer__char) {
+    display: inline-block;
+    line-height: 1;
+  }
+
+  @keyframes odometer-roll {
+    0% {
+      transform: translateY(0);
+    }
+    60% {
+      transform: translateY(calc(-0.9em * var(--travel)));
+    }
+    80% {
+      transform: translateY(calc(-0.97em * var(--travel)));
+    }
+    90% {
+      transform: translateY(calc(-0.995em * var(--travel)));
+    }
+    100% {
+      transform: translateY(calc(-1em * var(--travel)));
+    }
+  }
+
+  .highlights__stat:hover .highlights__stat-value,
+  .highlights__stat:hover .highlights__stat-value :global(.odometer__num),
+  .highlights__stat:hover .highlights__stat-value :global(.odometer__char) {
+    color: var(--color-blue);
+  }
+
+  .highlights__stat-desc {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--color-text-dark);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: font-weight 0.3s ease;
+  }
+
+  .highlights__stat:hover .highlights__stat-desc {
+    font-weight: 500;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .highlights {
+      gap: 40px;
+      padding: 48px 0;
+    }
+
+    .highlights__grid {
+      display: none;
+    }
+
+    .highlights__stats-wrap {
+      max-width: none;
+      padding: 0 var(--container-padding);
+    }
+
+    .highlights__title {
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    .highlights__subtitle {
+      font-size: 16px;
+      line-height: normal;
+    }
+
+    .highlights__header {
+      max-width: 327px;
+    }
+
+    .highlights__stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: none;
+      width: 100%;
+    }
+
+    .highlights__stat {
+      height: auto;
+      min-height: 140px;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .highlights__stat:nth-child(odd) {
+      border-right: 1px solid var(--color-border);
+    }
+
+    .highlights__stat:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .highlights__stat-value {
+      font-size: 36px;
+    }
+  }
+</style>

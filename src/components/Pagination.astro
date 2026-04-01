@@ -1,0 +1,177 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  basePath: string;
+}
+
+const { currentPage, totalPages, basePath } = Astro.props;
+
+function pageHref(page: number): string {
+  return page === 1 ? basePath : `${basePath}/${page}`;
+}
+
+// Build page numbers: first 3, ellipsis, last page
+function getPageNumbers(current: number, total: number): (number | '...')[] {
+  if (total <= 4) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+
+  const pages: (number | '...')[] = [1, 2, 3];
+
+  if (total > 4) {
+    pages.push('...');
+  }
+
+  if (total > 3) {
+    pages.push(total);
+  }
+
+  return pages;
+}
+
+const pages = getPageNumbers(currentPage, totalPages);
+const isFirstPage = currentPage === 1;
+const isLastPage = currentPage === totalPages;
+---
+
+<nav class="pagination" aria-label="Paginacao">
+  {/* Prev arrow */}
+  {isFirstPage ? (
+    <span class="pagination__arrow pagination__arrow--disabled" aria-disabled="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6" />
+      </svg>
+    </span>
+  ) : (
+    <a href={pageHref(currentPage - 1)} class="pagination__arrow" aria-label="Pagina anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6" />
+      </svg>
+    </a>
+  )}
+
+  {/* Page numbers */}
+  {pages.map((page) => {
+    if (page === '...') {
+      return (
+        <span class="pagination__item pagination__item--ellipsis">...</span>
+      );
+    }
+
+    const isActive = page === currentPage;
+
+    return isActive ? (
+      <span class="pagination__item pagination__item--active" aria-current="page">
+        {page}
+      </span>
+    ) : (
+      <a href={pageHref(page)} class="pagination__item">
+        {page}
+      </a>
+    );
+  })}
+
+  {/* Next arrow */}
+  {isLastPage ? (
+    <span class="pagination__arrow pagination__arrow--disabled" aria-disabled="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+    </span>
+  ) : (
+    <a href={pageHref(currentPage + 1)} class="pagination__arrow" aria-label="Proxima pagina">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6" />
+      </svg>
+    </a>
+  )}
+</nav>
+
+<style>
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Arrow buttons */
+  .pagination__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-solid);
+    background-color: var(--color-white);
+    color: var(--color-dark-blue);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+  }
+
+  .pagination__arrow:hover {
+    background-color: var(--color-white-2);
+  }
+
+  .pagination__arrow--disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  /* Page items */
+  .pagination__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-solid);
+    background-color: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+  }
+
+  .pagination__item:hover {
+    background-color: var(--color-white-2);
+  }
+
+  .pagination__item--active {
+    background-color: #F2F6FF;
+    color: var(--color-blue);
+    font-weight: 700;
+    border: none;
+    cursor: default;
+  }
+
+  .pagination__item--active:hover {
+    background-color: #F2F6FF;
+  }
+
+  .pagination__item--ellipsis {
+    border: none;
+    background: none;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .pagination__item--ellipsis:hover {
+    background: none;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .pagination {
+      gap: 16px;
+    }
+  }
+</style>

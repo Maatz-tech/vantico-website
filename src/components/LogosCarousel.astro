@@ -1,0 +1,169 @@
+---
+const logos = [
+  { src: '/images/logos/capim.png', alt: 'Capim', width: 88 },
+
+  { src: '/images/logos/colmeia.png', alt: 'Colmeia', width: 67 },
+  { src: '/images/logos/pontotel.png', alt: 'Pontotel', width: 71 },
+  { src: '/images/logos/souair.png', alt: 'SouAir', width: 118 },
+  { src: '/images/logos/trampo.png', alt: 'Trampo', width: 95 },
+  { src: '/images/logos/client-9.png', alt: 'Cliente', width: 67 },
+  { src: '/images/logos/client-10.png', alt: 'Cliente', width: 72 },
+  { src: '/images/logos/client-11.png', alt: 'Cliente', width: 88 },
+  { src: '/images/logos/client-12.png', alt: 'Cliente', width: 70 },
+  { src: '/images/logos/client-13.png', alt: 'Cliente', width: 88 },
+];
+---
+
+<section class="logos">
+  <div class="logos__inner">
+    <p class="logos__text">Confiança de quem já escolheu a Vantico</p>
+
+    <div class="logos__track-wrapper">
+      <div class="logos__track">
+        <div class="logos__set">
+          {logos.map((logo) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              height="24"
+              width={logo.width}
+              class="logos__item"
+              loading="lazy"
+            />
+          ))}
+        </div>
+        <div class="logos__set" aria-hidden="true">
+          {logos.map((logo) => (
+            <img
+              src={logo.src}
+              alt=""
+              height="24"
+              width={logo.width}
+              class="logos__item"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Fade edges -->
+      <div class="logos__fade logos__fade--left"></div>
+      <div class="logos__fade logos__fade--right"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logos {
+    background-color: var(--color-white);
+    padding: 24px 0;
+    overflow: hidden;
+  }
+
+  .logos__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+
+  .logos__text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: #191f2f;
+    min-width: 228px;
+    max-width: 228px;
+    flex-shrink: 0;
+  }
+
+  .logos__track-wrapper {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .logos__track {
+    display: flex;
+    padding: 16px 0;
+    width: max-content;
+    animation: scroll 45s linear infinite;
+  }
+
+  .logos__set {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 40px;
+    flex-shrink: 0;
+  }
+
+  .logos__item {
+    height: 24px;
+    width: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    opacity: 0.4;
+  }
+
+  .logos__fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .logos__fade--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white), transparent);
+  }
+
+  .logos__fade--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white), transparent);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause on hover */
+  .logos__track-wrapper:hover .logos__track {
+    animation-play-state: paused;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .logos__inner {
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .logos__text {
+      font-size: 16px;
+      min-width: auto;
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .logos__set {
+      gap: 48px;
+      padding-right: 48px;
+    }
+
+    .logos__track {
+      animation-duration: 30s;
+    }
+  }
+</style>

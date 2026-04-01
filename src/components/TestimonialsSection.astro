@@ -1,0 +1,273 @@
+---
+const testimonials = [
+  {
+    quote: 'A Vantico revelou vulnerabilidades críticas que nunca tínhamos identificado internamente.',
+    name: 'Mariana Duarte',
+    company: 'Pipefy',
+    avatar: '/images/testimonials/user-1.png',
+  },
+  {
+    quote: 'Conseguimos fortalecer nossa segurança rapidamente após as recomendações.',
+    name: 'Carlos Menezes',
+    company: 'Capim',
+    avatar: '/images/testimonials/user-2.png',
+  },
+  {
+    quote: 'Um trabalho extremamente profissional, com resultados práticos para o nosso time.',
+    name: 'Patrícia Nogueira',
+    company: 'Colmeia',
+    avatar: '/images/testimonials/user-3.png',
+  },
+  {
+    quote: 'A Vantico faz um trabalho incrível! Relatório claro, técnico e com recomendações realmente aplicáveis.',
+    name: 'Sandra Torres',
+    company: 'Squair',
+    avatar: '/images/testimonials/user-4.png',
+  },
+  {
+    quote: 'Os testes foram profundos e trouxeram uma visão real da nossa superfície de ataque.',
+    name: 'Mario Alfredo',
+    company: 'Record TV',
+    avatar: '/images/testimonials/user-5.png',
+  },
+  {
+    quote: 'A equipe demonstrou alto nível técnico e total transparência durante todo o processo.',
+    name: 'Rosana Alves',
+    company: 'Pontotel',
+    avatar: '/images/testimonials/user-6.png',
+  },
+];
+---
+
+<section class="testimonials">
+  <div class="testimonials__inner">
+    <div class="testimonials__header">
+      <h2 class="testimonials__title">O que nossos clientes dizem</h2>
+      <p class="testimonials__subtitle">Depoimentos de quem confia na Vantico para proteger seus sistemas</p>
+    </div>
+
+    <div class="testimonials__carousel-wrapper">
+      <div class="testimonials__carousel">
+        <div class="testimonials__set">
+          {testimonials.map((t) => (
+            <div class="testimonials__card">
+              <p class="testimonials__quote">"{t.quote}"</p>
+              <div class="testimonials__author">
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  width="40"
+                  height="40"
+                  class="testimonials__avatar"
+                  loading="lazy"
+                />
+                <div class="testimonials__author-info">
+                  <span class="testimonials__name">{t.name}</span>
+                  <span class="testimonials__company">{t.company}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="testimonials__set" aria-hidden="true">
+          {testimonials.map((t) => (
+            <div class="testimonials__card">
+              <p class="testimonials__quote">"{t.quote}"</p>
+              <div class="testimonials__author">
+                <img
+                  src={t.avatar}
+                  alt=""
+                  width="40"
+                  height="40"
+                  class="testimonials__avatar"
+                  loading="lazy"
+                />
+                <div class="testimonials__author-info">
+                  <span class="testimonials__name">{t.name}</span>
+                  <span class="testimonials__company">{t.company}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fade edges -->
+      <div class="testimonials__fade testimonials__fade--left"></div>
+      <div class="testimonials__fade testimonials__fade--right"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+
+  .testimonials__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .testimonials__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .testimonials__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+    line-height: 1.2;
+  }
+
+  .testimonials__subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1.4;
+  }
+
+  .testimonials__carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .testimonials__carousel {
+    display: flex;
+    width: max-content;
+    animation: scroll-testimonials 45s linear infinite;
+  }
+
+  .testimonials__set {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .testimonials__card {
+    width: 300px;
+    padding: 24px;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .testimonials__quote {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--color-text-dark);
+  }
+
+  .testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .testimonials__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .testimonials__author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonials__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--color-text-dark);
+  }
+
+  .testimonials__company {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--color-text-dark);
+  }
+
+  .testimonials__fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .testimonials__fade--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white), transparent);
+  }
+
+  .testimonials__fade--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white), transparent);
+  }
+
+  /* Pause on hover */
+  .testimonials__carousel-wrapper:hover .testimonials__carousel {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-testimonials {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .testimonials {
+      padding: 80px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .testimonials__inner {
+      gap: 64px;
+    }
+
+    .testimonials__header {
+      max-width: 900px;
+    }
+
+    .testimonials__title {
+      font-size: 40px;
+    }
+
+    .testimonials__subtitle {
+      font-size: 18px;
+    }
+
+    .testimonials__card {
+      width: 333.333px;
+    }
+
+    .testimonials__fade {
+      width: 124px;
+    }
+  }
+</style>

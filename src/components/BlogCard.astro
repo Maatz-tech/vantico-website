@@ -1,0 +1,249 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  image: string;
+  date: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const { title, summary, image, date, slug, featured = false } = Astro.props;
+const href = `/blog/${slug}`;
+---
+
+{featured ? (
+  <a href={href} class="blog-card blog-card--featured">
+    <div class="blog-card__image-wrap blog-card__image-wrap--featured">
+      <img
+        src={image}
+        alt=""
+        class="blog-card__image"
+        width="640"
+        height="280"
+        loading="lazy"
+      />
+    </div>
+    <div class="blog-card__body blog-card__body--featured">
+      <div class="blog-card__text">
+        <h3 class="blog-card__title blog-card__title--featured">{title}</h3>
+        <p class="blog-card__summary blog-card__summary--featured">{summary}</p>
+      </div>
+      <div class="blog-card__date">
+        <svg class="blog-card__date-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        <time datetime={date} class="blog-card__date-text">{date}</time>
+      </div>
+      <span class="blog-card__btn">
+        Ler artigo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </span>
+    </div>
+  </a>
+) : (
+  <a href={href} class="blog-card">
+    <div class="blog-card__image-wrap">
+      <img
+        src={image}
+        alt=""
+        class="blog-card__image"
+        width="640"
+        height="280"
+        loading="lazy"
+      />
+    </div>
+    <div class="blog-card__body">
+      <h3 class="blog-card__title">{title}</h3>
+      <p class="blog-card__summary">{summary}</p>
+      <div class="blog-card__date">
+        <svg class="blog-card__date-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        <time datetime={date} class="blog-card__date-text">{date}</time>
+      </div>
+    </div>
+  </a>
+)}
+
+<style>
+  /* Base card */
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    text-decoration: none;
+    align-self: stretch;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .blog-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Image */
+  .blog-card__image-wrap {
+    width: 100%;
+    height: 118px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .blog-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Body */
+  .blog-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  /* Title */
+  .blog-card__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Summary */
+  .blog-card__summary {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Date */
+  .blog-card__date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .blog-card__date-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-dark);
+    flex-shrink: 0;
+  }
+
+  .blog-card__date-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  /* Button (featured only) */
+  .blog-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 12px 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  /* Featured card — mobile (stacked) */
+  .blog-card--featured {
+    gap: 24px;
+  }
+
+  .blog-card--featured .blog-card__image-wrap--featured {
+    height: 118px;
+  }
+
+  .blog-card__body--featured {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .blog-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .blog-card__title--featured {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .blog-card__summary--featured {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .blog-card {
+      padding: 32px;
+    }
+
+    .blog-card__image-wrap {
+      height: 101px;
+    }
+
+    /* Featured — horizontal layout */
+    .blog-card--featured {
+      flex-direction: row;
+      gap: 40px;
+    }
+
+    .blog-card--featured .blog-card__image-wrap--featured {
+      width: 50%;
+      height: auto;
+      align-self: stretch;
+    }
+
+    .blog-card__body--featured {
+      width: 50%;
+    }
+
+    .blog-card__title--featured {
+      font-size: 24px;
+    }
+
+    .blog-card__summary--featured {
+      font-size: 18px;
+    }
+  }
+</style>

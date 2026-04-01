@@ -1,0 +1,120 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="hero">
+  <!-- Pattern grid de fundo -->
+  <div class="hero__pattern" aria-hidden="true">
+    <img src="/images/hero-pattern.svg" alt="" />
+  </div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">Especialistas em Segurança Ofensiva</h1>
+    <p class="hero__subtitle">
+      A Vantico é referência em pentest e segurança ofensiva, ajudando organizações a identificar e corrigir vulnerabilidades reais antes que sejam exploradas.
+    </p>
+  </div>
+
+  <div class="hero__actions">
+    <Button variant="outline" href="#saiba-mais">Saiba mais</Button>
+    <Button variant="primary" href="#agendar">Agende uma demo</Button>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: var(--color-white);
+    overflow: hidden;
+  }
+
+  /* Pattern de fundo */
+  .hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 623px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Conteúdo */
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 700px;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 56px;
+    letter-spacing: 0;
+    color: var(--color-dark-blue);
+    max-width: 468px;
+  }
+
+  .hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text);
+  }
+
+  /* Botões */
+  .hero__actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .hero {
+      gap: 32px;
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+
+    .hero__pattern {
+      width: 840px;
+      height: 364px;
+    }
+
+    .hero__content {
+      max-width: 327px;
+      gap: 16px;
+    }
+
+    .hero__title {
+      font-size: 32px;
+      line-height: 40px;
+      max-width: 100%;
+    }
+
+    .hero__subtitle {
+      font-size: 16px;
+    }
+  }
+</style>

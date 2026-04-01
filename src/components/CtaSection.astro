@@ -1,0 +1,85 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="cta">
+  <div class="cta__card">
+    <img
+      src="/images/hero-pattern.svg"
+      alt=""
+      class="cta__pattern"
+      aria-hidden="true"
+      loading="lazy"
+    />
+
+    <h2 class="cta__title">Não deixe a segurança da sua empresa para depois</h2>
+
+    <Button variant="primary" href="#contato" icon>Entrar em contato</Button>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: 48px var(--container-padding);
+    background-color: var(--color-white);
+  }
+
+  .cta__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 40px 24px;
+    background-color: var(--color-white-2);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .cta__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 363px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cta__title {
+    position: relative;
+    z-index: 1;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    text-align: center;
+  }
+
+  .cta__card :global(a),
+  .cta__card :global(button) {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .cta {
+      padding: 80px 120px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .cta__card {
+      gap: 24px;
+      padding: 48px;
+    }
+
+    .cta__title {
+      font-size: 40px;
+      line-height: 48px;
+      max-width: 684px;
+    }
+  }
+</style>

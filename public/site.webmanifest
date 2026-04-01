@@ -1,0 +1,16 @@
+{
+  "name": "Vantico",
+  "short_name": "Vantico",
+  "description": "Especialistas em Segurança Ofensiva",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1C51C6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

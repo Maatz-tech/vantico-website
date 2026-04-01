@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* ===========================
+   Fonts
+   =========================== */
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('/fonts/Satoshi-Variable.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ===========================
+   Design Tokens
+   =========================== */
+
+:root {
+  /* Colors */
+  --color-blue: #1C51C6;
+  --color-dark-blue: #303030;
+  --color-text: #484F62;
+  --color-text-dark: #2E333F;
+  --color-white: #FFFFFF;
+  --color-white-2: #FAFAFA;
+  --color-border: rgba(25, 31, 47, 0.1);
+  --color-border-solid: #E8E9EA;
+  --color-blue-light: #F2F6FF;
+
+  /* Shadow */
+  --shadow-1:
+    0 24px 32px -12px rgba(0, 0, 0, 0.004),
+    0 16px 24px -8px rgba(0, 0, 0, 0.03),
+    0 8px 16px -4px rgba(0, 0, 0, 0.03);
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-padding: 24px;
+}
+
+/* ===========================
+   Base
+   =========================== */
+
+body {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* ===========================
+   Typography
+   =========================== */
+
+.text-h1 {
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 56px;
+  letter-spacing: 0;
+  color: var(--color-dark-blue);
+}
+
+.text-h2 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: var(--color-dark-blue);
+}
+
+.text-h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: var(--color-dark-blue);
+}
+
+.text-body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--color-text);
+}
+
+.text-body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+/* Mobile typography */
+@media (max-width: 767px) {
+  .text-h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .text-h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+/* ===========================
+   Layout
+   =========================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+}
