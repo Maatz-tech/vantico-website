@@ -64,14 +64,14 @@ const iconPaths: Record<string, string> = {
 
 <section class="solutions">
   <div class="solutions__header">
-    <div class="solutions__badge">
+    <div class="solutions__badge" data-animate="fade-up">
       <span class="solutions__badge-dot" aria-hidden="true"></span>
       <span class="solutions__badge-text">Soluções</span>
     </div>
-    <h2 class="solutions__title">Como protegemos cada camada do seu ambiente</h2>
+    <h2 class="solutions__title" data-animate="blur-in">Como protegemos cada camada do seu ambiente</h2>
   </div>
 
-  <div class="solutions__tabs-container">
+  <div class="solutions__tabs-container" data-animate="fade-up">
     <!-- Grid lines ancoradas ao tabs container -->
     <div class="solutions__grid" aria-hidden="true">
       <div class="solutions__grid-line solutions__grid-line--h solutions__grid-line--h1"></div>
@@ -137,7 +137,9 @@ const iconPaths: Record<string, string> = {
     ))}
   </div>
 
-  <Button variant="primary" href="#contato">Fale com um especialista</Button>
+  <div data-animate="fade-up">
+    <Button variant="primary" href="#contato">Fale com um especialista</Button>
+  </div>
 </section>
 
 <script>

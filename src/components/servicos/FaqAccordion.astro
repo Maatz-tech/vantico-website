@@ -37,7 +37,7 @@ const faqs = [
 
 <section class="faq">
   <div class="faq__container">
-    <h2 class="faq__title">Perguntas frequentes</h2>
+    <h2 class="faq__title" data-animate="blur-in">Perguntas frequentes</h2>
 
     <div class="faq__grid-wrap">
       <div class="faq__grid-lines" aria-hidden="true">
@@ -47,7 +47,7 @@ const faqs = [
         <div class="faq__grid-line faq__grid-line--v faq__grid-line--v2"></div>
       </div>
 
-      <div class="faq__list">
+      <div class="faq__list" data-animate="fade-up">
         {faqs.map((item, i) => (
           <div class:list={['faq__item', { 'faq__item--open': i === 0 }]}>
             <button class="faq__question" type="button" aria-expanded={i === 0 ? 'true' : 'false'}>

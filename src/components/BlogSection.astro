@@ -11,18 +11,18 @@ const posts = allPosts
 <section class="blog">
   <div class="blog__header">
     <div class="blog__header-left">
-      <div class="blog__badge">
+      <div class="blog__badge" data-animate="fade-up">
         <span class="blog__badge-dot" aria-hidden="true"></span>
         <span class="blog__badge-text">Blog</span>
       </div>
-      <h2 class="blog__title">Insights e tendências sobre segurança digital</h2>
+      <h2 class="blog__title" data-animate="blur-in">Insights e tendências sobre segurança digital</h2>
     </div>
     <div class="blog__header-right">
       <Button variant="outline" href="/blog" icon>Acessar blog</Button>
     </div>
   </div>
 
-  <div class="blog__cards">
+  <div class="blog__cards" data-animate="stagger">
     {
       posts.map((post) => (
         <a href={`/blog/${post.id}`} class="blog__card">

@@ -12,9 +12,11 @@ import Button from './Button.astro';
       loading="lazy"
     />
 
-    <h2 class="cta__title">Não deixe a segurança da sua empresa para depois</h2>
+    <h2 class="cta__title" data-animate="blur-in">Não deixe a segurança da sua empresa para depois</h2>
 
-    <Button variant="primary" href="#contato" icon>Entrar em contato</Button>
+    <div data-animate="fade-up">
+      <Button variant="primary" href="#contato" icon>Entrar em contato</Button>
+    </div>
   </div>
 </section>
 

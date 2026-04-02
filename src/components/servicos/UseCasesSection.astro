@@ -26,14 +26,14 @@ const items = [
 <section class="use-cases">
   <div class="use-cases__container">
     <div class="use-cases__header">
-      <div class="use-cases__badge">
+      <div class="use-cases__badge" data-animate="fade-up">
         <span class="use-cases__badge-dot"></span>
         <span class="use-cases__badge-text">Casos de uso</span>
       </div>
-      <h2 class="use-cases__title">Quem pode se proteger com Pentests</h2>
+      <h2 class="use-cases__title" data-animate="blur-in">Quem pode se proteger com Pentests</h2>
     </div>
 
-    <div class="use-cases__list">
+    <div class="use-cases__list" data-animate="stagger">
       {items.map((item) => (
         <div class="use-cases__item">
           <div class="use-cases__item-header">

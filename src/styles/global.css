@@ -132,3 +132,56 @@ body {
     padding-right: var(--container-padding);
   }
 }
+
+/* ===========================
+   Scroll-triggered Animations
+   =========================== */
+
+[data-animate] {
+  opacity: 0;
+}
+
+[data-animate="blur-in"] {
+  filter: blur(10px);
+  transform: translateY(10px);
+  transition: opacity 0.8s ease-out, filter 0.8s ease-out, transform 0.8s ease-out;
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Stagger children */
+[data-animate="stagger"] {
+  opacity: 1;
+}
+
+[data-animate="stagger"] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition-delay: var(--stagger-delay, 0ms);
+}
+
+[data-animate="stagger"].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate="stagger"] > * {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

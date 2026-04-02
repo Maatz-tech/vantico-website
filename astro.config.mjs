@@ -6,8 +6,32 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://vantico.com.br',
-  integrations: [sitemap()],
+
+  integrations: [
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+  ],
+
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+    build: {
+      cssMinify: false,
+      minify: false,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
+  },
+
+  build: {
+    inlineStylesheets: 'auto',
+    assets: 'assets',
+  },
+
+  compressHTML: false,
 });
