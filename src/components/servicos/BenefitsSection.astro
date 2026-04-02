@@ -40,11 +40,11 @@ const benefits = [
   <div class="benefits__container">
     <!-- Header -->
     <div class="benefits__header">
-      <div class="benefits__badge" data-animate="fade-up">
+      <div class="benefits__badge" data-animate>
         <span class="benefits__badge-dot"></span>
         <span class="benefits__badge-text">Benefícios</span>
       </div>
-      <h2 class="benefits__title" data-animate="blur-in">Pentest ágil e eficaz para proteger suas aplicações Web e APIs</h2>
+      <h2 class="benefits__title" data-animate data-animate-type="typing">Pentest ágil e eficaz para proteger suas aplicações Web e APIs</h2>
     </div>
 
     <!-- Grid wrapper with decorative lines -->
@@ -56,7 +56,7 @@ const benefits = [
         <div class="benefits__grid-line benefits__grid-line--h benefits__grid-line--h2"></div>
       </div>
 
-      <div class="benefits__grid" data-animate="stagger">
+      <div class="benefits__grid" data-animate>
         {benefits.map((item) => (
           <div class:list={['benefits__card', { 'benefits__card--highlight': item.highlight }]}>
             <div class="benefits__card-icon">
@@ -69,7 +69,7 @@ const benefits = [
       </div>
     </div>
 
-    <div data-animate="fade-up">
+    <div data-animate>
       <Button variant="primary" href="#agendar">Fale com um especialista</Button>
     </div>
   </div>

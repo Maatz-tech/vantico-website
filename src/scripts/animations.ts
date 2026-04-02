@@ -1,33 +1,29 @@
-function initAnimations() {
-  const elements = document.querySelectorAll<HTMLElement>('[data-animate]');
-  if (!elements.length) return;
+// Preparar títulos com efeito typing: quebra em palavras com spans
+document.querySelectorAll('[data-animate-type="typing"]').forEach((el) => {
+  const text = el.textContent || '';
+  el.innerHTML = text.split(' ').map((word, i) =>
+    `<span class="word" style="--word-delay: ${i * 80}ms">${word}</span>`
+  ).join(' ');
+});
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
+// Intersection Observer para animações on scroll
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate-visible");
+      } else {
+        entry.target.classList.remove("animate-visible");
+      }
+    });
+  },
+  {
+    threshold: 0.1,
+    rootMargin: "100px 0px -50px 0px",
+  }
+);
 
-          // For stagger parents, set --stagger-delay on each child
-          if (el.dataset.animate === 'stagger') {
-            Array.from(el.children).forEach((child, i) => {
-              (child as HTMLElement).style.setProperty(
-                '--stagger-delay',
-                `${i * 80}ms`
-              );
-            });
-          }
-
-          el.classList.add('is-visible');
-          observer.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  elements.forEach((el) => observer.observe(el));
-}
-
-initAnimations();
-document.addEventListener('astro:after-swap', initAnimations);
+// Observar todos os elementos com data-animate
+document.querySelectorAll("[data-animate]").forEach((el) => {
+  observer.observe(el);
+});
