@@ -1,0 +1,439 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const allPosts = await getCollection('blog');
+const labsPosts = allPosts.filter((p) => p.data.category === 'Labs');
+const sortedPosts = labsPosts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const featuredPost = sortedPosts.find((p) => p.data.featured) || sortedPosts[0];
+const regularPosts = featuredPost
+  ? sortedPosts.filter((p) => p.id !== featuredPost.id)
+  : [];
+---
+
+<Base
+  title="Labs — Vantico"
+  description="Conteúdos técnicos criados pelos especialistas da Vantico"
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="labs-hero">
+      <div class="labs-hero__pattern" aria-hidden="true">
+        <img src="/images/hero-pattern.svg" alt="" />
+      </div>
+      <div class="labs-hero__content">
+        <h1 class="labs-hero__title">Laboratórios de testes</h1>
+        <p class="labs-hero__subtitle">
+          Conteúdos técnicos criados pelos especialistas da Vantico
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Post -->
+    {featuredPost && (
+      <section class="labs-featured">
+        <a href={`/labs/${featuredPost.id}`} class="labs-featured__card">
+          <div class="labs-featured__thumb">
+            <img
+              src={featuredPost.data.image}
+              alt={featuredPost.data.title}
+              class="labs-featured__thumb-img"
+              width="640"
+              height="280"
+              loading="eager"
+            />
+          </div>
+          <div class="labs-featured__body">
+            <span class="labs-featured__category">{featuredPost.data.category}</span>
+            <h2 class="labs-featured__title">{featuredPost.data.title}</h2>
+            <p class="labs-featured__summary">{featuredPost.data.summary}</p>
+            <div class="labs-featured__meta">
+              <img
+                src={featuredPost.data.authorImage}
+                alt={featuredPost.data.author}
+                class="labs-featured__author-img"
+                width="32"
+                height="32"
+                loading="eager"
+              />
+              <span class="labs-featured__author">{featuredPost.data.author}</span>
+              <time datetime={featuredPost.data.date} class="labs-featured__date">
+                {new Date(featuredPost.data.date).toLocaleDateString('pt-BR', {
+                  day: '2-digit',
+                  month: 'short',
+                  year: 'numeric',
+                })}
+              </time>
+            </div>
+          </div>
+        </a>
+      </section>
+    )}
+
+    <!-- Articles (no filter tabs) -->
+    <section class="labs-articles">
+      <div class="labs-articles__header">
+        <h2 class="labs-articles__title">Todos os artigos</h2>
+      </div>
+
+      <div class="labs-articles__grid">
+        {regularPosts.map((post) => (
+          <a
+            href={`/labs/${post.id}`}
+            class="labs-card"
+          >
+            <div class="labs-card__thumb">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="labs-card__thumb-img"
+                width="640"
+                height="280"
+                loading="lazy"
+              />
+            </div>
+            <div class="labs-card__body">
+              <span class="labs-card__category">{post.data.category}</span>
+              <h3 class="labs-card__title">{post.data.title}</h3>
+              <p class="labs-card__summary">{post.data.summary}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ============================
+     Hero — identical to blog
+     ============================ */
+  .labs-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 40px;
+    background-color: var(--color-white);
+    overflow: clip;
+  }
+
+  .labs-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 623px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .labs-hero__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .labs-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 342px;
+    text-align: center;
+  }
+
+  .labs-hero__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+  }
+
+  .labs-hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text);
+  }
+
+  /* ============================
+     Featured Post — identical to blog
+     ============================ */
+  .labs-featured {
+    padding: 0 var(--container-padding) 40px;
+    background-color: var(--color-white);
+  }
+
+  .labs-featured__card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .labs-featured__card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .labs-featured__thumb {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .labs-featured__thumb-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 760 / 340;
+    object-fit: cover;
+  }
+
+  .labs-featured__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 24px 24px;
+  }
+
+  .labs-featured__category {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .labs-featured__title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .labs-featured__summary {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text);
+  }
+
+  .labs-featured__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .labs-featured__author-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .labs-featured__author {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+  }
+
+  .labs-featured__date {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--color-text);
+  }
+
+  .labs-featured__date::before {
+    content: '·';
+    margin-right: 8px;
+  }
+
+  /* ============================
+     Articles — identical to blog minus filters
+     ============================ */
+  .labs-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 24px var(--container-padding) 80px;
+    background-color: var(--color-white);
+  }
+
+  .labs-articles__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .labs-articles__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* Cards Grid */
+  .labs-articles__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .labs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .labs-card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .labs-card__thumb {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .labs-card__thumb-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 640 / 280;
+    object-fit: cover;
+  }
+
+  .labs-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px 16px;
+  }
+
+  .labs-card__category {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .labs-card__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .labs-card__summary {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text);
+  }
+
+  /* ============================
+     Desktop
+     ============================ */
+  @media (min-width: 768px) {
+    /* Hero */
+    .labs-hero {
+      padding-top: 24px;
+      padding-bottom: 80px;
+    }
+
+    .labs-hero__content {
+      max-width: 778px;
+      gap: 24px;
+    }
+
+    .labs-hero__title {
+      font-size: 52px;
+      line-height: 56px;
+    }
+
+    /* Featured */
+    .labs-featured {
+      padding-top: 0;
+      padding-bottom: 40px;
+      padding-left: max(24px, calc((100% - 1000px) / 2));
+      padding-right: max(24px, calc((100% - 1000px) / 2));
+    }
+
+    .labs-featured__card {
+      flex-direction: row;
+      gap: 0;
+    }
+
+    .labs-featured__thumb {
+      flex-shrink: 0;
+      width: 50%;
+    }
+
+    .labs-featured__thumb-img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .labs-featured__body {
+      padding: 32px;
+      justify-content: center;
+    }
+
+    .labs-featured__title {
+      font-size: 24px;
+    }
+
+    /* Articles */
+    .labs-articles {
+      padding-top: 24px;
+      padding-bottom: 80px;
+      padding-left: max(24px, calc((100% - 1000px) / 2));
+      padding-right: max(24px, calc((100% - 1000px) / 2));
+    }
+
+    .labs-articles__header {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .labs-articles__title {
+      font-size: 40px;
+    }
+
+    .labs-articles__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .labs-card__body {
+      padding: 0 24px 24px;
+      gap: 12px;
+    }
+  }
+</style>

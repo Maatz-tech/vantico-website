@@ -1,0 +1,210 @@
+---
+const items = [
+  {
+    title: 'Empresas com dados sensíveis',
+    description: "Organizações que processam dados financeiros, pessoais ou estratégicos, como e-commerces, fintechs e plataformas 'SaaS.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>`,
+  },
+  {
+    title: 'Pré-lançamento de sistemas',
+    description: '',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3"/></svg>`,
+  },
+  {
+    title: 'Requisitos regulatórios e compliance',
+    description: '',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>`,
+  },
+  {
+    title: 'Times com operação contínua',
+    description: '',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>`,
+  },
+];
+---
+
+<section class="use-cases">
+  <div class="use-cases__container">
+    <div class="use-cases__header">
+      <div class="use-cases__badge">
+        <span class="use-cases__badge-dot"></span>
+        <span class="use-cases__badge-text">Casos de uso</span>
+      </div>
+      <h2 class="use-cases__title">Quem pode se proteger com Pentests</h2>
+    </div>
+
+    <div class="use-cases__list">
+      {items.map((item) => (
+        <div class="use-cases__item">
+          <div class="use-cases__item-header">
+            <div class="use-cases__item-icon">
+              <Fragment set:html={item.icon} />
+            </div>
+            <span class="use-cases__item-title">{item.title}</span>
+          </div>
+          {item.description && (
+            <p class="use-cases__item-desc">{item.description}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .use-cases {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+
+  .use-cases__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Header */
+  .use-cases__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .use-cases__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+  }
+
+  .use-cases__badge-dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+  }
+
+  .use-cases__badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+  }
+
+  .use-cases__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* List */
+  .use-cases__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .use-cases__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border-bottom: 1px solid var(--color-border-solid);
+    position: relative;
+  }
+
+  .use-cases__item:last-child {
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+
+  .use-cases__item-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .use-cases__item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    border: 0.8px solid var(--color-border-solid);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-dark-blue);
+  }
+
+  .use-cases__item-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .use-cases__item-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Blue line on hover */
+  .use-cases__item::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background-color: var(--color-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .use-cases__item:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .use-cases {
+      padding: 80px 120px;
+    }
+
+    .use-cases__container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 64px;
+    }
+
+    .use-cases__header {
+      width: 512px;
+      flex-shrink: 0;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .use-cases__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .use-cases__list {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+</style>

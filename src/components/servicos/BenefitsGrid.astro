@@ -1,0 +1,280 @@
+---
+/**
+ * BenefitsGrid
+ * 6 benefit cards in a scrollable carousel (mobile) / 3x2 grid (desktop).
+ * Figma refs: Desktop 4392:1171 area, Mobile 4392:1171
+ */
+import Button from '../Button.astro';
+
+const benefits = [
+  {
+    icon: 'settings',
+    title: 'Autonomia nos testes',
+    description: 'Crie e gerencie seus próprios testes de forma autônoma',
+    highlight: true,
+  },
+  {
+    icon: 'monitor',
+    title: 'Acesso contínuo',
+    description: 'Acesse testes e resultados em tempo real pela plataforma',
+    highlight: false,
+  },
+  {
+    icon: 'file-text',
+    title: 'Relatórios acionáveis',
+    description: 'Disponíveis a qualquer momento para orientar as correções e tomada de decisões',
+    highlight: false,
+  },
+  {
+    icon: 'bell',
+    title: 'Notificação em tempo real',
+    description: 'Receba notificações imediatas sobre as vulnerabilidades críticas',
+    highlight: false,
+  },
+  {
+    icon: 'message',
+    title: 'Comunicação direta',
+    description: 'Converse diretamente com os testers na plataforma',
+    highlight: false,
+  },
+  {
+    icon: 'list',
+    title: 'Priorização clara',
+    description: 'Receba recomendações dos nossos especialistas',
+    highlight: false,
+  },
+];
+---
+
+<section class="benefits">
+  <div class="benefits__container">
+    <!-- Header -->
+    <div class="benefits__header">
+      <div class="benefits__badge">
+        <span class="benefits__badge-dot"></span>
+        <span class="benefits__badge-text">Benefícios</span>
+      </div>
+      <h2 class="benefits__title">Pentest ágil e eficaz para proteger suas aplicações Web e APIs</h2>
+    </div>
+
+    <!-- Cards carousel / grid -->
+    <div class="benefits__grid-wrap">
+      <div class="benefits__grid">
+        {benefits.map((benefit) => (
+          <div class:list={['benefits__card', { 'benefits__card--highlight': benefit.highlight }]}>
+            <div class="benefits__icon-wrap">
+              {benefit.icon === 'settings' && (
+                <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              )}
+              {benefit.icon === 'monitor' && (
+                <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2" />
+                  <line x1="8" x2="16" y1="21" y2="21" />
+                  <line x1="12" x2="12" y1="17" y2="21" />
+                </svg>
+              )}
+              {benefit.icon === 'file-text' && (
+                <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                  <path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" />
+                </svg>
+              )}
+              {benefit.icon === 'bell' && (
+                <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                  <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+                </svg>
+              )}
+              {benefit.icon === 'message' && (
+                <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+              )}
+              {benefit.icon === 'list' && (
+                <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="8" x2="21" y1="6" y2="6" />
+                  <line x1="8" x2="21" y1="12" y2="12" />
+                  <line x1="8" x2="21" y1="18" y2="18" />
+                  <line x1="3" x2="3.01" y1="6" y2="6" />
+                  <line x1="3" x2="3.01" y1="12" y2="12" />
+                  <line x1="3" x2="3.01" y1="18" y2="18" />
+                </svg>
+              )}
+            </div>
+            <div class="benefits__card-text">
+              <h3 class="benefits__card-title">{benefit.title}</h3>
+              <p class="benefits__card-desc">{benefit.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <Button href="/contato">Fale com um especialista</Button>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    padding: 48px 0;
+    background-color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .benefits__container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
+  /* Badge */
+  .benefits__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+  }
+
+  .benefits__badge-dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+  }
+
+  .benefits__badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+    white-space: nowrap;
+  }
+
+  /* Header */
+  .benefits__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .benefits__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Grid wrapper - horizontal scroll on mobile */
+  .benefits__grid-wrap {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .benefits__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+  }
+
+  .benefits__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card */
+  .benefits__card {
+    flex: 0 0 342px;
+    min-width: 342px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+    background-color: var(--color-white);
+    border: 0.5px solid var(--color-border-solid);
+    scroll-snap-align: start;
+  }
+
+  .benefits__card--highlight {
+    background-color: var(--color-blue-light, #F2F6FF);
+  }
+
+  .benefits__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    border: 0.8px solid var(--color-border-solid);
+    background-color: var(--color-white);
+    flex-shrink: 0;
+  }
+
+  .benefits__icon {
+    display: block;
+  }
+
+  .benefits__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .benefits__card-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .benefits__card-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .benefits {
+      padding: 80px 0;
+    }
+
+    .benefits__title {
+      font-size: 32px;
+    }
+
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow-x: visible;
+    }
+
+    .benefits__card {
+      flex: unset;
+      min-width: unset;
+    }
+  }
+</style>

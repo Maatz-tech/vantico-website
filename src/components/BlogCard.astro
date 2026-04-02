@@ -6,10 +6,11 @@ interface Props {
   date: string;
   slug: string;
   featured?: boolean;
+  basePath?: string;
 }
 
-const { title, summary, image, date, slug, featured = false } = Astro.props;
-const href = `/blog/${slug}`;
+const { title, summary, image, date, slug, featured = false, basePath = '/blog' } = Astro.props;
+const href = `${basePath}/${slug}`;
 ---
 
 {featured ? (

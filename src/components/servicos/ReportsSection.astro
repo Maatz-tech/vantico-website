@@ -1,0 +1,230 @@
+---
+import Button from '../Button.astro';
+---
+
+<section class="reports">
+  <div class="reports__container">
+    <div class="reports__text">
+      <div class="reports__text-block">
+        <h2 class="reports__title">Explore nossos relatórios de Pentest</h2>
+        <p class="reports__paragraph">
+          Adotamos uma metodologia personalizada baseada em práticas reconhecidas como OWASP, PTES e OSSTMM. Vamos além do OWASP Top 10, identificando e classificando vulnerabilidades que muitas vezes passam despercebidas por métodos tradicionais e scanners automatizados.
+        </p>
+      </div>
+      <div class="reports__buttons">
+        <Button variant="primary" href="#">Modelo de Relatório</Button>
+        <Button variant="outline" href="#" class="reports__btn-outline">Carta de Atestado</Button>
+      </div>
+    </div>
+
+    <div class="reports__illustration">
+      <!-- Document mockup -->
+      <div class="reports__doc-wrap">
+        <div class="reports__doc">
+          <!-- Skeleton lines -->
+          <div class="reports__doc-lines">
+            <div class="reports__line" style="width: 65%"><span style="width: 12px"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 85%"><span style="width: 12px"></span><span style="width: 40px"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 94%"><span style="width: 12px"></span><span style="width: 16px"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 100%"><span style="width: 12px"></span><span style="flex: 1"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 57%"><span style="width: 12px"></span><span style="flex: 1"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 94%"><span style="width: 12px"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 100%"><span style="width: 12px"></span><span style="width: 22px"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 85%"><span style="width: 12px"></span><span style="width: 52px"></span><span style="flex: 1"></span></div>
+            <div class="reports__line" style="width: 82%"><span style="width: 12px"></span><span style="width: 32px"></span><span style="flex: 1"></span></div>
+          </div>
+        </div>
+        <!-- Folded corner -->
+        <div class="reports__doc-corner"></div>
+      </div>
+
+      <!-- Vantico badge -->
+      <div class="reports__badge">
+        <div class="reports__badge-inner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" fill="white" opacity="0.3"/>
+            <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4zm-1 15l-4-4 1.41-1.41L11 14.17l5.59-5.59L18 10l-7 7z" fill="white"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reports {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+
+  .reports__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Text */
+  .reports__text {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .reports__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .reports__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+    text-align: center;
+  }
+
+  .reports__paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+    text-align: center;
+  }
+
+  .reports__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  :global(.reports__btn-outline) {
+    border-color: var(--color-blue) !important;
+    color: var(--color-blue) !important;
+  }
+
+  /* Illustration */
+  .reports__illustration {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-solid);
+    padding: 24px;
+    height: 324px;
+    overflow: hidden;
+  }
+
+  .reports__doc-wrap {
+    position: relative;
+    width: 184px;
+    height: 250px;
+  }
+
+  .reports__doc {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-1);
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .reports__doc-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .reports__line {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .reports__line span {
+    display: block;
+    height: 6px;
+    border-radius: 10px;
+    background-color: rgba(25, 31, 47, 0.1);
+  }
+
+  .reports__line:first-child span {
+    background-color: var(--color-border-solid);
+  }
+
+  .reports__doc-corner {
+    position: absolute;
+    top: 0;
+    right: -2px;
+    width: 47px;
+    height: 48px;
+    background: linear-gradient(225deg, var(--color-white) 50%, var(--color-border-solid) 50.5%, var(--color-white-2) 51%);
+    border-radius: 0 8px 0 0;
+  }
+
+  .reports__badge {
+    position: absolute;
+    bottom: 24%;
+    right: 20%;
+    padding: 8px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    box-shadow: var(--shadow-1);
+  }
+
+  .reports__badge-inner {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: var(--color-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .reports {
+      padding: 80px 120px;
+    }
+
+    .reports__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .reports__text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .reports__title {
+      font-size: 40px;
+      line-height: 48px;
+      text-align: left;
+    }
+
+    .reports__paragraph {
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .reports__buttons {
+      flex-direction: row;
+    }
+
+    .reports__illustration {
+      width: 560px;
+      flex-shrink: 0;
+    }
+  }
+</style>

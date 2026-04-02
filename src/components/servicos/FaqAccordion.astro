@@ -1,0 +1,272 @@
+---
+const faqs = [
+  {
+    question: 'O que exatamente é testado durante o Pentest para aplicações web e APIs?',
+    answer: 'Nossos testers buscam por vulnerabilidades ligadas à autenticação, controles de acesso, injeções (SQL, XSS, etc.), exposição de dados sensíveis, etc. Já em APIs, analisamos endpoints públicos, lógica de negócio e muito mais.',
+  },
+  {
+    question: 'O pentest é feito manualmente ou com ferramentas automatizadas?',
+    answer: 'Utilizamos uma combinação de técnicas manuais e ferramentas especializadas. A análise manual é o diferencial, pois permite identificar vulnerabilidades complexas e falhas de lógica que ferramentas automáticas não detectam.',
+  },
+  {
+    question: 'Qual metodologia a Vantico segue?',
+    answer: 'Adotamos uma metodologia personalizada baseada em práticas reconhecidas como OWASP, PTES e OSSTMM, adaptada ao contexto de cada cliente.',
+  },
+  {
+    question: 'Quanto tempo demora para receber os resultados?',
+    answer: 'O prazo varia conforme o escopo do teste, mas em geral os resultados parciais são disponibilizados em tempo real pela plataforma, e o relatório final é entregue em até 5 dias úteis após a conclusão dos testes.',
+  },
+  {
+    question: 'Como e quais relatórios são entregues?',
+    answer: 'Entregamos um relatório técnico detalhado com todas as vulnerabilidades encontradas, classificadas por severidade, evidências e recomendações de correção. Também fornecemos uma carta de atestado para fins de compliance.',
+  },
+  {
+    question: 'Vocês ajudam na correção das vulnerabilidades?',
+    answer: 'Sim. Nossos especialistas fornecem recomendações detalhadas de correção e estão disponíveis para tirar dúvidas diretamente pela plataforma durante todo o processo.',
+  },
+  {
+    question: 'O pentest inclui o re-test?',
+    answer: 'Sim, após a correção das vulnerabilidades identificadas, realizamos um re-test para validar que as correções foram implementadas corretamente.',
+  },
+  {
+    question: 'Como funciona a plataforma? Preciso integrar algo ao meu ambiente?',
+    answer: 'Nossa plataforma é 100% web e não requer instalação ou integração. Você acompanha o andamento dos testes, recebe notificações em tempo real e acessa os relatórios diretamente por ela.',
+  },
+];
+---
+
+<section class="faq">
+  <div class="faq__container">
+    <h2 class="faq__title">Perguntas frequentes</h2>
+
+    <div class="faq__grid-wrap">
+      <div class="faq__grid-lines" aria-hidden="true">
+        <div class="faq__grid-line faq__grid-line--h faq__grid-line--h1"></div>
+        <div class="faq__grid-line faq__grid-line--h faq__grid-line--h2"></div>
+        <div class="faq__grid-line faq__grid-line--v faq__grid-line--v1"></div>
+        <div class="faq__grid-line faq__grid-line--v faq__grid-line--v2"></div>
+      </div>
+
+      <div class="faq__list">
+        {faqs.map((item, i) => (
+          <div class:list={['faq__item', { 'faq__item--open': i === 0 }]}>
+            <button class="faq__question" type="button" aria-expanded={i === 0 ? 'true' : 'false'}>
+              <span class="faq__question-text">{item.question}</span>
+              <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+            <div class="faq__answer">
+              <p class="faq__answer-text">{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFaq() {
+    const items = document.querySelectorAll('.faq__item');
+    items.forEach((item) => {
+      const btn = item.querySelector('.faq__question');
+      btn?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('faq__item--open');
+        // Close all
+        items.forEach((other) => {
+          other.classList.remove('faq__item--open');
+          other.querySelector('.faq__question')?.setAttribute('aria-expanded', 'false');
+        });
+        // Toggle current
+        if (!isOpen) {
+          item.classList.add('faq__item--open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+  initFaq();
+  document.addEventListener('astro:after-swap', initFaq);
+</script>
+
+<style>
+  .faq {
+    background-color: var(--color-white-2);
+    padding: 48px var(--container-padding);
+    overflow: hidden;
+  }
+
+  .faq__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .faq__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Grid wrapper */
+  .faq__grid-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .faq__grid-lines {
+    display: none;
+  }
+
+  /* List */
+  .faq__list {
+    background-color: var(--color-white);
+    width: 100%;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+
+  .faq__item:last-child {
+    border-bottom: none;
+  }
+
+  /* Question button */
+  .faq__question {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq__question-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    flex: 1;
+  }
+
+  .faq__chevron {
+    flex-shrink: 0;
+    color: var(--color-dark-blue);
+    transition: transform 0.3s ease;
+  }
+
+  .faq__item--open .faq__chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Answer */
+  .faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq__item--open .faq__answer {
+    max-height: 300px;
+  }
+
+  .faq__answer-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--color-text-dark);
+    margin: 0;
+    padding: 0 24px 24px;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .faq {
+      padding: 80px 0;
+    }
+
+    .faq__container {
+      gap: 64px;
+    }
+
+    .faq__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    /* Grid lines */
+    .faq__grid-lines {
+      display: block;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .faq__grid-line--h {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(25, 31, 47, 0.1) 15%,
+        rgba(25, 31, 47, 0.1) 85%,
+        transparent 100%
+      );
+    }
+
+    .faq__grid-line--h1 { top: 0; }
+    .faq__grid-line--h2 { bottom: 0; }
+
+    .faq__grid-line--v {
+      position: absolute;
+      top: -40px;
+      bottom: -40px;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(25, 31, 47, 0.1) 15%,
+        rgba(25, 31, 47, 0.1) 85%,
+        transparent 100%
+      );
+    }
+
+    .faq__grid-line--v1 { left: calc(50% - 500px); }
+    .faq__grid-line--v2 { left: calc(50% + 500px); }
+
+    .faq__list {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq__question {
+      padding: 40px;
+    }
+
+    .faq__question-text {
+      font-size: 18px;
+    }
+
+    .faq__answer-text {
+      font-size: 16px;
+      line-height: 18px;
+      padding: 0 40px 40px;
+    }
+  }
+</style>

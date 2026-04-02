@@ -1,0 +1,252 @@
+---
+---
+
+<section class="content-block">
+  <div class="content-block__container">
+    <div class="content-block__text">
+      <h2 class="content-block__title">Superfícies expostas são alvos fáceis</h2>
+      <div class="content-block__desc">
+        <p class="content-block__paragraph">
+          APIs e aplicações web são fundamentais em qualquer negócio com operação digital. Isso também as torna mais suscetíveis aos riscos.
+        </p>
+        <blockquote class="content-block__quote">
+          <p>
+            O problema é que muitas organizações ainda confiam somente em scanners e frameworks genéricos. <strong>Isso traz uma falsa sensação de segurança, maximizando ainda mais os riscos.</strong>
+          </p>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="content-block__card-wrap">
+      <div class="content-block__card">
+        <!-- Terminal header -->
+        <div class="content-block__card-header">
+          <span class="content-block__card-dot content-block__card-dot--green"></span>
+          <div class="content-block__card-dots">
+            <span class="content-block__card-dot content-block__card-dot--gray"></span>
+            <span class="content-block__card-dot content-block__card-dot--gray"></span>
+            <span class="content-block__card-dot content-block__card-dot--gray"></span>
+          </div>
+        </div>
+
+        <hr class="content-block__card-line" />
+
+        <!-- Scanner rows -->
+        <div class="content-block__card-row">
+          <span class="content-block__card-label">[!] Scanner Automatizado</span>
+          <span class="content-block__card-value">0 Critical</span>
+        </div>
+        <div class="content-block__card-row">
+          <span class="content-block__card-label">[!] Framework Genérico</span>
+          <span class="content-block__card-value">0 Critical</span>
+        </div>
+
+        <hr class="content-block__card-line" />
+
+        <!-- Vantico row -->
+        <div class="content-block__card-row">
+          <span class="content-block__card-label content-block__card-label--vantico">
+            <svg width="16" height="11" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.47 0L0 16h4.24L8.47 6.12 12.7 16h4.24L8.47 0z" fill="#1C51C6"/>
+              <path d="M15.53 0L11.3 9.88h4.23L19.76 0h-4.23z" fill="#1C51C6"/>
+            </svg>
+            Vantico Pentest
+          </span>
+          <span class="content-block__card-value content-block__card-value--critical">4 Critical Found</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-block {
+    background-color: var(--color-white-2);
+    padding: 48px var(--container-padding);
+  }
+
+  .content-block__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Text column */
+  .content-block__text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .content-block__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .content-block__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .content-block__paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  .content-block__quote {
+    border-left: 2px solid var(--color-blue);
+    padding-left: 16px;
+    margin: 0;
+  }
+
+  .content-block__quote p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  .content-block__quote strong {
+    font-weight: 500;
+    color: var(--color-dark-blue);
+  }
+
+  /* Card column */
+  .content-block__card-wrap {
+    border: 1px solid var(--color-border-solid);
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .content-block__card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+  }
+
+  .content-block__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .content-block__card-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .content-block__card-dot--green {
+    background-color: #C8C8C8;
+  }
+
+  .content-block__card-dot--gray {
+    background-color: var(--color-border-solid);
+  }
+
+  .content-block__card-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .content-block__card-line {
+    border: none;
+    height: 1px;
+    background-color: var(--color-border-solid);
+    margin: 0;
+  }
+
+  .content-block__card-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .content-block__card-label {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  .content-block__card-label--vantico {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-dark-blue);
+  }
+
+  .content-block__card-value {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    white-space: nowrap;
+  }
+
+  .content-block__card-value--critical {
+    color: #E95353;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .content-block {
+      padding: 80px 120px;
+    }
+
+    .content-block__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .content-block__text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .content-block__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .content-block__card-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .content-block__paragraph {
+      font-size: 18px;
+    }
+
+    .content-block__quote p {
+      font-size: 18px;
+    }
+
+    .content-block__card-label {
+      font-size: 16px;
+    }
+
+    .content-block__card-value {
+      font-size: 16px;
+    }
+  }
+</style>
