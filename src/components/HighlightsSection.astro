@@ -30,7 +30,7 @@ const highlights = [
       {highlights.map((item, i) => (
         <div class:list={['highlights__stat', { 'highlights__stat--last': i === highlights.length - 1 }]}>
           <div class="highlights__stat-bg" aria-hidden="true"></div>
-          <p class="highlights__stat-value" data-odometer={item.value}>{item.value}</p>
+          <p class="highlights__stat-value">{item.prefix}<span data-odometer={String(item.numericValue)}>{String(item.numericValue)}</span>{item.suffix}</p>
           <p class="highlights__stat-desc">{item.description}</p>
         </div>
       ))}
@@ -60,38 +60,19 @@ const highlights = [
   }
 
   function buildOdometer(el: HTMLElement) {
-    const text = el.dataset.odometer || '';
-    el.innerHTML = '';
-    el.classList.add('odometer');
+    const target = parseInt(el.dataset.odometer || '0', 10);
+    const duration = 1800;
+    const start = performance.now();
 
-    [...text].forEach((char, i) => {
-      if (/\d/.test(char)) {
-        const digit = parseInt(char, 10);
-        const col = document.createElement('span');
-        col.className = 'odometer__col';
+    function update(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = String(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(update);
+    }
 
-        const strip = document.createElement('span');
-        strip.className = 'odometer__strip';
-        strip.style.animationDelay = `${i * 80}ms`;
-
-        const startFrom = Math.max(0, digit - 5);
-        for (let n = startFrom; n <= digit; n++) {
-          const num = document.createElement('span');
-          num.className = 'odometer__num';
-          num.textContent = String(n);
-          strip.appendChild(num);
-        }
-
-        strip.style.setProperty('--travel', String(Math.min(digit, 5)));
-        col.appendChild(strip);
-        el.appendChild(col);
-      } else {
-        const span = document.createElement('span');
-        span.className = 'odometer__char';
-        span.textContent = char;
-        el.appendChild(span);
-      }
-    });
+    requestAnimationFrame(update);
   }
 
   initOdometers();
@@ -114,7 +95,7 @@ const highlights = [
   .highlights__stats-wrap {
     position: relative;
     width: 100%;
-    max-width: var(--container-max);
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -206,7 +187,7 @@ const highlights = [
     z-index: 1;
     display: flex;
     width: 100%;
-    max-width: var(--container-max);
+    max-width: 1000px;
     margin: 0 auto;
     background-color: var(--color-white);
   }
@@ -246,19 +227,19 @@ const highlights = [
   }
 
   .highlights__stat:nth-child(1) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-1.png');
+    background-image: url('/images/highlights/hover-1.svg');
   }
 
   .highlights__stat:nth-child(2) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-2.png');
+    background-image: url('/images/highlights/hover-2.svg');
   }
 
   .highlights__stat:nth-child(3) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-3.png');
+    background-image: url('/images/highlights/hover-3.svg');
   }
 
   .highlights__stat:nth-child(4) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-4.png');
+    background-image: url('/images/highlights/hover-4.svg');
   }
 
   .highlights__stat:hover .highlights__stat-bg {
@@ -274,66 +255,12 @@ const highlights = [
     z-index: 1;
     font-size: 48px;
     font-weight: 500;
-    line-height: 1;
+    line-height: normal;
     color: var(--color-dark-blue);
     transition: color 0.3s ease;
   }
 
-  /* Odometer */
-  .highlights__stat-value:global(.odometer) {
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  :global(.odometer__col) {
-    display: inline-block;
-    height: 1em;
-    overflow: hidden;
-    line-height: 1;
-  }
-
-  :global(.odometer__strip) {
-    display: flex;
-    flex-direction: column;
-    animation: odometer-roll 1.8s linear forwards;
-    animation-delay: var(--delay, 0ms);
-    transform: translateY(0);
-  }
-
-  :global(.odometer__num) {
-    display: block;
-    height: 1em;
-    line-height: 1;
-    text-align: center;
-  }
-
-  :global(.odometer__char) {
-    display: inline-block;
-    line-height: 1;
-  }
-
-  @keyframes odometer-roll {
-    0% {
-      transform: translateY(0);
-    }
-    60% {
-      transform: translateY(calc(-0.9em * var(--travel)));
-    }
-    80% {
-      transform: translateY(calc(-0.97em * var(--travel)));
-    }
-    90% {
-      transform: translateY(calc(-0.995em * var(--travel)));
-    }
-    100% {
-      transform: translateY(calc(-1em * var(--travel)));
-    }
-  }
-
-  .highlights__stat:hover .highlights__stat-value,
-  .highlights__stat:hover .highlights__stat-value :global(.odometer__num),
-  .highlights__stat:hover .highlights__stat-value :global(.odometer__char) {
+  .highlights__stat:hover .highlights__stat-value {
     color: var(--color-blue);
   }
 
