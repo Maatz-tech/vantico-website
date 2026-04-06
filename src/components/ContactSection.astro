@@ -685,7 +685,7 @@ const logos = [
   /* Desktop */
   @media (min-width: 768px) {
     .contact {
-      padding: 24px 120px 80px;
+      padding: 24px max(var(--container-padding), calc((100% - var(--container-max)) / 2)) 80px;
     }
 
     .contact__pattern {

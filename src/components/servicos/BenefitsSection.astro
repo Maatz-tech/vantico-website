@@ -6,7 +6,6 @@ const benefits = [
     title: 'Autonomia nos testes',
     description: 'Crie e gerencie seus próprios testes de forma autônoma',
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`,
-    highlight: true,
   },
   {
     title: 'Priorização clara',
@@ -58,7 +57,7 @@ const benefits = [
 
       <div class="benefits__grid" data-animate>
         {benefits.map((item) => (
-          <div class:list={['benefits__card', { 'benefits__card--highlight': item.highlight }]}>
+          <div class="benefits__card">
             <div class="benefits__card-icon">
               <Fragment set:html={item.icon} />
             </div>
@@ -174,13 +173,14 @@ const benefits = [
     background-color: var(--color-white);
     border: 0.5px solid var(--color-border-solid);
     border-right: none;
+    transition: background-color 0.2s ease;
   }
 
   .benefits__card:last-child {
     border-right: 0.5px solid var(--color-border-solid);
   }
 
-  .benefits__card--highlight {
+  .benefits__card:hover {
     background-color: var(--color-blue-light);
   }
 
@@ -256,15 +256,14 @@ const benefits = [
 
     .benefits__grid-line--h {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
+      left: -40px;
+      right: -40px;
       height: 1px;
       background: linear-gradient(
         to right,
         transparent 0%,
-        rgba(25, 31, 47, 0.1) 15%,
-        rgba(25, 31, 47, 0.1) 85%,
+        rgba(25, 31, 47, 0.1) 10%,
+        rgba(25, 31, 47, 0.1) 90%,
         transparent 100%
       );
     }

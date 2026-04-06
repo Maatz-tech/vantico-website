@@ -133,6 +133,17 @@ const faqs = [
 
   .faq__item {
     border-bottom: 1px solid var(--color-border-solid);
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .faq__item:hover {
+    background-color: var(--color-white-2);
+  }
+
+  .faq__item--open {
+    background-color: var(--color-white-2);
+    border-left-color: var(--color-blue);
   }
 
   .faq__item:last-child {
@@ -217,15 +228,14 @@ const faqs = [
 
     .faq__grid-line--h {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
+      left: -40px;
+      right: -40px;
       height: 1px;
       background: linear-gradient(
         to right,
         transparent 0%,
-        rgba(25, 31, 47, 0.1) 15%,
-        rgba(25, 31, 47, 0.1) 85%,
+        rgba(25, 31, 47, 0.1) 10%,
+        rgba(25, 31, 47, 0.1) 90%,
         transparent 100%
       );
     }
@@ -247,12 +257,11 @@ const faqs = [
       );
     }
 
-    .faq__grid-line--v1 { left: calc(50% - 500px); }
-    .faq__grid-line--v2 { left: calc(50% + 500px); }
+    .faq__grid-line--v1 { left: 0; }
+    .faq__grid-line--v2 { right: 0; }
 
     .faq__list {
-      max-width: 1000px;
-      margin: 0 auto;
+      width: 100%;
     }
 
     .faq__question {

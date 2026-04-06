@@ -105,7 +105,7 @@ const highlights = [
     flex-direction: column;
     align-items: center;
     gap: 64px;
-    padding: 80px 0;
+    padding: 80px max(var(--container-padding), calc((100% - var(--container-max)) / 2));
     background-color: var(--color-white-2);
     overflow: hidden;
   }
@@ -130,15 +130,14 @@ const highlights = [
 
   .highlights__grid-line--h {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
+    left: -40px;
+    right: -40px;
     height: 1px;
     background: linear-gradient(
       to right,
       transparent 0%,
-      rgba(25, 31, 47, 0.1) 15%,
-      rgba(25, 31, 47, 0.1) 85%,
+      rgba(25, 31, 47, 0.1) 10%,
+      rgba(25, 31, 47, 0.1) 90%,
       transparent 100%
     );
   }
@@ -166,11 +165,11 @@ const highlights = [
   }
 
   .highlights__grid-line--v1 {
-    left: calc(50% - 501px);
+    left: 0;
   }
 
   .highlights__grid-line--v2 {
-    left: calc(50% + 500px);
+    right: 0;
   }
 
   /* Header */
@@ -189,7 +188,7 @@ const highlights = [
   .highlights__title {
     font-size: 40px;
     font-weight: 500;
-    line-height: 100%;
+    line-height: normal;
     letter-spacing: 0;
     color: var(--color-dark-blue);
   }
@@ -197,7 +196,7 @@ const highlights = [
   .highlights__subtitle {
     font-size: 20px;
     font-weight: 400;
-    line-height: 100%;
+    line-height: normal;
     color: var(--color-text-dark);
   }
 
@@ -207,7 +206,7 @@ const highlights = [
     z-index: 1;
     display: flex;
     width: 100%;
-    max-width: 1000px;
+    max-width: var(--container-max);
     margin: 0 auto;
     background-color: var(--color-white);
   }

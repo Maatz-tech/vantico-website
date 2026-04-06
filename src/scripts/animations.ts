@@ -6,14 +6,13 @@ document.querySelectorAll('[data-animate-type="typing"]').forEach((el) => {
   ).join(' ');
 });
 
-// Intersection Observer para animações on scroll
+// Intersection Observer para animações on scroll (dispara apenas uma vez)
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate-visible");
-      } else {
-        entry.target.classList.remove("animate-visible");
+        observer.unobserve(entry.target);
       }
     });
   },

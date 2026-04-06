@@ -253,11 +253,10 @@ const iconPaths: Record<string, string> = {
 
   .solutions__grid-line--h {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
+    left: -40px;
+    right: -40px;
     height: 1px;
-    background: linear-gradient(to right, transparent 0%, rgba(25, 31, 47, 0.1) 15%, rgba(25, 31, 47, 0.1) 85%, transparent 100%);
+    background: linear-gradient(to right, transparent 0%, rgba(25, 31, 47, 0.1) 10%, rgba(25, 31, 47, 0.1) 90%, transparent 100%);
   }
 
   .solutions__grid-line--h1 { top: 0; }
@@ -524,7 +523,7 @@ const iconPaths: Record<string, string> = {
   @media (min-width: 768px) {
     .solutions {
       gap: 64px;
-      padding: 80px 120px;
+      padding: 80px max(var(--container-padding), calc((100% - var(--container-max)) / 2));
     }
 
     .solutions__header {
@@ -538,7 +537,7 @@ const iconPaths: Record<string, string> = {
     }
 
     .solutions__tabs-container {
-      max-width: 1000px;
+      max-width: var(--container-max);
     }
 
     .solutions__tab {

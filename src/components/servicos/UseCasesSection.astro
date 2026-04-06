@@ -120,6 +120,11 @@ const items = [
     padding: 24px;
     border-bottom: 1px solid var(--color-border-solid);
     position: relative;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .use-cases__item:hover {
+    cursor: pointer;
   }
 
   .use-cases__item:last-child {
@@ -181,7 +186,11 @@ const items = [
   /* Desktop */
   @media (min-width: 768px) {
     .use-cases {
-      padding: 80px 120px;
+      padding: 80px 0;
+    }
+
+    .use-cases__container {
+      padding: 0 var(--container-padding);
     }
 
     .use-cases__container {

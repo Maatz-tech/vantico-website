@@ -193,7 +193,11 @@ import Button from '../Button.astro';
   /* Desktop */
   @media (min-width: 768px) {
     .reports {
-      padding: 80px 120px;
+      padding: 80px 0;
+    }
+
+    .reports__container {
+      padding: 0 var(--container-padding);
     }
 
     .reports__container {

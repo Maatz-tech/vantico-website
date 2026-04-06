@@ -302,7 +302,7 @@ const column3 = [
       align-items: center;
       justify-content: center;
       gap: 64px;
-      padding: 80px 120px;
+      padding: 80px max(var(--container-padding), calc((100% - var(--container-max)) / 2));
     }
 
     .certs__content {

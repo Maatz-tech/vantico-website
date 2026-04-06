@@ -195,7 +195,7 @@ const posts = allPosts
   @media (min-width: 768px) {
     .blog {
       gap: 64px;
-      padding: 80px 120px;
+      padding: 80px max(var(--container-padding), calc((100% - var(--container-max)) / 2));
     }
 
     .blog__header {

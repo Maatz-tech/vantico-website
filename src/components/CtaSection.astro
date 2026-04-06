@@ -68,7 +68,7 @@ import Button from './Button.astro';
 
   @media (min-width: 768px) {
     .cta {
-      padding: 80px 120px;
+      padding: 80px max(var(--container-padding), calc((100% - var(--container-max)) / 2));
     }
 
     .cta__card {

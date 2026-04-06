@@ -124,14 +124,14 @@ const testimonials = [
     font-size: 24px;
     font-weight: 500;
     color: var(--color-dark-blue);
-    line-height: 1.2;
+    line-height: normal;
   }
 
   .testimonials__subtitle {
     font-size: 14px;
     font-weight: 400;
     color: var(--color-text-dark);
-    line-height: 1.4;
+    line-height: normal;
   }
 
   .testimonials__carousel-wrapper {
@@ -241,7 +241,7 @@ const testimonials = [
   /* Desktop */
   @media (min-width: 768px) {
     .testimonials {
-      padding: 80px 120px;
+      padding: 80px max(var(--container-padding), calc((100% - var(--container-max)) / 2));
     }
 
     .testimonials__inner {
@@ -254,10 +254,12 @@ const testimonials = [
 
     .testimonials__title {
       font-size: 40px;
+      line-height: normal;
     }
 
     .testimonials__subtitle {
       font-size: 18px;
+      line-height: normal;
     }
 
     .testimonials__card {

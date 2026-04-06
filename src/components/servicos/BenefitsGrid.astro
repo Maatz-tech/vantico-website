@@ -11,37 +11,31 @@ const benefits = [
     icon: 'settings',
     title: 'Autonomia nos testes',
     description: 'Crie e gerencie seus próprios testes de forma autônoma',
-    highlight: true,
   },
   {
     icon: 'monitor',
     title: 'Acesso contínuo',
     description: 'Acesse testes e resultados em tempo real pela plataforma',
-    highlight: false,
   },
   {
     icon: 'file-text',
     title: 'Relatórios acionáveis',
     description: 'Disponíveis a qualquer momento para orientar as correções e tomada de decisões',
-    highlight: false,
   },
   {
     icon: 'bell',
     title: 'Notificação em tempo real',
     description: 'Receba notificações imediatas sobre as vulnerabilidades críticas',
-    highlight: false,
   },
   {
     icon: 'message',
     title: 'Comunicação direta',
     description: 'Converse diretamente com os testers na plataforma',
-    highlight: false,
   },
   {
     icon: 'list',
     title: 'Priorização clara',
     description: 'Receba recomendações dos nossos especialistas',
-    highlight: false,
   },
 ];
 ---
@@ -61,7 +55,7 @@ const benefits = [
     <div class="benefits__grid-wrap">
       <div class="benefits__grid">
         {benefits.map((benefit) => (
-          <div class:list={['benefits__card', { 'benefits__card--highlight': benefit.highlight }]}>
+          <div class="benefits__card">
             <div class="benefits__icon-wrap">
               {benefit.icon === 'settings' && (
                 <svg class="benefits__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -212,9 +206,10 @@ const benefits = [
     background-color: var(--color-white);
     border: 0.5px solid var(--color-border-solid);
     scroll-snap-align: start;
+    transition: background-color 0.2s ease;
   }
 
-  .benefits__card--highlight {
+  .benefits__card:hover {
     background-color: var(--color-blue-light, #F2F6FF);
   }
 

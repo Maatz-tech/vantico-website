@@ -73,7 +73,7 @@ body {
 .text-h2 {
   font-size: 40px;
   font-weight: 500;
-  line-height: 100%;
+  line-height: normal;
   letter-spacing: 0;
   color: var(--color-dark-blue);
 }
@@ -81,7 +81,7 @@ body {
 .text-h3 {
   font-size: 20px;
   font-weight: 400;
-  line-height: 100%;
+  line-height: normal;
   letter-spacing: 0;
   color: var(--color-dark-blue);
 }
@@ -139,13 +139,13 @@ body {
 
 [data-animate] {
   opacity: 0;
-  transform: translateY(24px);
+  transform: scale(0.97);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 [data-animate].animate-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
 }
 
 [data-animate-delay="100"] { transition-delay: 100ms; }
@@ -164,7 +164,7 @@ body {
   display: inline-block;
   opacity: 0;
   filter: blur(8px);
-  transform: translateY(4px);
+  transform: scale(0.95);
   transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
   transition-delay: var(--word-delay, 0ms);
 }
@@ -172,5 +172,5 @@ body {
 [data-animate-type="typing"].animate-visible .word {
   opacity: 1;
   filter: blur(0);
-  transform: translateY(0);
+  transform: scale(1);
 }
