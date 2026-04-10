@@ -1,5 +1,9 @@
 ---
-const faqs = [
+interface Props {
+  items?: { question: string; answer: string }[];
+}
+
+const defaultFaqs = [
   {
     question: 'O que exatamente é testado durante o Pentest para aplicações web e APIs?',
     answer: 'Nossos testers buscam por vulnerabilidades ligadas à autenticação, controles de acesso, injeções (SQL, XSS, etc.), exposição de dados sensíveis, etc. Já em APIs, analisamos endpoints públicos, lógica de negócio e muito mais.',
@@ -33,6 +37,9 @@ const faqs = [
     answer: 'Nossa plataforma é 100% web e não requer instalação ou integração. Você acompanha o andamento dos testes, recebe notificações em tempo real e acessa os relatórios diretamente por ela.',
   },
 ];
+
+const { items } = Astro.props;
+const faqs = items || defaultFaqs;
 ---
 
 <section class="faq">
@@ -49,8 +56,8 @@ const faqs = [
 
       <div class="faq__list" data-animate>
         {faqs.map((item, i) => (
-          <div class:list={['faq__item', { 'faq__item--open': i === 0 }]}>
-            <button class="faq__question" type="button" aria-expanded={i === 0 ? 'true' : 'false'}>
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
               <span class="faq__question-text">{item.question}</span>
               <svg class="faq__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m6 9 6 6 6-6" />
