@@ -1,0 +1,102 @@
+---
+import Badge from '../Badge.astro';
+---
+
+<section class="sobre-hero">
+  <div class="sobre-hero__pattern" aria-hidden="true">
+    <img src="/images/pentest/hero-pattern.svg" alt="" />
+  </div>
+
+  <div class="sobre-hero__content">
+    <Badge>Conheça a Vantico</Badge>
+    <h1 class="sobre-hero__title" data-animate data-animate-type="typing">Criada para enfrentar ameaças reais</h1>
+    <p class="sobre-hero__subtitle" data-animate>
+      Somos especialistas em Pentest com foco na identificação eficiente de riscos e uma abordagem moderna em segurança cibernética.
+    </p>
+  </div>
+</section>
+
+<style>
+  .sobre-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 64px max(var(--container-padding), calc((100% - var(--container-max)) / 2)) 80px;
+    background-color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .sobre-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 623px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sobre-hero__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sobre-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 849px;
+    text-align: center;
+  }
+
+  .sobre-hero__title {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 56px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .sobre-hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+    max-width: 596px;
+  }
+
+  @media (max-width: 767px) {
+    .sobre-hero {
+      gap: 48px;
+      padding: 48px var(--container-padding);
+    }
+
+    .sobre-hero__pattern {
+      width: 840px;
+      height: 364px;
+    }
+
+    .sobre-hero__content {
+      max-width: 327px;
+      gap: 16px;
+    }
+
+    .sobre-hero__title {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    .sobre-hero__subtitle {
+      font-size: 16px;
+      color: var(--color-text);
+    }
+  }
+</style>

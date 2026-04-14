@@ -1,0 +1,111 @@
+<section class="por-dentro">
+  <div class="por-dentro__container">
+    <div class="por-dentro__header" data-animate>
+      <h2 class="por-dentro__title" data-animate data-animate-type="typing">Por dentro da Vantico</h2>
+    </div>
+    <div class="por-dentro__grid-wrap">
+      <div class="por-dentro__grid-lines" aria-hidden="true">
+        <div class="por-dentro__gl por-dentro__gl--h1"></div>
+        <div class="por-dentro__gl por-dentro__gl--h2"></div>
+        <div class="por-dentro__gl por-dentro__gl--v1"></div>
+        <div class="por-dentro__gl por-dentro__gl--v2"></div>
+      </div>
+      <div class="por-dentro__grid">
+      <div class="por-dentro__card">
+        <div class="por-dentro__card-head">
+          <div class="por-dentro__card-icon">
+            <div class="por-dentro__card-icon-inner">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+          </div>
+          <span class="por-dentro__card-name">A missão que nos move</span>
+        </div>
+        <p class="por-dentro__card-text">Num cenário de ameaças em constante evolução, acreditamos que testes ágeis e confiáveis podem transformar empresas. Queremos democratizar o acesso a testes de segurança sob demanda em escala global.</p>
+      </div>
+      <div class="por-dentro__card">
+        <div class="por-dentro__card-head">
+          <div class="por-dentro__card-icon">
+            <div class="por-dentro__card-icon-inner">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/></svg>
+            </div>
+          </div>
+          <span class="por-dentro__card-name">A cultura que construímos</span>
+        </div>
+        <p class="por-dentro__card-text">Acreditamos em pessoas com propósito. Valorizamos ambientes com desafios reais, talentos diversos e entusiasmo para criar o novo todos os dias. Se você compartilha esses valores, aqui é o seu lugar.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<style>
+  .por-dentro { background-color: var(--color-white-2); padding: 48px 0; }
+  .por-dentro__container {
+    max-width: var(--container-max); margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .por-dentro__header { text-align: center; }
+  .por-dentro__title { font-size: 24px; font-weight: 500; color: var(--color-dark-blue); margin: 0; }
+  .por-dentro__grid-wrap { position: relative; width: 100%; }
+  .por-dentro__grid-lines { display: none; }
+  .por-dentro__grid { display: flex; flex-direction: column; border: 1px solid var(--color-border-solid); }
+  .por-dentro__card {
+    display: flex; flex-direction: column; gap: 16px; padding: 24px;
+    background: #ffffff; border-bottom: 1px solid var(--color-border-solid);
+  }
+  .por-dentro__card:last-child { border-bottom: none; }
+  .por-dentro__card-head { display: flex; align-items: center; gap: 12px; }
+  .por-dentro__card-icon {
+    width: 44px; height: 44px;
+    border: 1px solid var(--color-border); border-radius: 100px;
+    padding: 6px; flex-shrink: 0; background: #ffffff;
+  }
+  .por-dentro__card-icon-inner {
+    width: 32px; height: 32px;
+    background-color: var(--color-blue); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #ffffff;
+  }
+  .por-dentro__card-name { font-size: 18px; font-weight: 500; color: var(--color-dark-blue); }
+  .por-dentro__card-text { font-size: 16px; color: var(--color-dark-blue); line-height: 1.6; margin: 0; }
+  @media (min-width: 768px) {
+    .por-dentro { padding: 80px 0; }
+    .por-dentro__container { gap: 48px; padding: 0; }
+    .por-dentro__title { font-size: 40px; line-height: 48px; }
+    .por-dentro__grid {
+      flex-direction: row;
+      border: none;
+    }
+    .por-dentro__grid-lines {
+      display: block;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .por-dentro__gl--h1, .por-dentro__gl--h2 {
+      position: absolute;
+      left: -40px;
+      right: -40px;
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, rgba(25,31,47,0.1) 10%, rgba(25,31,47,0.1) 90%, transparent 100%);
+    }
+    .por-dentro__gl--h1 { top: 0; }
+    .por-dentro__gl--h2 { bottom: 0; }
+    .por-dentro__gl--v1, .por-dentro__gl--v2 {
+      position: absolute;
+      top: -40px;
+      bottom: -40px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(25,31,47,0.1) 15%, rgba(25,31,47,0.1) 85%, transparent 100%);
+    }
+    .por-dentro__gl--v1 { left: 0; }
+    .por-dentro__gl--v2 { right: 0; }
+    .por-dentro__card {
+      flex: 1; border-bottom: none;
+      border-right: 1px solid var(--color-border-solid);
+      padding: 32px; gap: 24px;
+    }
+    .por-dentro__card:last-child { border-right: none; }
+  }
+</style>

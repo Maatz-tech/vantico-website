@@ -1,0 +1,190 @@
+---
+const items = [
+  {
+    logo: '/images/sobre/media-cybertech.png',
+    logoWidth: 141,
+    title: 'Desafios da Cibersegurança no Brasil - Entrevista com nosso CEO - Kaique Bonato',
+    href: '#',
+  },
+  {
+    logo: '/images/sobre/media-distrito.png',
+    logoWidth: 129,
+    title: 'Primeira plataforma de Pentest as a Service do Brasil',
+    href: '#',
+  },
+  {
+    logo: '/images/sobre/media-ciso.png',
+    logoWidth: 102,
+    title: 'Superfície de ataque, uma ameaça real às empresas - Artigo publicado pelo nosso CEO - Kaique Bonato',
+    href: '#',
+  },
+  {
+    logo: '',
+    logoWidth: 140,
+    title: 'Headline',
+    href: '#',
+    placeholder: true,
+  },
+];
+---
+
+<section class="media">
+  <div class="media__container">
+    <h2 class="media__title" data-animate data-animate-type="typing">Vantico na mídia</h2>
+  </div>
+
+  <div class="media__grid-container" data-animate>
+    <div class="media__grid">
+      {items.map((item) => (
+        <a href={item.href} class="media__card" target="_blank" rel="noopener noreferrer">
+          <div class="media__card-header">
+            {item.placeholder
+              ? <div class="media__card-logo-placeholder" style={`width:${item.logoWidth}px`}></div>
+              : <img src={item.logo} alt="" width={item.logoWidth} height="48" class="media__card-logo" loading="lazy" />
+            }
+            <div class="media__card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </div>
+          </div>
+          <p class="media__card-title">{item.title}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .media {
+    background-color: var(--color-white-2);
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .media__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+    text-align: center;
+  }
+
+  .media__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Grid container */
+  .media__grid-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+  }
+
+  .media__grid {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .media__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card */
+  .media__card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .media__card + .media__card {
+    margin-left: -1px;
+  }
+
+  .media__card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-border-solid);
+    z-index: 1;
+  }
+
+  .media__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .media__card-logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .media__card-logo-placeholder {
+    height: 48px;
+    border-radius: 6px;
+    background: var(--color-blue-light);
+  }
+
+  .media__card-arrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: 0.8px solid var(--color-border-solid);
+    background: var(--color-white);
+    flex-shrink: 0;
+    color: var(--color-dark-blue);
+  }
+
+  .media__card-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .media {
+      padding: 80px 0;
+      gap: 64px;
+    }
+
+    .media__title {
+      font-size: 40px;
+      line-height: normal;
+    }
+
+    .media__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: visible;
+    }
+
+    .media__card {
+      flex: auto;
+      width: auto;
+    }
+  }
+</style>

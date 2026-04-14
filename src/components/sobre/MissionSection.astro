@@ -1,0 +1,356 @@
+---
+const items = [
+  {
+    icon: '/images/sobre/icon-earth-lock.svg',
+    title: 'Aumentando a segurança com a Vantico',
+    text: 'Empresas do mundo todo estão se conectando aos nossos testers de forma inovadora, integrando a segurança cibernética ao seu ciclo de desenvolvimento e elevando sua resiliência digital.',
+  },
+  {
+    icon: '/images/sobre/icon-message-circle-code.svg',
+    title: 'Nossa abordagem em ação',
+    text: 'Nossos clientes têm uma comunicação direta com os testers, o que permite identificar e corrigir vulnerabilidades com mais rapidez e eficiência.',
+  },
+  {
+    icon: '/images/sobre/icon-target.svg',
+    title: 'A missão que nos move',
+    text: 'Num cenário de ameaças em constante evolução, acreditamos que testes ágeis e confiáveis podem transformar empresas. Queremos democratizar o acesso a testes de segurança sob demanda em escala global.',
+  },
+  {
+    icon: '/images/sobre/icon-heart-handshake.svg',
+    title: 'A cultura que construímos',
+    text: 'Acreditamos em pessoas com propósito. Valorizamos ambientes com desafios reais, talentos diversos e entusiasmo para criar o novo todos os dias. Se você compartilha esses valores, aqui é o seu lugar.',
+  },
+];
+
+const logos = [
+  { src: '/images/logos/capim.png', alt: 'Capim', width: 88 },
+  { src: '/images/logos/colmeia.png', alt: 'Colmeia', width: 67 },
+  { src: '/images/logos/pontotel.png', alt: 'Pontotel', width: 71 },
+  { src: '/images/logos/souair.png', alt: 'SouAir', width: 118 },
+  { src: '/images/logos/trampo.png', alt: 'Trampo', width: 95 },
+  { src: '/images/logos/client-9.png', alt: 'Cliente', width: 67 },
+  { src: '/images/logos/client-10.png', alt: 'Cliente', width: 72 },
+  { src: '/images/logos/client-11.png', alt: 'Cliente', width: 88 },
+  { src: '/images/logos/client-12.png', alt: 'Cliente', width: 70 },
+  { src: '/images/logos/client-13.png', alt: 'Cliente', width: 88 },
+];
+---
+
+<section class="mission">
+  <div class="mission__container">
+    <!-- Left column -->
+    <div class="mission__left" data-animate>
+      <h2 class="mission__title">Acreditamos em uma maneira mais eficiente de lidar com a segurança cibernética.</h2>
+      <div class="mission__logos-block">
+        <p class="mission__logos-label">Confiança de quem já escolheu a Vantico</p>
+        <div class="mission__logos-wrapper">
+          <div class="mission__logos-track">
+            <div class="mission__logos-set">
+              {logos.map((logo) => (
+                <img src={logo.src} alt={logo.alt} width={logo.width} height="24" loading="lazy" class="mission__logo" />
+              ))}
+            </div>
+            <div class="mission__logos-set" aria-hidden="true">
+              {logos.map((logo) => (
+                <img src={logo.src} alt="" width={logo.width} height="24" loading="lazy" class="mission__logo" />
+              ))}
+            </div>
+          </div>
+          <div class="mission__logos-fade mission__logos-fade--left"></div>
+          <div class="mission__logos-fade mission__logos-fade--right"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column: accordion -->
+    <div class="mission__accordion" data-animate>
+      {items.map((item) => (
+        <div class="mission__item">
+          <button class="mission__question" type="button" aria-expanded="false">
+            <div class="mission__icon-wrap">
+              <img src={item.icon} alt="" width="20" height="20" />
+            </div>
+            <span class="mission__question-text">{item.title}</span>
+          </button>
+          <div class="mission__answer">
+            <p class="mission__answer-text">{item.text}</p>
+          </div>
+          <div class="mission__indicator"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+<script>
+  function initMission() {
+    const items = document.querySelectorAll('.mission__item');
+    const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+
+    function openItem(target: Element) {
+      items.forEach((other) => {
+        other.classList.remove('mission__item--open');
+        other.querySelector('.mission__question')?.setAttribute('aria-expanded', 'false');
+      });
+      target.classList.add('mission__item--open');
+      target.querySelector('.mission__question')?.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeAll() {
+      items.forEach((item) => {
+        item.classList.remove('mission__item--open');
+        item.querySelector('.mission__question')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    items.forEach((item) => {
+      // Hover for desktop
+      item.addEventListener('mouseenter', () => {
+        if (!isTouchDevice()) openItem(item);
+      });
+
+      // Click/tap for mobile
+      item.querySelector('.mission__question')?.addEventListener('click', () => {
+        if (isTouchDevice()) {
+          const isOpen = item.classList.contains('mission__item--open');
+          if (isOpen) { closeAll(); } else { openItem(item); }
+        }
+      });
+    });
+
+    // Close on mouse leave from accordion (desktop)
+    const accordion = document.querySelector('.mission__accordion');
+    accordion?.addEventListener('mouseleave', () => {
+      if (!isTouchDevice()) closeAll();
+    });
+  }
+  initMission();
+  document.addEventListener('astro:after-swap', initMission);
+</script>
+
+<style>
+  .mission {
+    background-color: var(--color-white-2);
+    padding: 80px 0;
+  }
+
+  .mission__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+  }
+
+  /* Left column */
+  .mission__left {
+    flex: 0 0 512px;
+    max-width: 512px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow: hidden;
+  }
+
+  .mission__title {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .mission__logos-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mission__logos-label {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .mission__logos-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission__logos-track {
+    display: flex;
+    padding: 16px 0;
+    width: max-content;
+    animation: mission-scroll 45s linear infinite;
+  }
+
+  .mission__logos-wrapper:hover .mission__logos-track {
+    animation-play-state: paused;
+  }
+
+  .mission__logos-set {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-right: 40px;
+    flex-shrink: 0;
+  }
+
+  .mission__logo {
+    height: 24px;
+    width: auto;
+    opacity: 0.4;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .mission__logos-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .mission__logos-fade--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-white-2), transparent);
+  }
+
+  .mission__logos-fade--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-white-2), transparent);
+  }
+
+  @keyframes mission-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Accordion */
+  .mission__accordion {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mission__item {
+    position: relative;
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+
+  .mission__item:last-child {
+    border-bottom: none;
+  }
+
+  .mission__question {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .mission__icon-wrap {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: 0.8px solid var(--color-border-solid);
+    background: var(--color-white);
+    flex-shrink: 0;
+  }
+
+  .mission__question-text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* Answer */
+  .mission__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .mission__item--open .mission__answer {
+    max-height: 300px;
+  }
+
+  .mission__answer-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+    padding: 0 24px 24px;
+  }
+
+  /* Blue indicator line */
+  .mission__indicator {
+    position: absolute;
+    bottom: -1px;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background: var(--color-blue);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mission__item--open .mission__indicator {
+    opacity: 1;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .mission {
+      padding: 48px 0;
+    }
+
+    .mission__container {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .mission__left {
+      flex: none;
+      width: 100%;
+    }
+
+    .mission__title {
+      font-size: 24px;
+      line-height: normal;
+      text-align: center;
+    }
+
+    .mission__logos-block {
+      display: none;
+    }
+
+    .mission__question {
+      padding: 20px 0;
+    }
+
+    .mission__answer-text {
+      padding: 0 0 20px;
+    }
+
+    .mission__indicator {
+      left: 0;
+      right: 0;
+    }
+  }
+</style>

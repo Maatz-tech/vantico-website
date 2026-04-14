@@ -1,0 +1,124 @@
+<section class="carreira-hero">
+  <div class="carreira-hero__pattern" aria-hidden="true">
+    <img src="/images/pentest/hero-pattern.svg" alt="" />
+  </div>
+  <div class="carreira-hero__container">
+    <div class="carreira-hero__content" data-animate>
+      <div class="carreira-hero__badge">
+        <span class="carreira-hero__badge-dot"></span>
+        <span>Carreiras</span>
+      </div>
+      <h1 class="carreira-hero__title" data-animate data-animate-type="typing">Faça parte da revolução em segurança cibernética</h1>
+      <p class="carreira-hero__subtitle">Buscamos profissionais talentosos e apaixonados por cibersegurança para integrar nossa equipe.</p>
+    </div>
+  </div>
+</section>
+<style>
+  .carreira-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 64px
+      max(var(--container-padding), calc((100% - var(--container-max)) / 2))
+      64px;
+    background-color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .carreira-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 623px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .carreira-hero__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .carreira-hero__container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .carreira-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    max-width: 806px;
+    margin: 0 auto;
+  }
+
+  .carreira-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-blue);
+  }
+
+  .carreira-hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-blue);
+    flex-shrink: 0;
+  }
+
+  .carreira-hero__title {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 56px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .carreira-hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+    max-width: 596px;
+  }
+
+  @media (max-width: 767px) {
+    .carreira-hero {
+      padding: 48px var(--container-padding);
+    }
+
+    .carreira-hero__pattern {
+      width: 840px;
+      height: 364px;
+    }
+
+    .carreira-hero__content {
+      gap: 16px;
+    }
+
+    .carreira-hero__title {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    .carreira-hero__subtitle {
+      font-size: 16px;
+    }
+  }
+</style>

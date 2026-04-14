@@ -1,0 +1,394 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Pagination from '../components/Pagination.astro';
+
+const featured = {
+  type: 'Ebook',
+  title: 'Inside Pentesting 2025 - Tendências e Insights',
+  summary: 'Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura.',
+  image: '/images/conteudos/inside-2025.png',
+  href: '#',
+};
+
+const items = [
+  { type: 'Ebook', title: 'Inside Pentesting 2025 - Tendências e Insights', image: '/images/conteudos/inside-2025.png', href: '#' },
+  { type: 'PDF', title: 'Whitepapers de Serviços', image: '/images/conteudos/whitepapers.png', href: '#' },
+  { type: 'Ebook', title: 'Inside Pentesting 2024 - Tendências e Insights', image: '/images/conteudos/inside-2024.png', href: '#' },
+  { type: 'Template', title: 'Modelo de Relatório e Atestado de Pentest', image: '/images/conteudos/modelo-relatorio.png', href: '#' },
+  { type: 'Template', title: 'Modelo de RFP para Pentest', image: '/images/conteudos/modelo-rfp.png', href: '#' },
+  { type: 'Ebook', title: 'ROI Entre o Custo de Vulnerabilidades e de Pentests', image: '/images/conteudos/roi.png', href: '#' },
+  { type: 'Template', title: 'Cronograma Editável para um Programa de Conscientização', image: '/images/conteudos/cronograma.png', href: '#' },
+  { type: 'Ebook', title: 'Ebook sobre Cibersegurança e o ChatGPT', image: '/images/conteudos/chatgpt.png', href: '#' },
+  { type: 'Planilha', title: 'Planilha para Auditoria de Fornecedores', image: '/images/conteudos/auditoria.png', href: '#' },
+];
+---
+
+<Base
+  title="Conteúdos — Vantico"
+  description="Conteúdos sobre Pentest e Segurança Ofensiva. Explore artigos, ebooks e whitepapers sobre Pentest, cibersegurança e segurança ofensiva."
+>
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="conteudos-hero">
+      <div class="conteudos-hero__pattern" aria-hidden="true">
+        <img src="/images/pentest/hero-pattern.svg" alt="" />
+      </div>
+      <div class="conteudos-hero__content">
+        <h1 class="conteudos-hero__title" data-animate data-animate-type="typing">Conteúdos sobre Pentest e Segurança Ofensiva</h1>
+        <p class="conteudos-hero__subtitle">Explore artigos, ebooks e whitepapers sobre Pentest, cibersegurança e segurança ofensiva. Aprenda com especialistas da Vantico e fortaleça seus sistemas contra ameaças reais.</p>
+      </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="conteudos-featured">
+      <div class="conteudos-featured__container">
+        <a href={featured.href} class="conteudos-featured__card" data-animate>
+          <div class="conteudos-featured__image">
+            <img src={featured.image} alt={featured.title} loading="lazy" />
+          </div>
+          <div class="conteudos-featured__body">
+            <span class="conteudos-badge">{featured.type}</span>
+            <h2 class="conteudos-featured__title">{featured.title}</h2>
+            <p class="conteudos-featured__summary">{featured.summary}</p>
+            <span class="conteudos-featured__btn">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Listing -->
+    <section class="conteudos-list">
+      <div class="conteudos-list__container">
+        <h2 class="conteudos-list__title" data-animate>Todos os conteúdos</h2>
+
+        <div class="conteudos-grid" data-animate>
+          {items.map((item) => (
+            <a href={item.href} class="conteudos-card">
+              <div class="conteudos-card__image">
+                <img src={item.image} alt={item.title} loading="lazy" />
+              </div>
+              <div class="conteudos-card__body">
+                <span class="conteudos-badge">{item.type}</span>
+                <h3 class="conteudos-card__title">{item.title}</h3>
+                <span class="conteudos-card__link">
+                  Saiba mais
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="conteudos-pagination">
+          <Pagination currentPage={1} totalPages={12} basePath="/conteudos" />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  /* Hero */
+  .conteudos-hero {
+    position: relative;
+    background: var(--color-white);
+    padding: 64px var(--container-padding) 80px;
+    overflow: hidden;
+  }
+
+  .conteudos-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 623px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .conteudos-hero__pattern img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .conteudos-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+    max-width: 778px;
+    margin: 0 auto;
+  }
+
+  .conteudos-hero__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .conteudos-hero__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* Featured card */
+  .conteudos-featured {
+    background: var(--color-white);
+    padding: 24px 0 40px;
+  }
+
+  .conteudos-featured__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .conteudos-featured__card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .conteudos-featured__card:hover {
+    border-color: var(--color-blue);
+  }
+
+  .conteudos-featured__image {
+    width: 100%;
+    aspect-ratio: 768 / 402;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-white-2);
+  }
+
+  .conteudos-featured__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .conteudos-featured__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .conteudos-featured__title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .conteudos-featured__summary {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .conteudos-featured__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    height: 42px;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    background: var(--color-white);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
+  }
+
+  .conteudos-featured__card:hover .conteudos-featured__btn {
+    background-color: var(--color-blue-light);
+  }
+
+  /* Badge */
+  .conteudos-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    background: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-blue);
+    line-height: 19px;
+    align-self: flex-start;
+  }
+
+  /* List */
+  .conteudos-list {
+    background: var(--color-white);
+    padding: 24px 0 80px;
+  }
+
+  .conteudos-list__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .conteudos-list__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .conteudos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .conteudos-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .conteudos-card:hover {
+    border-color: var(--color-blue);
+  }
+
+  .conteudos-card__image {
+    width: 100%;
+    aspect-ratio: 768 / 402;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-white-2);
+  }
+
+  .conteudos-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .conteudos-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .conteudos-card__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .conteudos-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-blue);
+    transition: opacity 0.15s;
+  }
+
+  .conteudos-card:hover .conteudos-card__link {
+    opacity: 0.7;
+  }
+
+  .conteudos-pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .conteudos-hero {
+      padding: 64px var(--container-padding) 80px;
+    }
+
+    .conteudos-hero__title {
+      font-size: 52px;
+      line-height: 56px;
+    }
+
+    .conteudos-hero__subtitle {
+      font-size: 18px;
+    }
+
+    .conteudos-featured {
+      padding: 24px 0 40px;
+    }
+
+    .conteudos-featured__card {
+      flex-direction: row;
+      gap: 40px;
+      padding: 32px;
+    }
+
+    .conteudos-featured__image {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .conteudos-featured__body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .conteudos-featured__title {
+      font-size: 24px;
+    }
+
+    .conteudos-featured__summary {
+      font-size: 18px;
+    }
+
+    .conteudos-list__title {
+      font-size: 40px;
+    }
+
+    .conteudos-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .conteudos-card {
+      padding: 32px;
+    }
+  }
+</style>

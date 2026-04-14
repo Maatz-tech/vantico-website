@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SobreHeroSection from '../components/sobre/SobreHeroSection.astro';
+import MissionSection from '../components/sobre/MissionSection.astro';
+import StatsSection from '../components/pentest/StatsSection.astro';
+import MediaSection from '../components/sobre/MediaSection.astro';
+import CasesSection from '../components/sobre/CasesSection.astro';
+import InitiativesSection from '../components/sobre/InitiativesSection.astro';
+import GovernancaSection from '../components/sobre/GovernancaSection.astro';
+import ContactFormSection from '../components/pentest/ContactFormSection.astro';
+---
+
+<Base
+  title="Sobre — Vantico"
+  description="Conheça a Vantico. Somos especialistas em Pentest com foco na identificação eficiente de riscos e uma abordagem moderna em segurança cibernética."
+>
+  <Header />
+  <main>
+    <SobreHeroSection />
+    <MissionSection />
+    <StatsSection />
+    <MediaSection />
+    <CasesSection />
+    <InitiativesSection />
+    <GovernancaSection />
+    <ContactFormSection />
+  </main>
+  <Footer />
+</Base>

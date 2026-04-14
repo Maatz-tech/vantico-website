@@ -54,7 +54,7 @@ import Button from './Button.astro';
 
     <!-- Desktop CTA -->
     <div class="header__cta">
-      <Button variant="primary" href="#agendar">Agendar demonstração</Button>
+      <Button variant="primary" href="/contato">Agendar demonstração</Button>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -178,11 +178,11 @@ import Button from './Button.astro';
               Vantico
             </div>
             <ul class="header__dropdown-list">
-              <li><a href="#" class="header__dropdown-link">Sobre nós</a></li>
+              <li><a href="/sobre" class="header__dropdown-link">Sobre nós</a></li>
               <li><a href="#" class="header__dropdown-link">Eventos</a></li>
             </ul>
             <ul class="header__dropdown-list header__dropdown-list--mt">
-              <li><a href="#" class="header__dropdown-link header__dropdown-link--bold">Carreiras</a></li>
+              <li><a href="/carreira" class="header__dropdown-link header__dropdown-link--bold">Carreiras</a></li>
               <li><a href="#" class="header__dropdown-link header__dropdown-link--bold">Ouvidoria</a></li>
             </ul>
           </div>
@@ -218,7 +218,7 @@ import Button from './Button.astro';
                 </a>
               </li>
               <li>
-                <a href="/blog" class="header__dropdown-link header__dropdown-link--icon">
+                <a href="/conteudos" class="header__dropdown-link header__dropdown-link--icon">
                   <img src="/images/icons/icon-library.svg" alt="" width="16" height="16" class="header__dropdown-link-icon" />
                   <div>
                     <span class="header__dropdown-link-title">Nossos conteúdos</span>
@@ -328,7 +328,7 @@ import Button from './Button.astro';
       </div>
 
       <!-- Pentest -->
-      <a href="/servicos" class="header__mobile-btn header__mobile-btn--link">Pentest</a>
+      <a href="/pentest" class="header__mobile-btn header__mobile-btn--link">Pentest</a>
 
       <!-- Soluções -->
       <div class="header__mobile-item" data-mobile-accordion>
@@ -377,10 +377,11 @@ import Button from './Button.astro';
               <svg class="header__mobile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="header__mobile-sub" aria-hidden="true">
-              <a href="#" class="header__mobile-link">Sobre nós</a>
+              <a href="/sobre" class="header__mobile-link">Sobre nós</a>
               <a href="#" class="header__mobile-link">Eventos</a>
             </div>
           </div>
+          <a href="/carreira" class="header__mobile-link">Carreiras</a>
           <a href="#" class="header__mobile-link">Cases de sucesso</a>
         </div>
       </div>
@@ -396,7 +397,7 @@ import Button from './Button.astro';
             <img src="/images/icons/icon-newspaper.svg" alt="" width="16" height="16" />
             <span>Últimas notícias</span>
           </a>
-          <a href="/blog" class="header__mobile-link header__mobile-link--icon">
+          <a href="/conteudos" class="header__mobile-link header__mobile-link--icon">
             <img src="/images/icons/icon-library.svg" alt="" width="16" height="16" />
             <span>Nossos conteúdos</span>
           </a>
@@ -413,7 +414,7 @@ import Button from './Button.astro';
     </div>
 
     <div class="header__mobile-footer">
-      <Button variant="primary" href="#agendar" class="w-full">Agendar demonstração</Button>
+      <Button variant="primary" href="/contato" class="w-full">Agendar demonstração</Button>
     </div>
   </div>
 </header>
