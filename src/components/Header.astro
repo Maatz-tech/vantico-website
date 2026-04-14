@@ -589,7 +589,9 @@ import Button from './Button.astro';
   }
 
   .header__dropdown-link {
-    display: block;
+    display: inline-block;
+    width: fit-content;
+    position: relative;
     font-size: 13px;
     font-weight: 400;
     color: var(--color-text);
@@ -599,8 +601,23 @@ import Button from './Button.astro';
     line-height: 1.4;
   }
 
+  .header__dropdown-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 1px;
+    background: var(--color-blue);
+    transition: width 0.3s ease;
+  }
+
   .header__dropdown-link:hover {
     color: var(--color-blue);
+  }
+
+  .header__dropdown-link:hover::after {
+    width: 100%;
   }
 
   .header__dropdown-link--bold {

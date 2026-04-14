@@ -29,7 +29,7 @@ const highlights = [
     <div class="highlights__stats">
       {highlights.map((item, i) => (
         <div class:list={['highlights__stat', { 'highlights__stat--last': i === highlights.length - 1 }]}>
-          <div class="highlights__stat-bg" aria-hidden="true"></div>
+          <img src={`/images/highlights/hover-${i + 1}.svg`} alt="" class="highlights__stat-bg" aria-hidden="true" loading="lazy" />
           <p class="highlights__stat-value">{item.prefix}<span data-odometer={String(item.numericValue)}>{String(item.numericValue)}</span>{item.suffix}</p>
           <p class="highlights__stat-desc">{item.description}</p>
         </div>
@@ -209,41 +209,22 @@ const highlights = [
   .highlights__stat-bg {
     position: absolute;
     inset: 0;
-    background-color: var(--color-blue-light);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 0;
   }
 
-  .highlights__stat-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.5;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-  }
-
-  .highlights__stat:nth-child(1) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-1.svg');
-  }
-
-  .highlights__stat:nth-child(2) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-2.svg');
-  }
-
-  .highlights__stat:nth-child(3) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-3.svg');
-  }
-
-  .highlights__stat:nth-child(4) .highlights__stat-bg::after {
-    background-image: url('/images/highlights/hover-4.svg');
-  }
-
   .highlights__stat:hover .highlights__stat-bg {
-    opacity: 1;
+    opacity: 0.5;
+  }
+
+  .highlights__stat:hover {
+    background-color: var(--color-blue-light);
   }
 
   .highlights__stat--last {

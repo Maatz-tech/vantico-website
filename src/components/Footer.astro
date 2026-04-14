@@ -322,8 +322,29 @@ const aiLogos = [
     transition: color 0.2s;
   }
 
+  a.footer__links-item {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  a.footer__links-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--color-dark-blue);
+    transition: width 0.3s ease;
+  }
+
   a.footer__links-item:hover {
     color: var(--color-dark-blue);
+  }
+
+  a.footer__links-item:hover::after {
+    width: 100%;
   }
 
   .footer__contact-address {
