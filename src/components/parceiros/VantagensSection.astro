@@ -1,0 +1,208 @@
+---
+import Badge from '../Badge.astro';
+import Button from '../Button.astro';
+
+const items = [
+  'Descontos exclusivos e preços preferenciais para seus clientes',
+  'Pentest com início em até 48 horas e reteste imediato para os seus clientes',
+  'Ganhe comissões ou venda diretamente de forma White Label',
+  'Participação em eventos, peças de co-branding e campanhas em conjunto',
+];
+---
+
+<section class="vantagens">
+  <div class="vantagens__container">
+    <div class="vantagens__header" data-animate>
+      <Badge>Vantagens</Badge>
+      <h2 class="vantagens__title" data-animate data-animate-type="typing">Por que se tornar um Parceiro Vantico?</h2>
+    </div>
+  </div>
+
+  <div class="vantagens__grid-wrap">
+    <div class="vantagens__lines" aria-hidden="true">
+      <div class="vantagens__line vantagens__line--h1"></div>
+      <div class="vantagens__line vantagens__line--h2"></div>
+      <div class="vantagens__line vantagens__line--h3"></div>
+      <div class="vantagens__line vantagens__line--v1"></div>
+      <div class="vantagens__line vantagens__line--v-mid"></div>
+      <div class="vantagens__line vantagens__line--v2"></div>
+    </div>
+
+    <div class="vantagens__grid" data-animate>
+      {items.map((item) => (
+        <div class="vantagens__item">
+          <div class="vantagens__check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <p class="vantagens__text">{item}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="vantagens__cta" data-animate>
+    <Button variant="primary" href="/contato">Fale com um especialista</Button>
+  </div>
+</section>
+
+<style>
+  .vantagens {
+    background-color: var(--color-white);
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .vantagens__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+  }
+
+  .vantagens__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vantagens__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  /* Grid wrap */
+  .vantagens__grid-wrap {
+    position: relative;
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .vantagens__lines {
+    display: none;
+  }
+
+  .vantagens__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vantagens__item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+
+  .vantagens__item:last-child {
+    border-bottom: none;
+  }
+
+  .vantagens__check {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-blue);
+  }
+
+  .vantagens__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+    padding-top: 8px;
+  }
+
+  .vantagens__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .vantagens {
+      padding: 80px 0;
+      gap: 64px;
+    }
+
+    .vantagens__title {
+      font-size: 40px;
+      line-height: normal;
+    }
+
+    .vantagens__grid-wrap {
+      padding: 0;
+    }
+
+    .vantagens__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    .vantagens__item {
+      padding: 33px 24px;
+      border-bottom: none;
+    }
+
+    .vantagens__text {
+      font-size: 18px;
+    }
+
+    /* Grid lines */
+    .vantagens__lines {
+      display: block;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .vantagens__line--h1,
+    .vantagens__line--h2,
+    .vantagens__line--h3 {
+      position: absolute;
+      left: -120px;
+      right: -120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, rgba(25,31,47,0.1) 10%, rgba(25,31,47,0.1) 90%, transparent 100%);
+    }
+
+    .vantagens__line--h1 { top: 0; }
+    .vantagens__line--h2 { top: 50%; }
+    .vantagens__line--h3 { bottom: 0; }
+
+    .vantagens__line--v1,
+    .vantagens__line--v-mid,
+    .vantagens__line--v2 {
+      position: absolute;
+      top: -40px;
+      bottom: -40px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(25,31,47,0.1) 15%, rgba(25,31,47,0.1) 85%, transparent 100%);
+    }
+
+    .vantagens__line--v1 { left: 0; }
+    .vantagens__line--v-mid { left: 50%; }
+    .vantagens__line--v2 { right: 0; }
+  }
+</style>

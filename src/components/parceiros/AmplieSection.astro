@@ -1,0 +1,119 @@
+---
+---
+
+<section class="amplie">
+  <div class="amplie__container">
+    <div class="amplie__content" data-animate>
+      <h2 class="amplie__title" data-animate data-animate-type="typing">Amplie seus serviços com a Vantico como parceira</h2>
+      <div class="amplie__text">
+        <p class="amplie__paragraph">O Programa de Parceiros Vantico permite que empresas de tecnologia e segurança cibernética <strong>aumentem sua receita com serviços de Pentest e testes de intrusão.</strong></p>
+        <p class="amplie__paragraph">Ao se tornar parceiro, você pode ampliar seu portfólio, gerar novas oportunidades de negócio e oferecer soluções avançadas de segurança da informação aos seus clientes.</p>
+      </div>
+    </div>
+    <div class="amplie__visual" data-animate>
+      <div class="amplie__image-outer">
+        <div class="amplie__image-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .amplie {
+    background-color: var(--color-white-2);
+    padding: 48px 0;
+  }
+
+  .amplie__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .amplie__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .amplie__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .amplie__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .amplie__paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  .amplie__paragraph strong {
+    font-weight: 700;
+  }
+
+  .amplie__visual {
+    width: 100%;
+  }
+
+  .amplie__image-outer {
+    background: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 16px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .amplie__image-inner {
+    background: var(--color-blue-light);
+    border-radius: 12px;
+    width: 100%;
+    aspect-ratio: 456 / 320;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .amplie {
+      padding: 80px 0;
+    }
+
+    .amplie__container {
+      flex-direction: row;
+      gap: 64px;
+      align-items: center;
+      padding: 0;
+    }
+
+    .amplie__content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .amplie__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .amplie__paragraph {
+      font-size: 18px;
+    }
+
+    .amplie__visual {
+      flex: 0 0 456px;
+      width: 456px;
+    }
+  }
+</style>

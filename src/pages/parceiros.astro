@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ParceirosHeroSection from '../components/parceiros/ParceirosHeroSection.astro';
+import BenefitsCardsSection from '../components/parceiros/BenefitsCardsSection.astro';
+import AmplieSection from '../components/parceiros/AmplieSection.astro';
+import LogosCarousel from '../components/LogosCarousel.astro';
+import ModalidadesSection from '../components/parceiros/ModalidadesSection.astro';
+import VantagensSection from '../components/parceiros/VantagensSection.astro';
+import ParceirosFormSection from '../components/parceiros/ParceirosFormSection.astro';
+---
+
+<Base
+  title="Parceiros — Vantico"
+  description="O programa que potencializa os resultados da sua empresa. Torne-se um Parceiro Vantico e amplie seus serviços com pentests rápidos e confiáveis."
+>
+  <Header />
+  <main>
+    <ParceirosHeroSection />
+    <BenefitsCardsSection />
+    <AmplieSection />
+    <LogosCarousel />
+    <ModalidadesSection />
+    <VantagensSection />
+    <ParceirosFormSection />
+  </main>
+  <Footer />
+</Base>

@@ -1,0 +1,127 @@
+---
+const cards = [
+  {
+    icon: '/images/parceiros/icon-expand.svg',
+    title: 'Expanda seu portfólio',
+    description: 'Revenda ou indique o Pentest as a Service da Vantico.',
+  },
+  {
+    icon: '/images/parceiros/icon-dollar-sign.svg',
+    title: 'Aumente sua receita',
+    description: 'Ofereça novos serviços e conquiste mais clientes.',
+  },
+  {
+    icon: '/images/parceiros/icon-chart.svg',
+    title: 'Potencialize seus resultados',
+    description: 'Amplie sua área de atuação oferecendo um serviço de Pentest de alto nível.',
+  },
+];
+---
+
+<section class="benefits">
+  <div class="benefits__container">
+    <div class="benefits__grid" data-animate>
+      {cards.map((card) => (
+        <div class="benefits__card">
+          <div class="benefits__icon">
+            <img src={card.icon} alt="" width="20" height="20" />
+          </div>
+          <h3 class="benefits__title">{card.title}</h3>
+          <p class="benefits__desc">{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits {
+    background-color: var(--color-white);
+    padding: 0 0 40px;
+  }
+
+  .benefits__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .benefits__card {
+    border: 1px solid var(--color-border-solid);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  .benefits__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0.8px solid var(--color-border-solid);
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .benefits__title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .benefits__desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  /* Mobile: horizontal carousel */
+  @media (max-width: 767px) {
+    .benefits {
+      padding: 0 0 24px;
+    }
+
+    .benefits__grid {
+      grid-template-columns: none;
+      display: flex;
+      gap: 16px;
+      padding-bottom: 8px;
+    }
+
+    .benefits__card {
+      min-width: 280px;
+      flex-shrink: 0;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .benefits__container {
+      padding: 0;
+    }
+
+    .benefits__grid {
+      grid-template-columns: repeat(3, 1fr);
+      overflow: visible;
+    }
+  }
+</style>

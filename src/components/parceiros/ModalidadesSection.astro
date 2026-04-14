@@ -1,0 +1,270 @@
+---
+import Button from '../Button.astro';
+
+const items = [
+  {
+    icon: '/images/parceiros/icon-shield-check.svg',
+    title: 'Parceiros MSP e MSSP',
+    text: 'Provedores de serviços devem fornecer suporte e orientação confiáveis a seus clientes para inovar com segurança. Nós podemos ajudar! MSPs e MSSPs podem aproveitar o Pentest como um serviço (PTaaS) oferecido pela Vantico e incluí-lo em seus portfólios, expandindo seus negócios e modernizando a maneira como realizam Pentests.',
+  },
+  {
+    icon: '/images/parceiros/icon-handshake.svg',
+    title: 'Parceiros de Indicação',
+    text: 'Seus clientes desejam reforçar a postura de segurança, obter conformidade ou executar Pentests, mas você não oferece esse serviço? Indique a Vantico com um desconto exclusivo. A sua empresa será bonificada e ainda contará com o apoio de nossos especialistas para fornecer os recursos necessários para posicionar e recomendar a Vantico para seus clientes.',
+  },
+  {
+    icon: '/images/parceiros/icon-chart.svg',
+    title: 'Revendedores e Parceiros VARs',
+    text: 'Nessa modalidade, você expande seu portfólio de serviços sem precisar de grandes investimentos ao revender o Pentest da Vantico. A Vantico ainda oferecerá suporte em todas as etapas, com uma equipe de vendas dedicada e recursos técnicos de marketing. Assim, revendedores e VARs aumentam sua receita!',
+  },
+];
+---
+
+<section class="modalidades">
+  <div class="modalidades__container">
+    <div class="modalidades__left" data-animate>
+      <h2 class="modalidades__title" data-animate data-animate-type="typing">Modalidades do Programa de Parceiros</h2>
+      <p class="modalidades__subtitle">Escolha a modalidade ideal para sua empresa e faça parte do ecossistema Vantico.</p>
+      <Button variant="primary" href="/contato" icon>Iniciar parceria</Button>
+    </div>
+
+    <div class="modalidades__accordion" data-animate>
+      {items.map((item) => (
+        <div class="modalidades__item">
+          <button class="modalidades__question" type="button" aria-expanded="false">
+            <div class="modalidades__icon-wrap">
+              <img src={item.icon} alt="" width="20" height="20" />
+            </div>
+            <span class="modalidades__question-text">{item.title}</span>
+          </button>
+          <div class="modalidades__answer">
+            <p class="modalidades__answer-text">{item.text}</p>
+          </div>
+          <div class="modalidades__indicator"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initModalidades() {
+    const items = document.querySelectorAll('.modalidades__item');
+    const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+
+    function openItem(target: Element) {
+      items.forEach((other) => {
+        other.classList.remove('modalidades__item--open');
+        other.querySelector('.modalidades__question')?.setAttribute('aria-expanded', 'false');
+      });
+      target.classList.add('modalidades__item--open');
+      target.querySelector('.modalidades__question')?.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeAll() {
+      items.forEach((item) => {
+        item.classList.remove('modalidades__item--open');
+        item.querySelector('.modalidades__question')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        if (!isTouchDevice()) openItem(item);
+      });
+
+      item.querySelector('.modalidades__question')?.addEventListener('click', () => {
+        if (isTouchDevice()) {
+          const isOpen = item.classList.contains('modalidades__item--open');
+          if (isOpen) { closeAll(); } else { openItem(item); }
+        }
+      });
+    });
+
+    const accordion = document.querySelector('.modalidades__accordion');
+    accordion?.addEventListener('mouseleave', () => {
+      if (!isTouchDevice()) closeAll();
+    });
+  }
+  initModalidades();
+  document.addEventListener('astro:after-swap', initModalidades);
+</script>
+
+<style>
+  .modalidades {
+    background-color: var(--color-white);
+    padding: 80px 0;
+  }
+
+  .modalidades__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+  }
+
+  /* Left column */
+  .modalidades__left {
+    flex: 0 0 440px;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .modalidades__title {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .modalidades__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  /* Accordion */
+  .modalidades__accordion {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .modalidades__item {
+    position: relative;
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+
+  .modalidades__item:last-child {
+    border-bottom: none;
+  }
+
+  .modalidades__question {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Satoshi Variable', sans-serif;
+  }
+
+  .modalidades__icon-wrap {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    border: 0.8px solid var(--color-border-solid);
+    background: var(--color-white);
+    flex-shrink: 0;
+  }
+
+  .modalidades__icon-wrap img {
+    transition: filter 0.3s ease;
+  }
+
+  .modalidades__item--open .modalidades__icon-wrap img {
+    filter: brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(1800%) hue-rotate(217deg) brightness(92%) contrast(90%);
+  }
+
+  .modalidades__question-text {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* Answer */
+  .modalidades__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .modalidades__item--open .modalidades__answer {
+    max-height: 300px;
+  }
+
+  .modalidades__answer-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    margin: 0;
+    padding: 0 24px 24px;
+  }
+
+  /* Blue indicator line */
+  .modalidades__indicator {
+    position: absolute;
+    bottom: -1px;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background: var(--color-blue);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modalidades__item--open .modalidades__indicator {
+    opacity: 1;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .modalidades {
+      padding: 48px 0;
+    }
+
+    .modalidades__container {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .modalidades__left {
+      flex: none;
+      width: 100%;
+      max-width: none;
+    }
+
+    .modalidades__title {
+      font-size: 24px;
+      line-height: normal;
+    }
+
+    .modalidades__subtitle {
+      font-size: 16px;
+    }
+
+    .modalidades__question {
+      padding: 20px 0;
+    }
+
+    .modalidades__answer-text {
+      padding: 0 0 20px;
+    }
+
+    .modalidades__indicator {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .modalidades__container {
+      padding: 0;
+    }
+  }
+</style>

@@ -1,0 +1,307 @@
+---
+import Badge from '../Badge.astro';
+---
+
+<section class="pform">
+  <div class="pform__container">
+    <!-- Left: info -->
+    <div class="pform__info" data-animate>
+      <div class="pform__header">
+        <Badge>Comece agora</Badge>
+        <h2 class="pform__title" data-animate data-animate-type="typing">Torne-se um parceiro Vantico</h2>
+        <p class="pform__subtitle">Preencha o formulário abaixo e nossa equipe entrará em contato para apresentar as melhores condições para a sua empresa.</p>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="pform__form-wrap" data-animate>
+      <!-- Grid lines -->
+      <div class="pform__lines" aria-hidden="true">
+        <div class="pform__line pform__line--v1"></div>
+        <div class="pform__line pform__line--v2"></div>
+        <div class="pform__line pform__line--h1"></div>
+        <div class="pform__line pform__line--h2"></div>
+      </div>
+
+      <form class="pform__form" action="#" method="POST">
+        <div class="pform__form-row">
+          <div class="pform__field">
+            <label class="pform__label">Nome <span class="pform__required">*</span></label>
+            <input type="text" class="pform__input" placeholder="Digite seu nome" required />
+          </div>
+          <div class="pform__field">
+            <label class="pform__label">Empresa <span class="pform__required">*</span></label>
+            <input type="text" class="pform__input" placeholder="Digite o nome da sua empresa" required />
+          </div>
+        </div>
+
+        <div class="pform__form-row">
+          <div class="pform__field">
+            <label class="pform__label">E-mail <span class="pform__required">*</span></label>
+            <input type="email" class="pform__input" placeholder="Digite seu e-mail" required />
+          </div>
+          <div class="pform__field">
+            <label class="pform__label">Telefone <span class="pform__required">*</span></label>
+            <input type="tel" class="pform__input" placeholder="(99) 99999-9999" required />
+          </div>
+        </div>
+
+        <div class="pform__field">
+          <label class="pform__label">Como nos conheceu? <span class="pform__required">*</span></label>
+          <select class="pform__input pform__select" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="google">Google</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="indicacao">Indicação</option>
+            <option value="evento">Evento</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="pform__field">
+          <label class="pform__label">Mensagem</label>
+          <textarea class="pform__input pform__textarea" placeholder="Digite sua mensagem"></textarea>
+        </div>
+
+        <button type="submit" class="pform__submit">Enviar</button>
+
+        <p class="pform__privacy">Ao informar meus dados, estou ciente das diretrizes da <a href="/privacidade">Política de Privacidade.</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pform {
+    background-color: var(--color-white);
+    padding: 48px 0;
+    overflow: hidden;
+  }
+
+  .pform__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Left info */
+  .pform__info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .pform__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .pform__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    margin: 0;
+  }
+
+  .pform__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  /* Form */
+  .pform__form-wrap {
+    position: relative;
+    background: var(--color-white-2);
+    padding: 32px;
+  }
+
+  .pform__lines {
+    display: none;
+  }
+
+  .pform__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pform__form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pform__field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pform__label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-dark-blue);
+  }
+
+  .pform__required {
+    color: #E95353;
+  }
+
+  .pform__input {
+    height: 43px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    background: var(--color-white);
+    font-family: 'Satoshi Variable', sans-serif;
+    font-size: 16px;
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .pform__input:focus {
+    border-color: var(--color-blue);
+  }
+
+  .pform__input::placeholder {
+    color: var(--color-text-dark);
+    opacity: 0.6;
+  }
+
+  .pform__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23303030' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    line-height: normal;
+    min-height: 48px;
+  }
+
+  .pform__textarea {
+    height: 100px;
+    resize: vertical;
+  }
+
+  .pform__submit {
+    height: 42px;
+    width: 100%;
+    border: none;
+    border-radius: 100px;
+    background: var(--color-blue);
+    color: var(--color-white);
+    font-family: 'Satoshi Variable', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .pform__submit:hover {
+    opacity: 0.9;
+  }
+
+  .pform__privacy {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    margin: 0;
+    text-align: center;
+  }
+
+  .pform__privacy a {
+    color: var(--color-text-dark);
+    text-decoration: underline;
+  }
+
+  /* Desktop */
+  @media (min-width: 768px) {
+    .pform {
+      padding: 80px 0;
+    }
+
+    .pform__container {
+      flex-direction: row;
+      gap: 80px;
+      align-items: flex-start;
+      padding: 0;
+    }
+
+    .pform__info {
+      width: 500px;
+      flex-shrink: 0;
+    }
+
+    .pform__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .pform__subtitle {
+      font-size: 18px;
+    }
+
+    .pform__form-wrap {
+      flex: 1;
+    }
+
+    .pform__form-row {
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    .pform__field {
+      flex: 1;
+    }
+
+    /* Grid lines */
+    .pform__lines {
+      display: block;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pform__line--v1,
+    .pform__line--v2 {
+      position: absolute;
+      top: -40px;
+      bottom: -40px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(25,31,47,0.1) 15%, rgba(25,31,47,0.1) 85%, transparent 100%);
+    }
+
+    .pform__line--v1 { left: 0; }
+    .pform__line--v2 { right: 0; }
+
+    .pform__line--h1,
+    .pform__line--h2 {
+      position: absolute;
+      left: -40px;
+      right: -40px;
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, rgba(25,31,47,0.1) 10%, rgba(25,31,47,0.1) 90%, transparent 100%);
+    }
+
+    .pform__line--h1 { top: 0; }
+    .pform__line--h2 { bottom: 0; }
+  }
+
+  /* Mobile: form first */
+  @media (max-width: 767px) {
+    .pform__container {
+      flex-direction: column-reverse;
+    }
+  }
+</style>
