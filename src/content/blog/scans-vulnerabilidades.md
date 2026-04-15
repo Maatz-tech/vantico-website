@@ -1,7 +1,7 @@
 ---
 title: "Por que Scans de Vulnerabilidades não são o suficiente"
 date: "2026-03-02"
-image: "/images/blog/post-10.jpg"
+image: "/images/blog/post-10.webp"
 category: "Segurança"
 tags: ["vulnerabilidades", "scan"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

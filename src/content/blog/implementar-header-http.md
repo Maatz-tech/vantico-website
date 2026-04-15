@@ -1,7 +1,7 @@
 ---
 title: "O que é e como implementar Header HTTP?"
 date: "2026-03-01"
-image: "/images/blog/post-10.jpg"
+image: "/images/blog/post-10.webp"
 category: "Labs"
 tags: ["http", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

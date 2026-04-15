@@ -1,7 +1,7 @@
 ---
 title: "JSON Web Token e a importância do Tempo de Expiração"
 date: "2026-03-02"
-image: "/images/blog/post-9.jpg"
+image: "/images/blog/post-9.webp"
 category: "Labs"
 tags: ["jwt", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

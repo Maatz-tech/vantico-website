@@ -1,7 +1,7 @@
 ---
 title: "O que o Spring Boot Actuator e suas vulnerabilidades"
 date: "2026-03-02"
-image: "/images/blog/post-8.jpg"
+image: "/images/blog/post-8.webp"
 category: "Labs"
 tags: ["spring boot", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

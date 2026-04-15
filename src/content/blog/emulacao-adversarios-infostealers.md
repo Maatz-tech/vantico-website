@@ -1,7 +1,7 @@
 ---
 title: "Narrativa de uma Emulação de Adversários e como Infostealers podem impactar"
 date: "2026-03-01"
-image: "/images/blog/post-10.jpg"
+image: "/images/blog/post-10.webp"
 category: "Labs"
 tags: ["red team", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

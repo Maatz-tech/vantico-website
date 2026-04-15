@@ -1,7 +1,7 @@
 ---
 title: "Engenharia Social Orientada pelo Adversário"
 date: "2026-03-02"
-image: "/images/blog/post-11.jpg"
+image: "/images/blog/post-11.webp"
 category: "Labs"
 tags: ["engenharia social", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

@@ -1,7 +1,7 @@
 ---
 title: "Resoluções BCB 538 e CMN 5.274: O que muda para Instituições Financeiras"
 date: "2026-03-02"
-image: "/images/blog/post-5.jpg"
+image: "/images/blog/post-5.webp"
 category: "Segurança"
 tags: ["compliance", "financeiro"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

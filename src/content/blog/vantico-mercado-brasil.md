@@ -1,7 +1,7 @@
 ---
 title: "Como a Vantico se destaca no mercado de Pentest no Brasil"
 date: "2026-03-02"
-image: "/images/blog/post-7.jpg"
+image: "/images/blog/post-7.webp"
 category: "Pentest"
 tags: ["vantico", "mercado"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

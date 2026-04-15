@@ -26,29 +26,29 @@ import Badge from '../Badge.astro';
       <form class="pform__form" action="#" method="POST">
         <div class="pform__form-row">
           <div class="pform__field">
-            <label class="pform__label">Nome <span class="pform__required">*</span></label>
-            <input type="text" class="pform__input" placeholder="Digite seu nome" required />
+            <label class="pform__label" for="pform-nome">Nome <span class="pform__required">*</span></label>
+            <input type="text" id="pform-nome" class="pform__input" placeholder="Digite seu nome" required />
           </div>
           <div class="pform__field">
-            <label class="pform__label">Empresa <span class="pform__required">*</span></label>
-            <input type="text" class="pform__input" placeholder="Digite o nome da sua empresa" required />
+            <label class="pform__label" for="pform-empresa">Empresa <span class="pform__required">*</span></label>
+            <input type="text" id="pform-empresa" class="pform__input" placeholder="Digite o nome da sua empresa" required />
           </div>
         </div>
 
         <div class="pform__form-row">
           <div class="pform__field">
-            <label class="pform__label">E-mail <span class="pform__required">*</span></label>
-            <input type="email" class="pform__input" placeholder="Digite seu e-mail" required />
+            <label class="pform__label" for="pform-email">E-mail <span class="pform__required">*</span></label>
+            <input type="email" id="pform-email" class="pform__input" placeholder="Digite seu e-mail" required />
           </div>
           <div class="pform__field">
-            <label class="pform__label">Telefone <span class="pform__required">*</span></label>
-            <input type="tel" class="pform__input" placeholder="(99) 99999-9999" required />
+            <label class="pform__label" for="pform-telefone">Telefone <span class="pform__required">*</span></label>
+            <input type="tel" id="pform-telefone" class="pform__input" placeholder="(99) 99999-9999" required />
           </div>
         </div>
 
         <div class="pform__field">
-          <label class="pform__label">Como nos conheceu? <span class="pform__required">*</span></label>
-          <select class="pform__input pform__select" required>
+          <label class="pform__label" for="pform-como">Como nos conheceu? <span class="pform__required">*</span></label>
+          <select id="pform-como" class="pform__input pform__select" required>
             <option value="" disabled selected>Selecione</option>
             <option value="google">Google</option>
             <option value="linkedin">LinkedIn</option>
@@ -59,8 +59,8 @@ import Badge from '../Badge.astro';
         </div>
 
         <div class="pform__field">
-          <label class="pform__label">Mensagem</label>
-          <textarea class="pform__input pform__textarea" placeholder="Digite sua mensagem"></textarea>
+          <label class="pform__label" for="pform-mensagem">Mensagem</label>
+          <textarea id="pform-mensagem" class="pform__input pform__textarea" placeholder="Digite sua mensagem"></textarea>
         </div>
 
         <button type="submit" class="pform__submit">Enviar</button>

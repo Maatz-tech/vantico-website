@@ -11,8 +11,8 @@
       </div>
     </div>
     <div class="amplie__visual" data-animate>
-      <div class="amplie__image-outer">
-        <div class="amplie__image-inner"></div>
+      <div class="amplie__image-frame">
+        <img src="/images/parceiros/amplie-illustration.webp" alt="Ilustração do programa de parceiros Vantico" class="amplie__image" loading="lazy" />
       </div>
     </div>
   </div>
@@ -69,19 +69,18 @@
     width: 100%;
   }
 
-  .amplie__image-outer {
+  .amplie__image-frame {
     background: var(--color-white);
     border: 1px solid var(--color-border-solid);
     border-radius: 16px;
-    padding: 8px;
-    width: 100%;
+    padding: 12px;
   }
 
-  .amplie__image-inner {
-    background: var(--color-blue-light);
-    border-radius: 12px;
+  .amplie__image {
     width: 100%;
-    aspect-ratio: 456 / 320;
+    height: auto;
+    display: block;
+    border-radius: 12px;
   }
 
   /* Desktop */

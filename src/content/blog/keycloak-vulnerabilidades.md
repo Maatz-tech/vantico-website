@@ -1,7 +1,7 @@
 ---
 title: "Um Guia para o Keycloak e suas vulnerabilidades de segurança"
 date: "2026-03-02"
-image: "/images/blog/post-7.jpg"
+image: "/images/blog/post-7.webp"
 category: "Labs"
 tags: ["keycloak", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

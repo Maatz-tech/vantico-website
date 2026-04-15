@@ -9,7 +9,7 @@ const blog = defineCollection({
     summary: z.string(),
     image: z.string(),
     author: z.string().default('Julia Salim'),
-    authorImage: z.string().default('/images/blog/author-julia.jpg'),
+    authorImage: z.string().default('/images/blog/author-julia.webp'),
     category: z.enum(['Pentest', 'Segurança', 'Entendendo o pentest', 'Labs']),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),

@@ -56,6 +56,34 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteU
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
+    <!-- Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vantico",
+      "url": "https://vantico.com.br",
+      "logo": "https://vantico.com.br/images/logo-vantico-full.svg",
+      "description": "Especialistas em Pentest e Segurança Ofensiva",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Paulista, 1470 Conj 1110 - Bela Vista",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "postalCode": "01311-927",
+        "addressCountry": "BR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@vantico.com.br",
+        "contactType": "sales"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/vantico",
+        "https://instagram.com/vantico",
+        "https://github.com/vantico"
+      ]
+    })} />
+
     <!-- Preload font -->
     <link rel="preload" href={satoshiFont} as="font" type="font/woff2" crossorigin />
   </head>

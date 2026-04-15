@@ -1,7 +1,7 @@
 ---
 title: "Tudo que você precisa saber sobre CVE"
 date: "2026-03-03"
-image: "/images/blog/post-6.jpg"
+image: "/images/blog/post-6.webp"
 category: "Labs"
 tags: ["cve", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."

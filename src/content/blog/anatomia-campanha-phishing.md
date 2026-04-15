@@ -1,7 +1,7 @@
 ---
 title: "Anatomia de uma Campanha de Phishing"
 date: "2026-03-04"
-image: "/images/blog/post-2.jpg"
+image: "/images/blog/post-2.webp"
 category: "Labs"
 tags: ["phishing", "labs"]
 summary: "Este é um resumo do post. Seu objetivo é informar rapidamente o leitor sobre o conteúdo, facilitando a decisão de leitura."
