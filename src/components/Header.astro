@@ -481,7 +481,23 @@ import Button from './Button.astro';
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: opacity 0.15s;
+    position: relative;
+    transition: color 0.15s;
+  }
+
+  .header__nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: var(--color-blue);
+    transition: width 0.3s ease;
+  }
+
+  .header__nav-link:hover::after {
+    width: 100%;
   }
 
   .header__nav-link:hover {

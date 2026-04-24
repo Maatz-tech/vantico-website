@@ -1,7 +1,7 @@
 <section class="remote">
   <div class="remote__container">
     <div class="remote__image-wrap">
-      <div class="remote__image-inner"></div>
+      <img src="/images/carreira/remote-map.png" alt="" class="remote__image-inner" loading="lazy" />
     </div>
     <div class="remote__content" data-animate>
       <h2 class="remote__title" data-animate data-animate-type="typing">Em qualquer lugar</h2>
@@ -22,10 +22,10 @@
   }
   .remote__image-wrap { border: 1px solid var(--color-border-solid); border-radius: 16px; padding: 12px; }
   .remote__image-inner {
+    display: block;
     width: 100%; aspect-ratio: 800 / 534;
     background-color: var(--color-white-2);
-    background-image: url('/images/carreira/remote-map.png');
-    background-size: cover; background-position: center;
+    object-fit: cover; object-position: center;
     border-radius: 8px;
   }
   .remote__content { display: flex; flex-direction: column; gap: 16px; }
