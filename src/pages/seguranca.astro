@@ -1,0 +1,621 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const programaLinks = [
+  { label: "Vantico's Trust Center", href: '#' },
+  { label: 'Política de Cookies', href: '#' },
+  { label: 'Termos de Uso', href: '#' },
+  { label: 'Política de Privacidade e Proteção de Dados Pessoais', href: '/politica-de-privacidade' },
+];
+
+const medidas = [
+  {
+    icon: 'shield-user',
+    title: 'Segurança Pessoal',
+    text: 'Todos os funcionários reconhecem a política de segurança e assinam um acordo de confidencialidade.',
+  },
+  {
+    icon: 'laptop-check',
+    title: 'Segurança de Hardware',
+    text: 'Todos os laptops dos funcionários são gerenciados, possuem discos rígidos criptografados e são monitorados com software antivírus.',
+  },
+  {
+    icon: 'shield-check',
+    title: 'Serviços assegurados',
+    text: 'A Vantico conta com cobertura de seguro pela Tokio Marine, assegurando proteção e tranquilidade para nossos clientes em todos os serviços prestados.',
+  },
+  {
+    icon: 'user-round-key',
+    title: 'Gerenciamento de identidade e acesso',
+    text: 'Nossos funcionários têm logins exclusivos para todos os sistemas críticos de negócios e a autenticação de dois fatores é aplicada sempre que possível. Realizamos auditorias de acesso regulares e operamos com base no princípio do privilégio mínimo.',
+  },
+  {
+    icon: 'shield-check',
+    title: 'Conscientização em Segurança',
+    text: 'Regularmente realizamos treinamentos de segurança e testes de phishing com nosso time. Além disso, cada novo funcionário participa de uma sessão de treinamento para aprender a identificar ameaças como engenharia social e phishing.',
+  },
+];
+
+const recursos = [
+  { label: 'Whitepaper de Segurança', href: '#' },
+  { label: 'Política de Segurança da Informação', href: '#' },
+  { label: 'Relatório de Análise de Vulnerabilidade', href: '#' },
+  { label: 'Relatório de Pentest 2025', href: '#' },
+];
+---
+
+<Base
+  title="Segurança — Vantico"
+  description="Na Vantico, levamos a segurança a sério. Mapeamos nosso programa de segurança para padrões do setor como ISO 27001 e CIS Critical Security Controls."
+>
+  <Header />
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="sec-hero">
+      <div class="sec-hero__pattern" aria-hidden="true">
+        <img src="/images/hero-pattern.svg" alt="" />
+      </div>
+      <div class="sec-hero__container">
+        <h1 class="sec-hero__title" data-animate data-animate-type="typing">Segurança</h1>
+      </div>
+    </section>
+
+    <!-- ============ PROGRAMA ============ -->
+    <section class="sec-programa">
+      <div class="sec-programa__container">
+        <h2 class="sec-section-title" data-animate>Programa de Segurança da Informação</h2>
+
+        <div class="sec-programa__grid">
+          <div class="sec-programa__text" data-animate>
+            <p class="sec-programa__paragraph">
+              Na Vantico, levamos a segurança a sério! Mapeamos nosso programa de segurança para padrões do setor, como <strong>ISO 27001</strong> e <strong>CIS Critical Security Controls</strong>. Estamos constantemente procurando maneiras de melhorar não apenas a segurança de nosso produto, mas também a forma como conduzimos os negócios diariamente.
+            </p>
+            <p class="sec-programa__paragraph">
+              Ser uma equipe amplamente distribuída traz seu próprio conjunto de desafios, e é por isso que garantimos que todos os funcionários entendam o papel que desempenham na segurança da Vantico. Também usamos ferramentas para nos ajudar a garantir a conformidade com nossas políticas de segurança interna.
+            </p>
+            <a href="/contato" class="sec-btn sec-btn--primary">Entre em contato</a>
+          </div>
+
+          <ul class="sec-link-list" data-animate>
+            {programaLinks.map((link) => (
+              <li class="sec-link-list__item">
+                <a href={link.href} class="sec-link-list__link">
+                  <span class="sec-link-list__label">{link.label}</span>
+                  <span class="sec-link-list__icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7 7h10v10" />
+                      <path d="M7 17 17 7" />
+                    </svg>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEDIDAS INTERNAS ============ -->
+    <section class="sec-medidas">
+      <div class="sec-medidas__container">
+        <h2 class="sec-section-title sec-medidas__title" data-animate data-animate-type="typing">Medidas de Segurança Interna</h2>
+
+        <div class="sec-medidas__grid">
+          <div class="sec-medidas__row">
+            {medidas.slice(0, 3).map((m) => (
+              <article class="sec-medida-card" data-animate>
+                <span class="sec-medida-card__icon">
+                  {m.icon === 'shield-user' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M6.376 18.91a6 6 0 0 1 11.249.003"/><circle cx="12" cy="11" r="4"/></svg>
+                  )}
+                  {m.icon === 'laptop-check' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M2 20h20"/><path d="m9 10 2 2 4-4"/></svg>
+                  )}
+                  {m.icon === 'shield-check' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                  )}
+                  {m.icon === 'user-round-key' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21a8 8 0 0 1 10.434-7.62"/><circle cx="10" cy="8" r="5"/><circle cx="18" cy="18" r="3"/><path d="m22 22-1.9-1.9"/></svg>
+                  )}
+                </span>
+                <div class="sec-medida-card__body">
+                  <h3 class="sec-medida-card__title">{m.title}</h3>
+                  <p class="sec-medida-card__text">{m.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div class="sec-medidas__row sec-medidas__row--two">
+            {medidas.slice(3).map((m) => (
+              <article class="sec-medida-card" data-animate>
+                <span class="sec-medida-card__icon">
+                  {m.icon === 'shield-user' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M6.376 18.91a6 6 0 0 1 11.249.003"/><circle cx="12" cy="11" r="4"/></svg>
+                  )}
+                  {m.icon === 'laptop-check' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M2 20h20"/><path d="m9 10 2 2 4-4"/></svg>
+                  )}
+                  {m.icon === 'shield-check' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                  )}
+                  {m.icon === 'user-round-key' && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 21a8 8 0 0 1 10.434-7.62"/><circle cx="10" cy="8" r="5"/><circle cx="18" cy="18" r="3"/><path d="m22 22-1.9-1.9"/></svg>
+                  )}
+                </span>
+                <div class="sec-medida-card__body">
+                  <h3 class="sec-medida-card__title">{m.title}</h3>
+                  <p class="sec-medida-card__text">{m.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RECURSOS ============ -->
+    <section class="sec-recursos">
+      <div class="sec-recursos__container">
+        <div class="sec-recursos__grid">
+          <div class="sec-recursos__text" data-animate>
+            <h2 class="sec-section-title sec-recursos__title">Recursos adicionais sobre nossa Segurança</h2>
+            <p class="sec-recursos__desc">
+              Consulte os arquivos que disponibilizamos relacionados à nossas políticas, iniciativas e ações internas.
+            </p>
+          </div>
+
+          <ul class="sec-link-list" data-animate>
+            {recursos.map((link) => (
+              <li class="sec-link-list__item">
+                <a href={link.href} class="sec-link-list__link">
+                  <span class="sec-link-list__label">{link.label}</span>
+                  <span class="sec-link-list__icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7 7h10v10" />
+                      <path d="M7 17 17 7" />
+                    </svg>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="sec-cta-final">
+      <div class="sec-cta-final__card" data-animate>
+        <div class="sec-cta-final__pattern" aria-hidden="true">
+          <img src="/images/hero-pattern.svg" alt="" />
+        </div>
+        <div class="sec-cta-final__content">
+          <h2 class="sec-cta-final__title">Ficou com alguma dúvida?</h2>
+          <p class="sec-cta-final__text">
+            Se você tiver alguma dúvida sobre segurança, fale conosco pelo e-mail <strong>security@vantico.com.br</strong> ou preencha o formulário para receber nosso contato.
+          </p>
+          <a href="/contato" class="sec-btn sec-btn--primary">Entre em contato</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ============================
+     Shared button
+     ============================ */
+  .sec-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 9999px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: opacity 0.2s ease;
+    width: fit-content;
+    white-space: nowrap;
+  }
+  .sec-btn--primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border-color: var(--color-blue);
+  }
+  .sec-btn--primary:hover { opacity: 0.9; }
+
+  /* Section titles */
+  .sec-section-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* ============================
+     HERO
+     ============================ */
+  .sec-hero {
+    position: relative;
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding) 40px;
+    overflow: clip;
+  }
+  .sec-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 364px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sec-hero__pattern img { display: block; width: 100%; height: 100%; }
+  .sec-hero__container {
+    position: relative;
+    z-index: 1;
+    max-width: 327px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  .sec-hero__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+    text-align: center;
+  }
+
+  /* ============================
+     PROGRAMA
+     ============================ */
+  .sec-programa {
+    background-color: var(--color-white);
+    padding: 40px var(--container-padding);
+  }
+  .sec-programa__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .sec-programa__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .sec-programa__text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sec-programa__paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+  }
+  .sec-programa__paragraph strong {
+    font-weight: 500;
+    color: var(--color-dark-blue);
+  }
+
+  /* ============================
+     LINK LIST (shared)
+     ============================ */
+  .sec-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+  }
+  .sec-link-list__item:not(:last-child) {
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+  .sec-link-list__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--color-text-dark);
+    transition: color 0.2s ease;
+  }
+  .sec-link-list__link:hover {
+    color: var(--color-blue);
+  }
+  .sec-link-list__label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--color-text-dark);
+  }
+  .sec-link-list__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+    border: 0.8px solid var(--color-border-solid);
+    border-radius: 100px;
+    color: var(--color-dark-blue);
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .sec-link-list__link:hover .sec-link-list__icon {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  /* ============================
+     MEDIDAS
+     ============================ */
+  .sec-medidas {
+    background-color: var(--color-white-2);
+    padding: 48px var(--container-padding);
+  }
+  .sec-medidas__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .sec-medidas__title {
+    text-align: center;
+    width: 100%;
+  }
+  .sec-medidas__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+  .sec-medidas__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .sec-medida-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+    background: var(--color-white);
+    border: 0.5px solid var(--color-border-solid);
+    transition: background-color 0.2s ease;
+  }
+  .sec-medida-card:hover {
+    background: #F2F6FF;
+  }
+  .sec-medida-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: var(--color-white);
+    border: 0.8px solid var(--color-border-solid);
+    border-radius: 100px;
+    color: var(--color-dark-blue);
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+  }
+  .sec-medida-card:hover .sec-medida-card__icon {
+    color: var(--color-blue);
+  }
+  .sec-medida-card__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .sec-medida-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sec-medida-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+  .sec-medida-card__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* ============================
+     RECURSOS
+     ============================ */
+  .sec-recursos {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+  .sec-recursos__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .sec-recursos__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .sec-recursos__text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sec-recursos__desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+  }
+
+  /* ============================
+     CTA FINAL
+     ============================ */
+  .sec-cta-final {
+    background-color: var(--color-white);
+    padding: 40px var(--container-padding) 80px;
+  }
+  .sec-cta-final__card {
+    position: relative;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: var(--color-white-2);
+    border: 1px solid var(--color-border);
+    padding: 40px 24px;
+    text-align: center;
+    overflow: clip;
+  }
+  .sec-cta-final__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 363px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .sec-cta-final__pattern img { display: block; width: 100%; height: 100%; }
+  .sec-cta-final__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .sec-cta-final__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+  }
+  .sec-cta-final__text {
+    font-size: 16px;
+    color: var(--color-text-dark);
+    max-width: 600px;
+  }
+  .sec-cta-final__text strong { font-weight: 700; color: var(--color-dark-blue); }
+
+  /* ============================
+     DESKTOP
+     ============================ */
+  @media (min-width: 768px) {
+    .sec-section-title { font-size: 40px; }
+
+    .sec-hero { padding: 80px var(--container-padding); }
+    .sec-hero__pattern { width: 1440px; height: 623px; }
+    .sec-hero__container { max-width: 778px; }
+    .sec-hero__title { font-size: 52px; line-height: 56px; }
+
+    .sec-programa { padding: 40px var(--container-padding) 80px; }
+    .sec-programa__container { gap: 40px; }
+    .sec-programa__grid {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 64px;
+    }
+    .sec-programa__text { flex: 1; min-width: 0; gap: 32px; }
+    .sec-programa__paragraph { font-size: 16px; }
+    .sec-programa__grid .sec-link-list {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sec-medidas { padding: 80px var(--container-padding); }
+    .sec-medidas__container { gap: 64px; }
+    .sec-medidas__title { line-height: 48px; }
+    .sec-medidas__grid { gap: 24px; }
+    .sec-medidas__row {
+      flex-direction: row;
+      gap: 24px;
+    }
+    .sec-medidas__row .sec-medida-card {
+      flex: 1;
+      min-width: 0;
+    }
+    .sec-medida-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "icon title"
+        "text text";
+      column-gap: 12px;
+      row-gap: 12px;
+      padding: 32px;
+    }
+    .sec-medida-card__icon {
+      grid-area: icon;
+      width: 40px;
+      height: 40px;
+      align-self: center;
+    }
+    .sec-medida-card__icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .sec-medida-card__body {
+      display: contents;
+    }
+    .sec-medida-card__title {
+      grid-area: title;
+      align-self: center;
+    }
+    .sec-medida-card__text {
+      grid-area: text;
+    }
+
+    .sec-recursos { padding: 80px var(--container-padding); }
+    .sec-recursos__grid {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 64px;
+    }
+    .sec-recursos__text {
+      flex: 1;
+      min-width: 0;
+      gap: 16px;
+    }
+    .sec-recursos__desc { font-size: 18px; }
+    .sec-recursos__grid .sec-link-list {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sec-cta-final { padding: 40px var(--container-padding) 80px; }
+    .sec-cta-final__card { padding: 64px 24px; }
+    .sec-cta-final__title { font-size: 40px; }
+    .sec-cta-final__text { font-size: 18px; }
+  }
+</style>

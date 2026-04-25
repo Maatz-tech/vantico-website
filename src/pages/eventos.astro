@@ -1,0 +1,634 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+type EventItem = {
+  title: string;
+  date: string; // ISO yyyy-mm-dd
+  location: string;
+  duration: string;
+  description: string;
+  image: string;
+  badge: string;
+  href: string;
+};
+
+const featured: EventItem = {
+  title: 'Mind The Sec 2026',
+  date: '2026-09-15',
+  location: 'Santo Amaro, São Paulo - SP',
+  duration: '3 dias',
+  description:
+    'O maior e mais qualificado evento de segurança da informação e cyber security da América Latina.',
+  image: '/images/eventos/mindthesec.png',
+  badge: 'Brasil, In-Person',
+  href: '#',
+};
+
+const baseEvents: EventItem[] = [
+  {
+    title: 'XibéSec 2025',
+    date: '2025-09-13',
+    location: 'Belém - PA',
+    duration: '1 dia',
+    description:
+      'Chegamos para o terceiro ano do XibéSec, um evento de Cibersegurança com a essência do Norte do Brasil.',
+    image: '/images/eventos/xibesec.png',
+    badge: 'Brasil, In-Person',
+    href: '#',
+  },
+  {
+    title: 'Sirena 2025',
+    date: '2025-05-29',
+    location: 'Santana, São Paulo - SP',
+    duration: '1 dia',
+    description:
+      'A SIRENA é uma conferência voltada para a conscientização sobre risco humano e cibersegurança.',
+    image: '/images/eventos/sirena.png',
+    badge: 'Brasil, In-Person',
+    href: '#',
+  },
+  {
+    title: 'BSIDESSP Maio 2025',
+    date: '2025-05-17',
+    location: 'Consolação, São Paulo - SP',
+    duration: '2 dias',
+    description:
+      'Security BSides é um evento que reforça a cena hacking em sua raiz.',
+    image: '/images/eventos/bsidessp.png',
+    badge: 'Brasil, In-Person',
+    href: '#',
+  },
+];
+
+const events: EventItem[] = [...baseEvents, ...baseEvents, ...baseEvents];
+
+function formatDate(iso: string): string {
+  const months = [
+    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
+  ];
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} de ${months[m - 1]} de ${y}`;
+}
+---
+
+<Base
+  title="Eventos — Vantico"
+  description="Fique por dentro dos principais encontros e iniciativas de tecnologia e cibersegurança."
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="eventos-hero">
+      <div class="eventos-hero__pattern" aria-hidden="true">
+        <img src="/images/hero-pattern.svg" alt="" />
+      </div>
+      <div class="eventos-hero__content" data-animate>
+        <h1 class="eventos-hero__title" data-animate data-animate-type="typing">Eventos</h1>
+        <p class="eventos-hero__subtitle">
+          Fique por dentro dos principais encontros e iniciativas de tecnologia e cibersegurança.
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Event -->
+    <section class="eventos-featured">
+      <article class="eventos-featured__card" data-animate>
+        <div class="eventos-featured__media">
+          <img
+            src={featured.image}
+            alt={featured.title}
+            class="eventos-featured__img"
+            width="760"
+            height="380"
+            loading="eager"
+          />
+          <span class="eventos-badge eventos-badge--on-media">{featured.badge}</span>
+        </div>
+        <div class="eventos-featured__body">
+          <h2 class="eventos-featured__title">{featured.title}</h2>
+          <ul class="eventos-meta">
+            <li class="eventos-meta__item">
+              <svg class="eventos-meta__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" />
+              </svg>
+              <span>{formatDate(featured.date)}</span>
+            </li>
+            <li class="eventos-meta__item">
+              <svg class="eventos-meta__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>{featured.location}</span>
+            </li>
+          </ul>
+          <p class="eventos-featured__duration">
+            <strong>Duração:</strong> {featured.duration}
+          </p>
+          <p class="eventos-featured__text">{featured.description}</p>
+          <a href={featured.href} class="eventos-btn eventos-btn--primary">
+            Saiba mais
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Event Grid -->
+    <section class="eventos-grid-section">
+      <div class="eventos-grid">
+        {events.map((ev) => (
+          <article class="eventos-card" data-animate>
+            <div class="eventos-card__media">
+              <img
+                src={ev.image}
+                alt={ev.title}
+                class="eventos-card__img"
+                width="600"
+                height="300"
+                loading="lazy"
+              />
+            </div>
+            <div class="eventos-card__body">
+              <span class="eventos-badge">{ev.badge}</span>
+              <h3 class="eventos-card__title">{ev.title}</h3>
+              <ul class="eventos-meta eventos-meta--sm">
+                <li class="eventos-meta__item">
+                  <svg class="eventos-meta__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" />
+                  </svg>
+                  <span>{formatDate(ev.date)}</span>
+                </li>
+                <li class="eventos-meta__item">
+                  <svg class="eventos-meta__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>{ev.location}</span>
+                </li>
+              </ul>
+              <p class="eventos-card__duration">
+                <strong>Duração:</strong> {ev.duration}
+              </p>
+              <p class="eventos-card__text">{ev.description}</p>
+            </div>
+            <a href={ev.href} class="eventos-btn eventos-btn--outline">
+              Saiba mais
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <!-- Pagination -->
+      <nav class="eventos-pagination" aria-label="Paginação">
+        <button class="eventos-page eventos-page--nav" type="button" aria-label="Página anterior" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+        <button class="eventos-page eventos-page--active" type="button" aria-current="page">1</button>
+        <button class="eventos-page" type="button">2</button>
+        <button class="eventos-page" type="button">3</button>
+        <button class="eventos-page eventos-page--nav" type="button" aria-label="Próxima página">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </nav>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ============================
+     Hero
+     ============================ */
+  .eventos-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px var(--container-padding) 40px;
+    background-color: var(--color-white);
+    overflow: clip;
+  }
+
+  .eventos-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 364px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .eventos-hero__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .eventos-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 342px;
+    text-align: center;
+  }
+
+  .eventos-hero__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+  }
+
+  .eventos-hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  /* ============================
+     Featured Card
+     ============================ */
+  .eventos-featured {
+    padding: 0 var(--container-padding) 40px;
+    background-color: var(--color-white);
+  }
+
+  .eventos-featured__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+  }
+
+  .eventos-featured__media {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .eventos-featured__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 760 / 380;
+    object-fit: cover;
+  }
+
+  .eventos-featured__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .eventos-featured__title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .eventos-featured__duration,
+  .eventos-featured__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .eventos-featured__duration strong {
+    font-weight: 700;
+  }
+
+  /* ============================
+     Badge
+     ============================ */
+  .eventos-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    width: fit-content;
+  }
+
+  .eventos-badge--on-media {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
+    font-size: 14px;
+  }
+
+  /* ============================
+     Meta (date + location)
+     ============================ */
+  .eventos-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .eventos-meta__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: normal;
+  }
+
+  .eventos-meta--sm .eventos-meta__item {
+    font-size: 14px;
+  }
+
+  .eventos-meta__icon {
+    flex-shrink: 0;
+    color: var(--color-blue);
+  }
+
+  /* ============================
+     Buttons
+     ============================ */
+  .eventos-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 9999px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    width: fit-content;
+  }
+
+  .eventos-btn--primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: 1px solid var(--color-blue);
+  }
+
+  .eventos-btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .eventos-btn--outline {
+    background-color: var(--color-white);
+    color: var(--color-dark-blue);
+    border: 1px solid var(--color-border);
+  }
+
+  .eventos-btn--outline svg {
+    color: var(--color-blue);
+  }
+
+  .eventos-btn--outline:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  /* ============================
+     Grid
+     ============================ */
+  .eventos-grid-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 24px var(--container-padding) 40px;
+    background-color: var(--color-white);
+  }
+
+  .eventos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .eventos-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 0;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .eventos-card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .eventos-card__media {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .eventos-card__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 600 / 300;
+    object-fit: cover;
+  }
+
+  .eventos-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .eventos-card__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .eventos-card__duration,
+  .eventos-card__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  .eventos-card__duration strong {
+    font-weight: 700;
+  }
+
+  /* ============================
+     Pagination
+     ============================ */
+  .eventos-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .eventos-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .eventos-page:hover:not(:disabled):not(.eventos-page--active) {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  .eventos-page--active {
+    background-color: #F2F6FF;
+    color: var(--color-blue);
+    border-color: #F2F6FF;
+    font-weight: 700;
+    cursor: default;
+  }
+
+  .eventos-page--nav {
+    color: var(--color-blue);
+  }
+
+  .eventos-page:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ============================
+     Desktop
+     ============================ */
+  @media (min-width: 768px) {
+    /* Hero */
+    .eventos-hero {
+      padding-top: 24px;
+      padding-bottom: 80px;
+    }
+
+    .eventos-hero__pattern {
+      width: 1440px;
+      height: 623px;
+    }
+
+    .eventos-hero__content {
+      max-width: 778px;
+      gap: 24px;
+    }
+
+    .eventos-hero__title {
+      font-size: 52px;
+      line-height: 56px;
+    }
+
+    /* Featured */
+    .eventos-featured {
+      padding-top: 0;
+      padding-bottom: 24px;
+      padding-left: max(24px, calc((100% - 1000px) / 2));
+      padding-right: max(24px, calc((100% - 1000px) / 2));
+    }
+
+    .eventos-featured__card {
+      flex-direction: row;
+      gap: 40px;
+      padding: 24px;
+      align-items: stretch;
+    }
+
+    .eventos-featured__media {
+      flex: 1 1 0;
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .eventos-featured__img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .eventos-featured__body {
+      flex: 1 1 0;
+      min-width: 0;
+      justify-content: flex-start;
+    }
+
+    .eventos-featured__title {
+      font-size: 24px;
+    }
+
+    .eventos-badge--on-media {
+      top: 24px;
+      left: 24px;
+      font-size: 16px;
+    }
+
+    /* Grid */
+    .eventos-grid-section {
+      padding-top: 24px;
+      padding-bottom: 40px;
+      padding-left: max(24px, calc((100% - 1000px) / 2));
+      padding-right: max(24px, calc((100% - 1000px) / 2));
+    }
+
+    .eventos-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Pagination */
+    .eventos-pagination {
+      gap: 16px;
+    }
+  }
+</style>

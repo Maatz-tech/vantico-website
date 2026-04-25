@@ -1,0 +1,1172 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LogosCarousel from '../components/LogosCarousel.astro';
+import FaqAccordion from '../components/servicos/FaqAccordion.astro';
+
+const metodologia = [
+  {
+    icon: 'zap',
+    title: 'Inicie testes com agilidade',
+    text: 'Solicite novos testes a qualquer momento e inicie em até 48 horas, sem burocracia.',
+  },
+  {
+    icon: 'file-check',
+    title: 'Autonomia sobre o processo',
+    text: 'Acesse relatórios técnicos e executivos adaptados às necessidades da sua empresa.',
+  },
+  {
+    icon: 'users-round',
+    title: 'Talento sob demanda',
+    text: 'Conte com uma rede de profissionais especializados prontos para atender aos desafios do seu ambiente.',
+  },
+  {
+    icon: 'radar',
+    title: 'Acompanhe em tempo real',
+    text: 'Receba atualizações contínuas (ou diárias) sobre vulnerabilidades críticas e interaja diretamente com nossos especialistas.',
+  },
+];
+
+const ciclo = [
+  { image: '/images/plataforma/ciclo-1.png', title: 'Dashboard intuitivo', text: 'Visualização clara e organizada de vulnerabilidades.' },
+  { image: '/images/plataforma/ciclo-2.png', title: 'Badges inteligentes', text: 'Indicam criticidade e prioridade com cores de fácil interpretação.' },
+  { image: '/images/plataforma/ciclo-3.png', title: 'Correção simplificada', text: 'Acesso rápido a instruções técnicas em apenas um clique.' },
+  { image: '/images/plataforma/ciclo-4.png', title: 'Prioridade automática', text: 'Classificação das falhas por severidade real de impacto.' },
+  { image: '/images/plataforma/ciclo-5.png', title: 'Acessível a todos os níveis', text: 'Informações estratégicas para executivos e técnicas para especialistas.' },
+  { image: '/images/plataforma/ciclo-6.png', title: 'Filtros avançados', text: 'Encontre o que importa em segundos, sem perder tempo.' },
+];
+
+const features = [
+  {
+    eyebrow: 'Dashboard completo',
+    title: 'Plataforma informativa e centralizada',
+    description: 'Todas as informações em um só lugar.',
+    bullets: [
+      'Gráficos e relatórios com fácil acesso;',
+      'Resultados de todos os serviços;',
+      'Métricas que ajudam na tomada de decisão.',
+    ],
+    image: '/images/plataforma/feature-1-dashboard.png',
+  },
+  {
+    eyebrow: 'Autonomia total',
+    title: 'Liberdade para testar quando quiser',
+    description: 'Solicite novos testes com poucos cliques. Comece em horas, não em semanas.',
+    bullets: [
+      'Função "Criar novo teste" disponível na plataforma;',
+      'Personalize como desejar;',
+      'Início do projeto em até 48 horas.',
+    ],
+    image: '/images/plataforma/feature-2-novo-teste.png',
+  },
+  {
+    eyebrow: 'Comunicação eficiente',
+    title: 'Esclareça dúvidas rapidamente',
+    description: 'Sem intermediários. Fale com quem está cuidando do seu teste.',
+    bullets: [
+      'Contato direto com os pentesters;',
+      'Resposta em poucos minutos;',
+      'Comunicação centralizada na plataforma, com histórico de conversas.',
+    ],
+    image: '/images/plataforma/feature-3-chat.png',
+  },
+  {
+    eyebrow: 'Updates contínuos',
+    title: 'Notificação em tempo real',
+    description: 'Visualize as descobertas críticas assim que surgirem e antecipe ações de correção.',
+    bullets: [
+      'Alertas em tempo real sobre vulnerabilidades críticas encontradas;',
+      'Detalhes e recomendações de especialistas para a correção;',
+      'Classificação da vulnerabilidade de acordo com o risco real.',
+    ],
+    image: '/images/plataforma/feature-4-notificacoes.png',
+  },
+];
+
+const formFeatures = [
+  {
+    icon: 'users-round',
+    title: 'Pentest manual com especialistas',
+    text: 'Testes executados por um amplo time de testers e 100% manuais, com o auxílio de ferramentas específicas.',
+  },
+  {
+    icon: 'code-xml',
+    title: 'Pentest completo para aplicações, APIs, cloud e infraestrutura',
+    text: '',
+  },
+  {
+    icon: 'file-spreadsheet',
+    title: 'Relatórios detalhados e suporte contínuo',
+    text: '',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Consigo acompanhar os testes em tempo real?',
+    answer: 'Sim. A plataforma traz uma visão completa e atualizada do progresso de cada pentest. Você é notificado quando vulnerabilidades críticas são encontradas, sem precisar esperar pelo relatório final.',
+  },
+  {
+    question: 'Posso interagir com o time responsável pelos testes?',
+    answer: 'Sim. A plataforma concentra toda a comunicação em um único lugar, permitindo interação direta com os pentesters responsáveis pelo seu projeto.',
+  },
+  {
+    question: 'Como os relatórios são entregues?',
+    answer: 'Entregamos relatórios técnicos detalhados e também versões executivas, adaptadas ao público, disponíveis diretamente na plataforma em tempo real.',
+  },
+  {
+    question: 'A plataforma da Vantico é segura?',
+    answer: 'Sim. Seguimos as melhores práticas de segurança do mercado, com criptografia, controle de acesso por perfil e auditoria de atividades.',
+  },
+];
+---
+
+<Base
+  title="Plataforma — Vantico"
+  description="Conheça a plataforma que simplifica seu Pentest do início ao fim. Ágil, descomplicada e sem burocracia."
+>
+  <Header />
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="pl-hero">
+      <div class="pl-hero__pattern" aria-hidden="true">
+        <img src="/images/hero-pattern.svg" alt="" />
+      </div>
+      <div class="pl-hero__container">
+        <div class="pl-hero__text" data-animate>
+          <h1 class="pl-hero__title" data-animate data-animate-type="typing">Tenha controle total sobre o seu Pentest</h1>
+          <p class="pl-hero__subtitle">
+            Conheça a plataforma que simplifica seu Pentest do início ao fim. Ágil, descomplicada e sem burocracia.
+          </p>
+          <div class="pl-hero__ctas">
+            <a href="/pentest" class="pl-btn pl-btn--outline">O que é Pentest?</a>
+            <a href="/contato" class="pl-btn pl-btn--primary">Agende uma demo</a>
+          </div>
+        </div>
+        <div class="pl-hero__media" data-animate>
+          <img src="/images/plataforma/hero-dashboard.png" alt="" class="pl-hero__media-img" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGOS ============ -->
+    <LogosCarousel />
+
+    <!-- ============ METODOLOGIA ============ -->
+    <section class="pl-metodologia">
+      <div class="pl-metodologia__container">
+        <h2 class="pl-section-title" data-animate data-animate-type="typing">
+          Potencialize seus Pentests com nossa metodologia
+        </h2>
+        <div class="pl-metodologia__grid-wrap">
+          <div class="pl-metodologia__lines" aria-hidden="true">
+            <div class="pl-metodologia__line pl-metodologia__line--h pl-metodologia__line--h1"></div>
+            <div class="pl-metodologia__line pl-metodologia__line--h pl-metodologia__line--h2"></div>
+            <div class="pl-metodologia__line pl-metodologia__line--v pl-metodologia__line--v1"></div>
+            <div class="pl-metodologia__line pl-metodologia__line--v pl-metodologia__line--v2"></div>
+          </div>
+          <div class="pl-metodologia__grid">
+          {metodologia.map((item) => (
+            <div class="pl-method-card" data-animate>
+              <div class="pl-method-card__head">
+                <span class="pl-method-card__icon">
+                  {item.icon === 'zap' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                  )}
+                  {item.icon === 'file-check' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+                  )}
+                  {item.icon === 'users-round' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+                  )}
+                  {item.icon === 'radar' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"/><path d="M4 6h.01"/><path d="M2.29 9.62A10 10 0 1 0 21.31 8.35"/><path d="M16.24 7.76A6 6 0 1 0 17.87 14"/><path d="M12 18h.01"/><path d="M17.99 11.66A6 6 0 0 1 15.77 16.67"/><circle cx="12" cy="12" r="2"/><path d="m13.41 10.59 5.66-5.66"/></svg>
+                  )}
+                </span>
+                <h3 class="pl-method-card__title">{item.title}</h3>
+              </div>
+              <p class="pl-method-card__text">{item.text}</p>
+            </div>
+          ))}
+          </div>
+        </div>
+        <a href="/contato" class="pl-btn pl-btn--primary">Fale com um especialista</a>
+      </div>
+    </section>
+
+    <!-- ============ CENTRALIZE CICLO ============ -->
+    <section class="pl-ciclo">
+      <div class="pl-ciclo__container">
+        <div class="pl-ciclo__header" data-animate>
+          <h2 class="pl-section-title">Centralize todo o ciclo de Pentests em um só lugar</h2>
+          <p class="pl-section-sub">
+            Nossa plataforma intuitiva permite que você acompanhe o progresso dos testes, visualize falhas em tempo real e gerencie correções com autonomia total.
+          </p>
+        </div>
+
+        <div class="pl-ciclo__grid">
+          {ciclo.map((item) => (
+            <article class="pl-ciclo-card" data-animate>
+              <div class="pl-ciclo-card__thumb">
+                <img src={item.image} alt={item.title} class="pl-ciclo-card__img" loading="lazy" />
+              </div>
+              <h3 class="pl-ciclo-card__title">{item.title}</h3>
+              <p class="pl-ciclo-card__text">{item.text}</p>
+            </article>
+          ))}
+        </div>
+
+        <a href="/contato" class="pl-btn pl-btn--primary">Agende uma demonstração</a>
+      </div>
+    </section>
+
+    <!-- ============ PLATAFORMA COMPLETA ============ -->
+    <section class="pl-completa">
+      <div class="pl-completa__container">
+        <h2 class="pl-section-title pl-completa__title" data-animate data-animate-type="typing">
+          Sua Plataforma Completa de Segurança Ofensiva
+        </h2>
+
+        <div class="pl-completa__list">
+          {features.map((feat, i) => (
+            <div class={`pl-feature${i % 2 === 1 ? ' pl-feature--reverse' : ''}`} data-animate>
+              <div class="pl-feature__text">
+                <span class="pl-feature__eyebrow">{feat.eyebrow}</span>
+                <h3 class="pl-feature__title">{feat.title}</h3>
+                <p class="pl-feature__desc">{feat.description}</p>
+                <ul class="pl-feature__bullets">
+                  {feat.bullets.map((b) => (
+                    <li class="pl-feature__bullet">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="pl-feature__media">
+                <img src={feat.image} alt={feat.title} class="pl-feature__img" loading="lazy" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT / FORM ============ -->
+    <section class="pl-form-section">
+      <div class="pl-form-section__container">
+        <div class="pl-form-section__intro" data-animate>
+          <h2 class="pl-section-title pl-form-section__title">
+            Proteja sua aplicação com <strong>Pentests reais</strong>
+          </h2>
+          <p class="pl-section-sub pl-form-section__sub">
+            Vulnerabilidades não mapeadas podem trazer consequências desastrosas. Mas, com a Vantico, você identifica ameaças antes que sejam exploradas.
+          </p>
+
+          <ul class="pl-form-features">
+            {formFeatures.map((f) => (
+              <li class="pl-form-feature">
+                <span class="pl-form-feature__icon">
+                  {f.icon === 'users-round' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+                  )}
+                  {f.icon === 'code-xml' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                  )}
+                  {f.icon === 'file-spreadsheet' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg>
+                  )}
+                </span>
+                <div class="pl-form-feature__body">
+                  <h3 class="pl-form-feature__title">{f.title}</h3>
+                  {f.text && <p class="pl-form-feature__text">{f.text}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <form id="pl-contact-form" class="pl-form" data-animate novalidate>
+          <div class="pl-form__row">
+            <div class="pl-field">
+              <label for="pl-name" class="pl-label">Nome <span class="pl-req">*</span></label>
+              <input type="text" id="pl-name" name="name" class="pl-input" required />
+              <span class="pl-error" data-error="name"></span>
+            </div>
+            <div class="pl-field">
+              <label for="pl-company" class="pl-label">Empresa <span class="pl-req">*</span></label>
+              <input type="text" id="pl-company" name="company" placeholder="Digite o nome da sua empresa" class="pl-input" required />
+              <span class="pl-error" data-error="company"></span>
+            </div>
+          </div>
+          <div class="pl-form__row">
+            <div class="pl-field">
+              <label for="pl-email" class="pl-label">E-mail <span class="pl-req">*</span></label>
+              <input type="email" id="pl-email" name="email" placeholder="Digite seu e-mail" class="pl-input" required />
+              <span class="pl-error" data-error="email"></span>
+            </div>
+            <div class="pl-field">
+              <label for="pl-phone" class="pl-label">Telefone <span class="pl-req">*</span></label>
+              <input type="tel" id="pl-phone" name="phone" placeholder="(99) 99999-9999" class="pl-input" required />
+              <span class="pl-error" data-error="phone"></span>
+            </div>
+          </div>
+
+          <div class="pl-field">
+            <label for="pl-source" class="pl-label">Como nos conheceu? <span class="pl-req">*</span></label>
+            <div class="pl-select-wrap">
+              <select id="pl-source" name="source" class="pl-input pl-select" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="google">Google</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="indicacao">Indicação</option>
+                <option value="evento">Evento</option>
+                <option value="outro">Outro</option>
+              </select>
+              <svg class="pl-select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </div>
+            <span class="pl-error" data-error="source"></span>
+          </div>
+
+          <div class="pl-field">
+            <label for="pl-message" class="pl-label">Mensagem</label>
+            <textarea id="pl-message" name="message" placeholder="Digite sua mensagem" class="pl-input pl-textarea"></textarea>
+          </div>
+
+          <button type="submit" class="pl-btn pl-btn--primary pl-form__submit">Enviar</button>
+
+          <p class="pl-privacy">
+            Ao informar meus dados, estou ciente das diretrizes da <a href="/politica-de-privacidade" class="pl-privacy__link">Política de Privacidade.</a>
+          </p>
+        </form>
+
+        <div id="pl-form-success" class="pl-form__success" style="display: none;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1C51C6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          <p class="pl-form__success-text">Mensagem enviada com sucesso!</p>
+          <p class="pl-form__success-sub">Entraremos em contato em breve.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <FaqAccordion items={faqItems} />
+
+    <!-- ============ CTA FINAL ============ -->
+    <section class="pl-cta-final">
+      <div class="pl-cta-final__card" data-animate>
+        <div class="pl-cta-final__pattern" aria-hidden="true">
+          <img src="/images/hero-pattern.svg" alt="" />
+        </div>
+        <div class="pl-cta-final__content">
+          <h2 class="pl-cta-final__title">Ficou com alguma dúvida?</h2>
+          <p class="pl-cta-final__text">
+            Se você tiver alguma dúvida sobre segurança, fale conosco ou preencha o formulário para receber nosso contato.
+          </p>
+          <a href="/contato" class="pl-btn pl-btn--primary">
+            Entre em contato
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  // Form validation (same pattern as ContactSection)
+  const form = document.getElementById('pl-contact-form') as HTMLFormElement | null;
+  const phoneInput = document.getElementById('pl-phone') as HTMLInputElement | null;
+  const successEl = document.getElementById('pl-form-success');
+
+  phoneInput?.addEventListener('input', () => {
+    let v = phoneInput.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length > 6) phoneInput.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+    else if (v.length > 2) phoneInput.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+    else if (v.length > 0) phoneInput.value = `(${v}`;
+  });
+
+  function showError(field: string, message: string) {
+    const errorEl = document.querySelector(`.pl-form [data-error="${field}"]`);
+    const inputEl = document.querySelector(`.pl-form [name="${field}"]`) as HTMLElement | null;
+    if (errorEl) errorEl.textContent = message;
+    inputEl?.classList.add('pl-input--error');
+  }
+  function clearErrors() {
+    document.querySelectorAll('.pl-form .pl-error').forEach((el) => (el.textContent = ''));
+    document.querySelectorAll('.pl-form .pl-input--error').forEach((el) => el.classList.remove('pl-input--error'));
+  }
+  const isEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  const isPhone = (p: string) => {
+    const d = p.replace(/\D/g, '');
+    return d.length >= 10 && d.length <= 11;
+  };
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearErrors();
+    const data = new FormData(form);
+    let valid = true;
+    const name = String(data.get('name') || '').trim();
+    const company = String(data.get('company') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const phone = String(data.get('phone') || '').trim();
+    const source = String(data.get('source') || '').trim();
+
+    if (!name) { showError('name', 'Nome é obrigatório'); valid = false; }
+    if (!company) { showError('company', 'Empresa é obrigatória'); valid = false; }
+    if (!email) { showError('email', 'E-mail é obrigatório'); valid = false; }
+    else if (!isEmail(email)) { showError('email', 'E-mail inválido'); valid = false; }
+    if (!phone) { showError('phone', 'Telefone é obrigatório'); valid = false; }
+    else if (!isPhone(phone)) { showError('phone', 'Telefone inválido'); valid = false; }
+    if (!source) { showError('source', 'Selecione uma opção'); valid = false; }
+
+    if (valid) {
+      form.style.display = 'none';
+      if (successEl) successEl.style.display = 'flex';
+    }
+  });
+
+  form?.addEventListener('input', (e) => {
+    const target = e.target as HTMLElement;
+    const name = target.getAttribute('name');
+    if (name) {
+      const errorEl = document.querySelector(`.pl-form [data-error="${name}"]`);
+      if (errorEl) errorEl.textContent = '';
+      target.classList.remove('pl-input--error');
+    }
+  });
+</script>
+
+<style>
+  /* ============================
+     Shared button
+     ============================ */
+  .pl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 9999px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    width: fit-content;
+    white-space: nowrap;
+  }
+  .pl-btn--primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border-color: var(--color-blue);
+  }
+  .pl-btn--primary:hover { opacity: 0.9; }
+  .pl-btn--outline {
+    background-color: var(--color-white);
+    color: var(--color-dark-blue);
+    border-color: var(--color-border);
+  }
+  .pl-btn--outline:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  /* Section titles */
+  .pl-section-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    text-align: center;
+  }
+  .pl-section-title strong { font-weight: 700; }
+
+  .pl-section-sub {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    text-align: center;
+  }
+
+  /* ============================
+     HERO
+     ============================ */
+  .pl-hero {
+    position: relative;
+    padding: 48px 0 0;
+    background-color: var(--color-white);
+    overflow: clip;
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+  .pl-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 364px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pl-hero__pattern img { display: block; width: 100%; height: 100%; }
+
+  .pl-hero__container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 0 var(--container-padding);
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+  .pl-hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    max-width: 342px;
+  }
+  .pl-hero__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+  }
+  .pl-hero__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+  .pl-hero__ctas {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pl-hero__ctas .pl-btn { font-size: 14px; }
+
+  .pl-hero__media {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .pl-hero__media-img {
+    display: block;
+    width: 100%;
+    max-width: 662px;
+    height: auto;
+  }
+
+  /* ============================
+     METODOLOGIA
+     ============================ */
+  .pl-metodologia {
+    background-color: var(--color-white-2);
+    padding: 48px var(--container-padding);
+    border-top: 1px solid var(--color-border-solid);
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+  .pl-metodologia__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .pl-metodologia__grid-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .pl-metodologia__lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pl-metodologia__line--h {
+    position: absolute;
+    left: -40px;
+    right: -40px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(25, 31, 47, 0.1) 10%,
+      rgba(25, 31, 47, 0.1) 90%,
+      transparent 100%
+    );
+  }
+  .pl-metodologia__line--h1 { top: 0; }
+  .pl-metodologia__line--h2 { bottom: 0; }
+  .pl-metodologia__line--v {
+    position: absolute;
+    top: -40px;
+    bottom: -40px;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(25, 31, 47, 0.1) 15%,
+      rgba(25, 31, 47, 0.1) 85%,
+      transparent 100%
+    );
+  }
+  .pl-metodologia__line--v1 { left: 0; }
+  .pl-metodologia__line--v2 { right: 0; }
+
+  .pl-metodologia__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .pl-method-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+    background: var(--color-white);
+    border: 0.5px solid var(--color-border-solid);
+    transition: background-color 0.2s ease;
+  }
+  .pl-method-card:hover {
+    background: #F2F6FF;
+  }
+  .pl-method-card__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pl-method-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+    border: 0.8px solid var(--color-border-solid);
+    border-radius: 100px;
+    color: var(--color-dark-blue);
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+  }
+  .pl-method-card:hover .pl-method-card__icon {
+    color: var(--color-blue);
+  }
+  .pl-method-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+  .pl-method-card__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* ============================
+     CENTRALIZE CICLO
+     ============================ */
+  .pl-ciclo {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+  .pl-ciclo__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .pl-ciclo__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    max-width: 327px;
+    text-align: center;
+  }
+  .pl-ciclo__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
+  }
+  .pl-ciclo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    transition: box-shadow 0.2s ease;
+  }
+  .pl-ciclo-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+  .pl-ciclo-card__thumb {
+    width: 100%;
+    aspect-ratio: 672 / 360;
+    background-color: var(--color-white-2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .pl-ciclo-card__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pl-ciclo-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+  .pl-ciclo-card__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* ============================
+     PLATAFORMA COMPLETA
+     ============================ */
+  .pl-completa {
+    background-color: var(--color-white-2);
+    padding: 48px var(--container-padding);
+  }
+  .pl-completa__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .pl-completa__list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .pl-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .pl-feature__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pl-feature__eyebrow {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+  }
+  .pl-feature__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+  .pl-feature__desc {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+  .pl-feature__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pl-feature__bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--color-text-dark);
+  }
+  .pl-feature__bullet svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--color-blue);
+  }
+  .pl-feature__media {
+    width: 100%;
+  }
+  .pl-feature__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  /* ============================
+     FORM SECTION
+     ============================ */
+  .pl-form-section {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+  .pl-form-section__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .pl-form-section__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pl-form-section__title { text-align: left; }
+  .pl-form-section__sub { text-align: left; }
+  .pl-form-features {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .pl-form-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--color-border-solid);
+  }
+  .pl-form-feature:first-child {
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border-solid);
+  }
+  .pl-form-feature__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+    border: 0.8px solid var(--color-border-solid);
+    border-radius: 100px;
+    color: var(--color-blue);
+    flex-shrink: 0;
+  }
+  .pl-form-feature__body { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .pl-form-feature__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+  .pl-form-feature__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  /* Form */
+  .pl-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--color-white-2);
+  }
+  .pl-form__row { display: flex; flex-direction: column; gap: 24px; }
+  .pl-field { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .pl-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-dark-blue);
+    line-height: normal;
+  }
+  .pl-req { color: #E95353; }
+  .pl-input {
+    width: 100%;
+    height: 44px;
+    padding: 10px 16px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+  .pl-input::placeholder { color: var(--color-text-dark); opacity: 0.6; }
+  .pl-input:focus { border-color: var(--color-blue); }
+  .pl-input--error { border-color: #E95353; }
+  .pl-select-wrap { position: relative; }
+  .pl-select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 40px;
+  }
+  .pl-select-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-text-dark);
+  }
+  .pl-textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  .pl-error {
+    font-size: 12px;
+    color: #E95353;
+    line-height: normal;
+  }
+  .pl-form__submit {
+    width: 100%;
+    font-size: 16px;
+  }
+  .pl-privacy {
+    font-size: 14px;
+    color: var(--color-text-dark);
+    text-align: center;
+  }
+  .pl-privacy__link { color: var(--color-text-dark); text-decoration: underline; }
+
+  .pl-form__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--color-white-2);
+    padding: 64px 32px;
+    text-align: center;
+    min-height: 300px;
+  }
+  .pl-form__success-text {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+  }
+  .pl-form__success-sub {
+    font-size: 16px;
+    color: var(--color-text-dark);
+  }
+
+  /* ============================
+     CTA FINAL
+     ============================ */
+  .pl-cta-final {
+    background-color: var(--color-white);
+    padding: 48px var(--container-padding);
+  }
+  .pl-cta-final__card {
+    position: relative;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white-2);
+    padding: 40px 24px;
+    text-align: center;
+    overflow: clip;
+  }
+  .pl-cta-final__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 363px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pl-cta-final__pattern img { display: block; width: 100%; height: 100%; }
+  .pl-cta-final__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .pl-cta-final__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+  }
+  .pl-cta-final__text {
+    font-size: 16px;
+    color: var(--color-text-dark);
+    max-width: 500px;
+  }
+
+  /* ============================
+     DESKTOP
+     ============================ */
+  /* Box-sizing on all containers so max-width + padding behaves */
+  .pl-hero__container,
+  .pl-metodologia__container,
+  .pl-ciclo__container,
+  .pl-completa__container,
+  .pl-form-section__container,
+  .pl-cta-final__card {
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 768px) {
+    /* Section titles / subs desktop sizes */
+    .pl-section-title { font-size: 40px; }
+    .pl-section-sub { font-size: 16px; }
+
+    /* HERO */
+    .pl-hero { padding: 0 0 100px; }
+    .pl-hero__pattern { width: 1440px; height: 623px; }
+    .pl-hero__container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 80px var(--container-padding) 0;
+      max-width: 1200px;
+    }
+    .pl-hero__text {
+      flex: 0 0 500px;
+      align-items: flex-start;
+      text-align: left;
+      gap: 24px;
+      max-width: 500px;
+    }
+    .pl-hero__title {
+      font-size: 52px;
+      line-height: 56px;
+    }
+    .pl-hero__subtitle { font-size: 18px; }
+    .pl-hero__ctas {
+      margin-top: 8px;
+      justify-content: flex-start;
+    }
+    .pl-hero__media {
+      flex: 0 1 auto;
+      justify-content: flex-end;
+      min-width: 0;
+      max-width: 660px;
+    }
+    .pl-hero__media-img {
+      max-width: none;
+      width: 100%;
+      display: block;
+    }
+
+    /* METODOLOGIA */
+    .pl-metodologia { padding: 80px var(--container-padding); }
+    .pl-metodologia__container {
+      gap: 40px;
+      max-width: 1200px;
+    }
+    .pl-metodologia .pl-section-title {
+      max-width: 700px;
+    }
+    .pl-metodologia__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* CICLO */
+    .pl-ciclo { padding: 80px var(--container-padding); }
+    .pl-ciclo__container {
+      gap: 40px;
+      max-width: 1200px;
+    }
+    .pl-ciclo__header { max-width: 700px; }
+    .pl-ciclo__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* PLATAFORMA COMPLETA */
+    .pl-completa { padding: 80px var(--container-padding); }
+    .pl-completa__container {
+      gap: 64px;
+      max-width: 1200px;
+    }
+    .pl-completa__list { gap: 80px; }
+    .pl-feature {
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+    }
+    .pl-feature--reverse { flex-direction: row-reverse; }
+    .pl-feature__text, .pl-feature__media {
+      flex: 1;
+      min-width: 0;
+    }
+    .pl-feature__title { font-size: 32px; }
+
+    /* FORM SECTION */
+    .pl-form-section { padding: 80px var(--container-padding); }
+    .pl-form-section__container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 80px;
+      max-width: 1200px;
+    }
+    .pl-form-section__intro {
+      flex: 0 0 500px;
+      max-width: none;
+    }
+    .pl-form-section__title,
+    .pl-form-section__sub { text-align: left; }
+    .pl-form {
+      flex: 1;
+      padding: 32px;
+      gap: 24px;
+    }
+    .pl-form__row { flex-direction: row; gap: 16px; }
+
+    /* CTA FINAL */
+    .pl-cta-final { padding: 80px var(--container-padding); }
+    .pl-cta-final__card { padding: 64px 24px; max-width: 1200px; }
+    .pl-cta-final__title { font-size: 32px; }
+  }
+</style>

@@ -1,0 +1,377 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+type CaseItem = {
+  coverTitle: string;
+  title: string;
+  cta: string;
+  href: string;
+};
+
+const cases: CaseItem[] = [
+  {
+    coverTitle: 'Merge & Acquisition',
+    title: 'Pentest para Merge & Acquisition',
+    cta: 'Ver mais',
+    href: '#',
+  },
+  {
+    coverTitle: 'PCI-DSS Compliance',
+    title: 'Pentest para PCI-DSS Compliance',
+    cta: 'Ver mais',
+    href: '#',
+  },
+  {
+    coverTitle: 'Auditoria de fornecedores',
+    title: 'Pentest para Auditoria de Fornecedores',
+    cta: 'Explore',
+    href: '#',
+  },
+  {
+    coverTitle: 'Merge & Acquisition',
+    title: 'Pentest para Merge & Acquisition',
+    cta: 'Ver mais',
+    href: '#',
+  },
+  {
+    coverTitle: 'Case Cover',
+    title: 'Case Title',
+    cta: 'Ver mais',
+    href: '#',
+  },
+  {
+    coverTitle: 'Case Cover',
+    title: 'Case Title',
+    cta: 'Ver mais',
+    href: '#',
+  },
+];
+---
+
+<Base
+  title="Cases de sucesso — Vantico"
+  description="Confira os cases de sucesso de empresas que implementaram os serviços da Vantico e melhoraram sua segurança."
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="cases-hero">
+      <div class="cases-hero__pattern" aria-hidden="true">
+        <img src="/images/hero-pattern.svg" alt="" />
+      </div>
+      <div class="cases-hero__content" data-animate>
+        <h1 class="cases-hero__title" data-animate data-animate-type="typing">Cases de sucesso</h1>
+        <p class="cases-hero__subtitle">
+          Confira os cases de sucesso de empresas que implementaram os serviços da Vantico e melhoraram sua segurança.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cards grid -->
+    <section class="cases-grid-section">
+      <div class="cases-grid">
+        {cases.map((item) => (
+          <article class="cases-card" data-animate>
+            <div class="cases-card__cover">
+              <img src="/images/cases/cover-bg.png" alt="" class="cases-card__cover-bg" loading="lazy" aria-hidden="true" />
+              <img src="/images/cases/ellipse-left.svg" alt="" class="cases-card__cover-ellipse cases-card__cover-ellipse--tl" aria-hidden="true" />
+              <img src="/images/cases/ellipse-right.svg" alt="" class="cases-card__cover-ellipse cases-card__cover-ellipse--tr" aria-hidden="true" />
+              <p class="cases-card__cover-title">{item.coverTitle}</p>
+            </div>
+            <h3 class="cases-card__title">{item.title}</h3>
+            <a href={item.href} class="cases-card__cta">
+              {item.cta}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <!-- Pagination -->
+      <nav class="cases-pagination" aria-label="Paginação">
+        <button class="cases-page cases-page--nav" type="button" aria-label="Página anterior" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+        <button class="cases-page cases-page--active" type="button" aria-current="page">1</button>
+        <button class="cases-page" type="button">2</button>
+        <button class="cases-page" type="button">3</button>
+        <button class="cases-page cases-page--nav" type="button" aria-label="Próxima página">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </nav>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ============================
+     Hero
+     ============================ */
+  .cases-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px var(--container-padding) 40px;
+    background-color: var(--color-white);
+    overflow: clip;
+  }
+
+  .cases-hero__pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 364px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cases-hero__pattern img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cases-hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 342px;
+    text-align: center;
+  }
+
+  .cases-hero__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+  }
+
+  .cases-hero__subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+
+  /* ============================
+     Grid
+     ============================ */
+  .cases-grid-section {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 24px var(--container-padding) 40px;
+    background-color: var(--color-white);
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cases-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .cases-card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Cover (blue bg image with title overlay) */
+  .cases-card__cover {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .cases-card__cover-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .cases-card__cover-ellipse {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .cases-card__cover-ellipse--tl {
+    width: 159px;
+    height: 159px;
+    left: -80px;
+    top: -40px;
+  }
+
+  .cases-card__cover-ellipse--tr {
+    width: 156px;
+    height: 155px;
+    left: 198px;
+    top: 20px;
+  }
+
+  .cases-card__cover-title {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    color: var(--color-white);
+    max-width: calc(100% - 40px);
+    z-index: 1;
+  }
+
+  .cases-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    flex: 1;
+  }
+
+  .cases-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-blue);
+    text-decoration: none;
+    width: fit-content;
+    transition: opacity 0.2s ease;
+  }
+
+  .cases-card__cta:hover {
+    opacity: 0.75;
+  }
+
+  /* ============================
+     Pagination
+     ============================ */
+  .cases-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .cases-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .cases-page:hover:not(:disabled):not(.cases-page--active) {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+  }
+
+  .cases-page--active {
+    background-color: #F2F6FF;
+    color: var(--color-blue);
+    border-color: #F2F6FF;
+    font-weight: 700;
+    cursor: default;
+  }
+
+  .cases-page--nav {
+    color: var(--color-blue);
+  }
+
+  .cases-page:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ============================
+     Desktop
+     ============================ */
+  @media (min-width: 768px) {
+    /* Hero */
+    .cases-hero {
+      padding-top: 24px;
+      padding-bottom: 80px;
+    }
+
+    .cases-hero__pattern {
+      width: 1440px;
+      height: 623px;
+    }
+
+    .cases-hero__content {
+      max-width: 778px;
+      gap: 24px;
+    }
+
+    .cases-hero__title {
+      font-size: 52px;
+      line-height: 56px;
+    }
+
+    /* Grid */
+    .cases-grid-section {
+      padding-top: 24px;
+      padding-bottom: 80px;
+      padding-left: max(24px, calc((100% - 1000px) / 2));
+      padding-right: max(24px, calc((100% - 1000px) / 2));
+      gap: 64px;
+    }
+
+    .cases-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cases-card__cover-title {
+      font-size: 28px;
+    }
+
+    /* Pagination */
+    .cases-pagination {
+      gap: 16px;
+    }
+  }
+</style>

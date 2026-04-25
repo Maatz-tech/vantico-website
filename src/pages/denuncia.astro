@@ -1,0 +1,524 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const tipos = ['Denúncia', 'Reclamação', 'Sugestão', 'Dúvida'];
+---
+
+<Base
+  title="Ouvidoria e Denúncias — Vantico"
+  description="Canal seguro e independente para o registro de denúncias, dúvidas ou relatos relacionados a condutas que violem os princípios e políticas internas da Vantico."
+>
+  <Header />
+
+  <main>
+    <section class="den">
+      <div class="den__pattern" aria-hidden="true">
+        <img src="/images/hero-pattern.svg" alt="" />
+      </div>
+
+      <div class="den__container">
+        <!-- Left: intro + anonimato card -->
+        <div class="den__left">
+          <div class="den__intro" data-animate>
+            <span class="den__badge">
+              <span class="den__badge-dot" aria-hidden="true"></span>
+              <span class="den__badge-text">Atendimento</span>
+            </span>
+
+            <div class="den__heading">
+              <h1 class="den__title" data-animate data-animate-type="typing">Ouvidoria e Denúncias</h1>
+              <div class="den__paragraphs">
+                <p>
+                  Este é um canal seguro e independente para o registro de denúncias, dúvidas ou relatos relacionados a condutas que violem nossos princípios, políticas internas ou a legislação vigente.
+                </p>
+                <p>
+                  A Vantico incentiva uma cultura ética e transparente, garantindo que todas as manifestações sejam analisadas com responsabilidade e respeito.
+                </p>
+                <p>
+                  Para registrar sua solicitação, envie um e-mail para <strong>ouvidoria@vantico.com.br</strong> ou preencha o formulário a seguir.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <article class="den__feature" data-animate>
+            <div class="den__feature-head">
+              <span class="den__feature-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                  <path d="M6.376 18.91a6 6 0 0 1 11.249.003"/>
+                  <circle cx="12" cy="11" r="4"/>
+                </svg>
+              </span>
+              <h3 class="den__feature-title">Anonimato e Confidencialidade</h3>
+            </div>
+            <p class="den__feature-text">Todas as informações enviadas são protegidas durante todo o processo.</p>
+          </article>
+        </div>
+
+        <!-- Right: form -->
+        <form class="den__form" data-animate novalidate>
+          <div class="den__form-lines" aria-hidden="true">
+            <span class="den__form-line den__form-line--h den__form-line--top"></span>
+            <span class="den__form-line den__form-line--h den__form-line--bottom"></span>
+            <span class="den__form-line den__form-line--v den__form-line--left"></span>
+            <span class="den__form-line den__form-line--v den__form-line--right"></span>
+          </div>
+
+          <div class="den__field">
+            <label for="den-nome" class="den__label">Nome</label>
+            <input id="den-nome" name="nome" type="text" class="den__input" />
+          </div>
+
+          <div class="den__row">
+            <div class="den__field">
+              <label for="den-email" class="den__label">E-mail <span class="den__required">*</span></label>
+              <input id="den-email" name="email" type="email" class="den__input" placeholder="Digite seu e-mail" required />
+            </div>
+            <div class="den__field">
+              <label for="den-telefone" class="den__label">Telefone <span class="den__required">*</span></label>
+              <input id="den-telefone" name="telefone" type="tel" class="den__input" placeholder="(99) 99999-9999" required />
+            </div>
+          </div>
+
+          <div class="den__field">
+            <label for="den-tipo" class="den__label">Tipo de denúncia <span class="den__required">*</span></label>
+            <div class="den__select-wrap">
+              <select id="den-tipo" name="tipo" class="den__input den__select" required>
+                <option value="" disabled selected>Selecione</option>
+                {tipos.map((t) => <option value={t}>{t}</option>)}
+              </select>
+              <svg class="den__select-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="den__field">
+            <label for="den-mensagem" class="den__label">Mensagem</label>
+            <textarea id="den-mensagem" name="mensagem" class="den__input den__textarea" placeholder="Digite sua mensagem"></textarea>
+          </div>
+
+          <fieldset class="den__field den__radios-field">
+            <legend class="den__label">Deseja se identificar?</legend>
+            <div class="den__radios">
+              <label class="den__radio">
+                <input type="radio" name="identificar" value="sim" checked />
+                <span class="den__radio-box" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="den__radio-label">Sim</span>
+              </label>
+              <label class="den__radio">
+                <input type="radio" name="identificar" value="nao" />
+                <span class="den__radio-box" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span class="den__radio-label">Não</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="den__submit">Enviar</button>
+
+          <p class="den__privacy">
+            Ao informar meus dados, estou ciente das diretrizes da <a href="/politica-de-privacidade" class="den__privacy-link">Política de Privacidade.</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ============================
+     Section
+     ============================ */
+  .den {
+    position: relative;
+    background-color: var(--color-white);
+    padding: 0 var(--container-padding) 48px;
+    overflow: clip;
+  }
+
+  .den__pattern {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 840px;
+    height: 364px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .den__pattern img { display: block; width: 100%; height: 100%; }
+
+  .den__container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 48px;
+  }
+
+  /* ============================
+     Left column (intro + feature)
+     ============================ */
+  .den__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .den__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Badge */
+  .den__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    width: fit-content;
+  }
+  .den__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+  }
+  .den__badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    color: var(--color-blue);
+  }
+
+  /* Heading */
+  .den__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .den__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    color: var(--color-dark-blue);
+  }
+  .den__paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .den__paragraphs p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+  }
+  .den__paragraphs strong {
+    font-weight: 500;
+  }
+
+  /* Feature card */
+  .den__feature {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+  }
+  .den__feature-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .den__feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+    border: 0.8px solid var(--color-border-solid);
+    border-radius: 100px;
+    color: var(--color-dark-blue);
+    flex-shrink: 0;
+  }
+  .den__feature-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+  .den__feature-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+  }
+
+  /* ============================
+     Form
+     ============================ */
+  .den__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+    background-color: var(--color-white-2);
+  }
+
+  .den__form-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .den__form-line {
+    position: absolute;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(25, 31, 47, 0.1) 10%,
+      rgba(25, 31, 47, 0.1) 90%,
+      transparent 100%
+    );
+  }
+  .den__form-line--h {
+    left: -24px;
+    right: -24px;
+    height: 1px;
+  }
+  .den__form-line--top { top: 0; }
+  .den__form-line--bottom { bottom: 0; }
+  .den__form-line--v {
+    width: 1px;
+    top: -24px;
+    bottom: -24px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(25, 31, 47, 0.1) 15%,
+      rgba(25, 31, 47, 0.1) 85%,
+      transparent 100%
+    );
+  }
+  .den__form-line--left { left: 0; }
+  .den__form-line--right { right: 0; }
+
+  .den__form > *:not(.den__form-lines) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .den__field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .den__label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-dark-blue);
+    padding: 0;
+  }
+  .den__required {
+    color: #E95353;
+  }
+
+  .den__row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .den__row .den__field { flex: 1; min-width: 0; }
+
+  .den__input {
+    width: 100%;
+    height: 44px;
+    padding: 10px 16px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text-dark);
+    box-sizing: border-box;
+    transition: border-color 0.15s ease;
+  }
+  .den__input::placeholder {
+    color: var(--color-text-dark);
+    opacity: 0.6;
+  }
+  .den__input:focus {
+    outline: none;
+    border-color: var(--color-blue);
+  }
+
+  .den__select-wrap {
+    position: relative;
+  }
+  .den__select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--color-white);
+    cursor: pointer;
+    padding-right: 40px;
+  }
+  .den__select:invalid { color: rgba(46, 51, 63, 0.6); }
+  .den__select-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-dark-blue);
+    pointer-events: none;
+  }
+
+  .den__textarea {
+    height: 100px;
+    padding: 12px 16px;
+    resize: vertical;
+    line-height: 1.4;
+  }
+
+  /* Radios styled as checkboxes */
+  .den__radios-field { gap: 12px; }
+  .den__radios {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .den__radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .den__radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+  }
+  .den__radio-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-solid);
+    border-radius: 4px;
+    color: transparent;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .den__radio input:checked + .den__radio-box {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-white);
+  }
+  .den__radio input:focus-visible + .den__radio-box {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+  }
+  .den__radio-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-dark-blue);
+  }
+
+  .den__submit {
+    width: 100%;
+    height: 42px;
+    padding: 12px 24px;
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: 0;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .den__submit:hover { opacity: 0.9; }
+
+  .den__privacy {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--color-text-dark);
+    text-align: center;
+  }
+  .den__privacy-link {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  /* ============================
+     Desktop
+     ============================ */
+  @media (min-width: 768px) {
+    .den {
+      padding: 0 var(--container-padding) 80px;
+    }
+    .den__pattern { display: none; }
+
+    .den__container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 80px;
+      padding-top: 80px;
+    }
+
+    .den__left {
+      flex: 0 0 500px;
+      max-width: 500px;
+    }
+
+    .den__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    .den__feature { padding: 24px; }
+    .den__feature-title { font-size: 18px; }
+
+    .den__form {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .den__row { flex-direction: row; gap: 16px; }
+
+    .den__form-line--h { left: -48px; right: -48px; }
+    .den__form-line--v { top: -48px; bottom: -48px; }
+  }
+</style>
